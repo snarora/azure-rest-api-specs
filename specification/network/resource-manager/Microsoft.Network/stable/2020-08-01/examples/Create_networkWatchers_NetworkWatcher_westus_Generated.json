@@ -1,0 +1,24 @@
+{
+  "parameters": {
+    "api-version": "2020-08-01",
+    "subscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resourceGroupName": "NetworkWatcherRG",
+    "networkWatcherName": "NetworkWatcher_westus",
+    "parameters": {
+      "location": "westus"
+    }
+  },
+  "responses": {
+    "200": {
+      "name": "NetworkWatcher_westus",
+      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_westus",
+      "etag": "W/\"3de95c73-1630-478d-95f7-0c5982bed230\"",
+      "type": "Microsoft.Network/networkWatchers",
+      "location": "westus",
+      "properties": {
+        "provisioningState": "Succeeded",
+        "runningOperationIds": []
+      }
+    }
+  }
+}

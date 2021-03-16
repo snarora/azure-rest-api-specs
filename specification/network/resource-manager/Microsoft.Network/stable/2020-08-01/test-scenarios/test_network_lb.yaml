@@ -1,0 +1,36 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_lb
+    steps:
+      - step: PublicIPAddresses_Get_567
+        exampleFile: ../examples/PublicIPAddresses_Get_567_Generated.json
+        operationId: PublicIPAddresses_Get
+      - step: Create_virtualNetworks_mytestvnet
+        resourceName: virtualNetworks_mytestvnet
+        exampleFile: ../examples/Create_virtualNetworks_mytestvnet_Generated.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Create_publicIPAddresses_publicip4
+        resourceName: publicIPAddresses_publicip4
+        exampleFile: ../examples/Create_publicIPAddresses_publicip4_Generated_570.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+        variables:
+          publicIpAddressName: publicip4
+      - step: LoadBalancers_ListAll_571
+        exampleFile: ../examples/LoadBalancers_ListAll_571_Generated.json
+        operationId: LoadBalancers_ListAll
+      - step: LoadBalancers_List_572
+        exampleFile: ../examples/LoadBalancers_List_572_Generated.json
+        operationId: LoadBalancers_List
+      - step: LoadBalancers_Get_573
+        exampleFile: ../examples/LoadBalancers_Get_573_Generated.json
+        operationId: LoadBalancers_Get
+      - step: LoadBalancers_Delete_574
+        exampleFile: ../examples/LoadBalancers_Delete_447_Generated.json
+        operationId: LoadBalancers_Delete
+      - step: LoadBalancers_List_575
+        exampleFile: ../examples/LoadBalancers_List_575_Generated.json
+        operationId: LoadBalancers_List
+    variables:
+      publicIpAddressName: PublicIPlb2
+      virtualNetworkName: mytestvnet
+      loadBalancerName: lb1

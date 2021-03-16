@@ -1,0 +1,13 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_lb_sku
+    steps:
+      - step: LoadBalancers_Get_685
+        exampleFile: ../examples/LoadBalancers_Get_685_Generated.json
+        operationId: LoadBalancers_Get
+      - step: PublicIPAddresses_Get_686
+        exampleFile: ../examples/PublicIPAddresses_Get_686_Generated.json
+        operationId: PublicIPAddresses_Get
+    variables:
+      loadBalancerName: lb1
+      publicIpAddressName: pubip1

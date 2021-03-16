@@ -1,0 +1,59 @@
+{
+  "parameters": {
+    "api-version": "2020-08-01",
+    "subscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resourceGroupName": "test_manage_appgw_private_endpoint000001",
+    "virtualNetworkName": "appgw_private_endpoint_vnet"
+  },
+  "responses": {
+    "200": {
+      "name": "appgw_private_endpoint_vnet",
+      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/virtualNetworks/appgw_private_endpoint_vnet",
+      "etag": "W/\"dd9948e0-d525-4d3f-adc7-e08e82db4286\"",
+      "type": "Microsoft.Network/virtualNetworks",
+      "location": "westus",
+      "tags": {},
+      "properties": {
+        "provisioningState": "Succeeded",
+        "resourceGuid": "4f873edf-da50-4158-bfbb-2e0feaed45a9",
+        "addressSpace": {
+          "addressPrefixes": [
+            "10.0.0.0/16"
+          ]
+        },
+        "dhcpOptions": {
+          "dnsServers": []
+        },
+        "subnets": [
+          {
+            "name": "appgw_private_endpoint_subnet_for_public",
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/virtualNetworks/appgw_private_endpoint_vnet/subnets/appgw_private_endpoint_subnet_for_public",
+            "etag": "W/\"dd9948e0-d525-4d3f-adc7-e08e82db4286\"",
+            "properties": {
+              "provisioningState": "Succeeded",
+              "addressPrefix": "10.0.0.0/24",
+              "ipConfigurations": [
+                {
+                  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/networkInterfaces/appgw_private_endpoint_for_public.nic.c1a20aec-2032-4d3a-bc59-3ca5213ad592/ipConfigurations/privateEndpointIpConfig"
+                }
+              ],
+              "privateEndpoints": [
+                {
+                  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/privateEndpoints/appgw_private_endpoint_for_public"
+                }
+              ],
+              "delegations": [],
+              "purpose": "PrivateEndpoints",
+              "privateEndpointNetworkPolicies": "Disabled",
+              "privateLinkServiceNetworkPolicies": "Enabled"
+            },
+            "type": "Microsoft.Network/virtualNetworks/subnets"
+          }
+        ],
+        "virtualNetworkPeerings": [],
+        "enableDdosProtection": false,
+        "enableVmProtection": false
+      }
+    }
+  }
+}

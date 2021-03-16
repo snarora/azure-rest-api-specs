@@ -1,0 +1,101 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_watcher_flow_log
+    steps:
+      - step: Create_networkSecurityGroups_nsg1
+        resourceName: networkSecurityGroups_nsg1
+        exampleFile: ../examples/Create_networkSecurityGroups_nsg1_Generated_1225.json
+        operationId: NetworkSecurityGroups_CreateOrUpdate
+      - step: NetworkWatchers_ListAll_1226
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: NetworkWatchers_GetFlowLogStatus_1227
+        exampleFile: ../examples/NetworkWatchers_GetFlowLogStatus_1227_Generated.json
+        operationId: NetworkWatchers_GetFlowLogStatus
+      - step: NetworkWatchers_SetFlowLogConfiguration_1228
+        exampleFile: >-
+          ../examples/NetworkWatchers_SetFlowLogConfiguration_1228_Generated.json
+        operationId: NetworkWatchers_SetFlowLogConfiguration
+      - step: NetworkWatchers_ListAll_1229
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: NetworkWatchers_GetFlowLogStatus_1230
+        exampleFile: ../examples/NetworkWatchers_GetFlowLogStatus_1230_Generated.json
+        operationId: NetworkWatchers_GetFlowLogStatus
+      - step: NetworkWatchers_SetFlowLogConfiguration_1231
+        exampleFile: >-
+          ../examples/NetworkWatchers_SetFlowLogConfiguration_1231_Generated.json
+        operationId: NetworkWatchers_SetFlowLogConfiguration
+      - step: NetworkWatchers_ListAll_1232
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: NetworkWatchers_GetFlowLogStatus_1233
+        exampleFile: ../examples/NetworkWatchers_GetFlowLogStatus_1233_Generated.json
+        operationId: NetworkWatchers_GetFlowLogStatus
+      - step: NetworkWatchers_ListAll_1234
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: NetworkWatchers_GetFlowLogStatus_1235
+        exampleFile: ../examples/NetworkWatchers_GetFlowLogStatus_1233_Generated.json
+        operationId: NetworkWatchers_GetFlowLogStatus
+      - step: NetworkWatchers_SetFlowLogConfiguration_1236
+        exampleFile: >-
+          ../examples/NetworkWatchers_SetFlowLogConfiguration_1236_Generated.json
+        operationId: NetworkWatchers_SetFlowLogConfiguration
+      - step: NetworkWatchers_ListAll_1237
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: NetworkWatchers_GetFlowLogStatus_1238
+        exampleFile: ../examples/NetworkWatchers_GetFlowLogStatus_1238_Generated.json
+        operationId: NetworkWatchers_GetFlowLogStatus
+      - step: NetworkWatchers_ListAll_1239
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: NetworkWatchers_GetFlowLogStatus_1240
+        exampleFile: ../examples/NetworkWatchers_GetFlowLogStatus_1238_Generated.json
+        operationId: NetworkWatchers_GetFlowLogStatus
+      - step: NetworkWatchers_SetFlowLogConfiguration_1241
+        exampleFile: >-
+          ../examples/NetworkWatchers_SetFlowLogConfiguration_1241_Generated.json
+        operationId: NetworkWatchers_SetFlowLogConfiguration
+      - step: NetworkWatchers_ListAll_1242
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: NetworkWatchers_GetFlowLogStatus_1243
+        exampleFile: ../examples/NetworkWatchers_GetFlowLogStatus_1243_Generated.json
+        operationId: NetworkWatchers_GetFlowLogStatus
+      - step: NetworkWatchers_ListAll_1244
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: NetworkWatchers_GetFlowLogStatus_1245
+        exampleFile: ../examples/NetworkWatchers_GetFlowLogStatus_1243_Generated.json
+        operationId: NetworkWatchers_GetFlowLogStatus
+      - step: NetworkWatchers_SetFlowLogConfiguration_1246
+        exampleFile: >-
+          ../examples/NetworkWatchers_SetFlowLogConfiguration_1246_Generated.json
+        operationId: NetworkWatchers_SetFlowLogConfiguration
+      - step: NetworkWatchers_ListAll_1247
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: NetworkWatchers_GetFlowLogStatus_1248
+        exampleFile: ../examples/NetworkWatchers_GetFlowLogStatus_1248_Generated.json
+        operationId: NetworkWatchers_GetFlowLogStatus
+      - step: NetworkWatchers_ListAll_1249
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: NetworkWatchers_GetFlowLogStatus_1250
+        exampleFile: ../examples/NetworkWatchers_GetFlowLogStatus_1248_Generated.json
+        operationId: NetworkWatchers_GetFlowLogStatus
+      - step: NetworkWatchers_SetFlowLogConfiguration_1251
+        exampleFile: >-
+          ../examples/NetworkWatchers_SetFlowLogConfiguration_1231_Generated.json
+        operationId: NetworkWatchers_SetFlowLogConfiguration
+      - step: NetworkWatchers_ListAll_1252
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: NetworkWatchers_GetFlowLogStatus_1253
+        exampleFile: ../examples/NetworkWatchers_GetFlowLogStatus_1233_Generated.json
+        operationId: NetworkWatchers_GetFlowLogStatus
+    variables:
+      networkSecurityGroupName: nsg1
+      networkWatcherName: NetworkWatcher_westus

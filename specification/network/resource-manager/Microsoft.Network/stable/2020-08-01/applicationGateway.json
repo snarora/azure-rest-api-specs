@@ -43,6 +43,12 @@
         "x-ms-examples": {
           "Delete ApplicationGateway": {
             "$ref": "./examples/ApplicationGatewayDelete.json"
+          },
+          "ApplicationGateways_Delete_252_Generated": {
+            "$ref": "./examples/ApplicationGateways_Delete_252_Generated.json"
+          },
+          "ApplicationGateways_Delete_382_Generated": {
+            "$ref": "./examples/ApplicationGateways_Delete_382_Generated.json"
           }
         },
         "description": "Deletes the specified application gateway.",
@@ -69,14 +75,14 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Delete successful."
+          },
           "202": {
             "description": "Accepted and the operation will complete asynchronously."
           },
           "204": {
             "description": "Request successful. Resource with the specified name does not exist."
-          },
-          "200": {
-            "description": "Delete successful."
           },
           "default": {
             "description": "Error response describing why the operation failed.",
@@ -98,6 +104,126 @@
         "x-ms-examples": {
           "Get ApplicationGateway": {
             "$ref": "./examples/ApplicationGatewayGet.json"
+          },
+          "ApplicationGateways_Get_4_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_4_Generated.json"
+          },
+          "ApplicationGateways_Get_14_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_14_Generated.json"
+          },
+          "ApplicationGateways_Get_24_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_24_Generated.json"
+          },
+          "ApplicationGateways_Get_29_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_29_Generated.json"
+          },
+          "ApplicationGateways_Get_35_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_35_Generated.json"
+          },
+          "ApplicationGateways_Get_44_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_44_Generated.json"
+          },
+          "ApplicationGateways_Get_57_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_57_Generated.json"
+          },
+          "ApplicationGateways_Get_95_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_95_Generated.json"
+          },
+          "ApplicationGateways_Get_101_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_101_Generated.json"
+          },
+          "ApplicationGateways_Get_113_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_113_Generated.json"
+          },
+          "ApplicationGateways_Get_118_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_118_Generated.json"
+          },
+          "ApplicationGateways_Get_127_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_127_Generated.json"
+          },
+          "ApplicationGateways_Get_134_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_134_Generated.json"
+          },
+          "ApplicationGateways_Get_142_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_142_Generated.json"
+          },
+          "ApplicationGateways_Get_155_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_155_Generated.json"
+          },
+          "ApplicationGateways_Get_164_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_164_Generated.json"
+          },
+          "ApplicationGateways_Get_172_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_172_Generated.json"
+          },
+          "ApplicationGateways_Get_181_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_181_Generated.json"
+          },
+          "ApplicationGateways_Get_193_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_193_Generated.json"
+          },
+          "ApplicationGateways_Get_214_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_214_Generated.json"
+          },
+          "ApplicationGateways_Get_231_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_231_Generated.json"
+          },
+          "ApplicationGateways_Get_247_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_247_Generated.json"
+          },
+          "ApplicationGateways_Get_248_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_248_Generated.json"
+          },
+          "ApplicationGateways_Get_253_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_253_Generated.json"
+          },
+          "ApplicationGateways_Get_260_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_260_Generated.json"
+          },
+          "ApplicationGateways_Get_270_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_270_Generated.json"
+          },
+          "ApplicationGateways_Get_284_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_284_Generated.json"
+          },
+          "ApplicationGateways_Get_289_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_289_Generated.json"
+          },
+          "ApplicationGateways_Get_353_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_353_Generated.json"
+          },
+          "ApplicationGateways_Get_369_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_369_Generated.json"
+          },
+          "ApplicationGateways_Get_372_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_372_Generated.json"
+          },
+          "ApplicationGateways_Get_378_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_378_Generated.json"
+          },
+          "ApplicationGateways_Get_388_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_388_Generated.json"
+          },
+          "ApplicationGateways_Get_396_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_396_Generated.json"
+          },
+          "ApplicationGateways_Get_406_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_406_Generated.json"
+          },
+          "ApplicationGateways_Get_413_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_413_Generated.json"
+          },
+          "ApplicationGateways_Get_418_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_418_Generated.json"
+          },
+          "ApplicationGateways_Get_422_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_422_Generated.json"
+          },
+          "ApplicationGateways_Get_778_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_778_Generated.json"
+          },
+          "ApplicationGateways_Get_792_Generated": {
+            "$ref": "./examples/ApplicationGateways_Get_792_Generated.json"
           }
         },
         "description": "Gets the specified application gateway.",
@@ -176,14 +302,14 @@
           }
         ],
         "responses": {
-          "201": {
-            "description": "Create successful. The operation returns the resulting ApplicationGateway resource.",
+          "200": {
+            "description": "Update successful. The operation returns the resulting ApplicationGateway resource.",
             "schema": {
               "$ref": "#/definitions/ApplicationGateway"
             }
           },
-          "200": {
-            "description": "Update successful. The operation returns the resulting ApplicationGateway resource.",
+          "201": {
+            "description": "Create successful. The operation returns the resulting ApplicationGateway resource.",
             "schema": {
               "$ref": "#/definitions/ApplicationGateway"
             }
@@ -198,6 +324,84 @@
         "x-ms-examples": {
           "Create Application Gateway": {
             "$ref": "./examples/ApplicationGatewayCreate.json"
+          },
+          "Create_applicationGateways_appgw_Generated": {
+            "$ref": "./examples/Create_applicationGateways_appgw_Generated.json"
+          },
+          "Create_applicationGateways_ag1_Generated": {
+            "$ref": "./examples/Create_applicationGateways_ag1_Generated.json"
+          },
+          "Create_applicationGateways_ag1_Generated_103": {
+            "$ref": "./examples/Create_applicationGateways_ag1_Generated_103.json"
+          },
+          "Create_applicationGateways_ag1_Generated_115": {
+            "$ref": "./examples/Create_applicationGateways_ag1_Generated_115.json"
+          },
+          "Create_applicationGateways_ag1_Generated_124": {
+            "$ref": "./examples/Create_applicationGateways_ag1_Generated_124.json"
+          },
+          "Create_applicationGateways_ag1_Generated_129": {
+            "$ref": "./examples/Create_applicationGateways_ag1_Generated_129.json"
+          },
+          "Create_applicationGateways_ag1_Generated_136": {
+            "$ref": "./examples/Create_applicationGateways_ag1_Generated_136.json"
+          },
+          "Create_applicationGateways_ag1_Generated_144": {
+            "$ref": "./examples/Create_applicationGateways_ag1_Generated_144.json"
+          },
+          "Create_applicationGateways_ag1_Generated_157": {
+            "$ref": "./examples/Create_applicationGateways_ag1_Generated_157.json"
+          },
+          "Create_applicationGateways_ag1_Generated_166": {
+            "$ref": "./examples/Create_applicationGateways_ag1_Generated_166.json"
+          },
+          "Create_applicationGateways_ag1_Generated_174": {
+            "$ref": "./examples/Create_applicationGateways_ag1_Generated_174.json"
+          },
+          "Create_applicationGateways_ag1_Generated_183": {
+            "$ref": "./examples/Create_applicationGateways_ag1_Generated_183.json"
+          },
+          "Create_applicationGateways_ag1_Generated_195": {
+            "$ref": "./examples/Create_applicationGateways_ag1_Generated_195.json"
+          },
+          "Create_applicationGateways_ag1_Generated_216": {
+            "$ref": "./examples/Create_applicationGateways_ag1_Generated_216.json"
+          },
+          "Create_applicationGateways_ag1_Generated_233": {
+            "$ref": "./examples/Create_applicationGateways_ag1_Generated_233.json"
+          },
+          "Create_applicationGateways_ag1_Generated_255": {
+            "$ref": "./examples/Create_applicationGateways_ag1_Generated_255.json"
+          },
+          "Create_applicationGateways_gw1_Generated": {
+            "$ref": "./examples/Create_applicationGateways_gw1_Generated.json"
+          },
+          "Create_applicationGateways_ag1_Generated_292": {
+            "$ref": "./examples/Create_applicationGateways_ag1_Generated_292.json"
+          },
+          "Create_applicationGateways_ag1_Generated_371": {
+            "$ref": "./examples/Create_applicationGateways_ag1_Generated_371.json"
+          },
+          "Create_applicationGateways_ag1_Generated_374": {
+            "$ref": "./examples/Create_applicationGateways_ag1_Generated_374.json"
+          },
+          "Create_applicationGateways_gateway_Generated": {
+            "$ref": "./examples/Create_applicationGateways_gateway_Generated.json"
+          },
+          "Create_applicationGateways_ag3_Generated": {
+            "$ref": "./examples/Create_applicationGateways_ag3_Generated.json"
+          },
+          "Create_applicationGateways_gateway_Generated_408": {
+            "$ref": "./examples/Create_applicationGateways_gateway_Generated_408.json"
+          },
+          "Create_applicationGateways_gateway_Generated_415": {
+            "$ref": "./examples/Create_applicationGateways_gateway_Generated_415.json"
+          },
+          "Create_applicationGateways_ag1_Generated_780": {
+            "$ref": "./examples/Create_applicationGateways_ag1_Generated_780.json"
+          },
+          "Create_applicationGateways_ag1_Generated_794": {
+            "$ref": "./examples/Create_applicationGateways_ag1_Generated_794.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -272,6 +476,15 @@
         "x-ms-examples": {
           "Lists all application gateways in a resource group": {
             "$ref": "./examples/ApplicationGatewayList.json"
+          },
+          "ApplicationGateways_List_377_Generated": {
+            "$ref": "./examples/ApplicationGateways_List_377_Generated.json"
+          },
+          "ApplicationGateways_List_383_Generated": {
+            "$ref": "./examples/ApplicationGateways_List_383_Generated.json"
+          },
+          "ApplicationGateways_List_419_Generated": {
+            "$ref": "./examples/ApplicationGateways_List_419_Generated.json"
           }
         },
         "description": "Lists all application gateways in a resource group.",
@@ -357,6 +570,9 @@
         "x-ms-examples": {
           "Start Application Gateway": {
             "$ref": "./examples/ApplicationGatewayStart.json"
+          },
+          "ApplicationGateways_Start_381_Generated": {
+            "$ref": "./examples/ApplicationGateways_Start_381_Generated.json"
           }
         },
         "description": "Starts the specified application gateway.",
@@ -411,6 +627,9 @@
         "x-ms-examples": {
           "Stop Application Gateway": {
             "$ref": "./examples/ApplicationGatewayStop.json"
+          },
+          "ApplicationGateways_Stop_380_Generated": {
+            "$ref": "./examples/ApplicationGateways_Stop_380_Generated.json"
           }
         },
         "description": "Stops the specified application gateway in a resource group.",
@@ -466,6 +685,9 @@
         "x-ms-examples": {
           "Get Backend Health": {
             "$ref": "./examples/ApplicationGatewayBackendHealthGet.json"
+          },
+          "ApplicationGateways_BackendHealth_379_Generated": {
+            "$ref": "./examples/ApplicationGateways_BackendHealth_379_Generated.json"
           }
         },
         "parameters": [
@@ -688,14 +910,14 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Delete successful."
+          },
           "202": {
             "description": "Accepted and the operation will complete asynchronously."
           },
           "204": {
             "description": "Request successful. Resource with the specified name does not exist."
-          },
-          "200": {
-            "description": "Delete successful."
           },
           "default": {
             "description": "Error response describing why the operation failed.",
@@ -898,6 +1120,9 @@
         "x-ms-examples": {
           "Get Available Server Variables": {
             "$ref": "./examples/ApplicationGatewayAvailableServerVariablesGet.json"
+          },
+          "ApplicationGateways_ListAvailableServerVariables_283_Generated": {
+            "$ref": "./examples/ApplicationGateways_ListAvailableServerVariables_283_Generated.json"
           }
         },
         "description": "Lists all available server variables.",
@@ -934,6 +1159,9 @@
         "x-ms-examples": {
           "Get Available Request Headers": {
             "$ref": "./examples/ApplicationGatewayAvailableRequestHeadersGet.json"
+          },
+          "ApplicationGateways_ListAvailableRequestHeaders_268_Generated": {
+            "$ref": "./examples/ApplicationGateways_ListAvailableRequestHeaders_268_Generated.json"
           }
         },
         "description": "Lists all available request headers.",
@@ -970,6 +1198,9 @@
         "x-ms-examples": {
           "Get Available Response Headers": {
             "$ref": "./examples/ApplicationGatewayAvailableResponseHeadersGet.json"
+          },
+          "ApplicationGateways_ListAvailableResponseHeaders_269_Generated": {
+            "$ref": "./examples/ApplicationGateways_ListAvailableResponseHeaders_269_Generated.json"
           }
         },
         "description": "Lists all available response headers.",
@@ -1006,6 +1237,9 @@
         "x-ms-examples": {
           "Get Available Waf Rule Sets": {
             "$ref": "./examples/ApplicationGatewayAvailableWafRuleSetsGet.json"
+          },
+          "ApplicationGateways_ListAvailableWafRuleSets_290_Generated": {
+            "$ref": "./examples/ApplicationGateways_ListAvailableWafRuleSets_290_Generated.json"
           }
         },
         "description": "Lists all available web application firewall rule sets.",

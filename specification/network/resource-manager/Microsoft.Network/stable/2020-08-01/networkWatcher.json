@@ -95,6 +95,21 @@
         "x-ms-examples": {
           "Create network watcher": {
             "$ref": "./examples/NetworkWatcherCreate.json"
+          },
+          "Create_networkWatchers_canadaeast-watcher_Generated": {
+            "$ref": "./examples/Create_networkWatchers_canadaeast-watcher_Generated.json"
+          },
+          "Create_networkWatchers_westus2-watcher_Generated": {
+            "$ref": "./examples/Create_networkWatchers_westus2-watcher_Generated.json"
+          },
+          "Create_networkWatchers_NetworkWatcher_westus_Generated": {
+            "$ref": "./examples/Create_networkWatchers_NetworkWatcher_westus_Generated.json"
+          },
+          "Create_networkWatchers_NetworkWatcher_eastus_Generated": {
+            "$ref": "./examples/Create_networkWatchers_NetworkWatcher_eastus_Generated.json"
+          },
+          "Create_networkWatchers_NetworkWatcher_westcentralus_Generated": {
+            "$ref": "./examples/Create_networkWatchers_NetworkWatcher_westcentralus_Generated.json"
           }
         }
       },
@@ -337,6 +352,21 @@
         "x-ms-examples": {
           "List all network watchers": {
             "$ref": "./examples/NetworkWatcherListAll.json"
+          },
+          "NetworkWatchers_ListAll_1226_Generated": {
+            "$ref": "./examples/NetworkWatchers_ListAll_1226_Generated.json"
+          },
+          "NetworkWatchers_ListAll_1260_Generated": {
+            "$ref": "./examples/NetworkWatchers_ListAll_1260_Generated.json"
+          },
+          "NetworkWatchers_ListAll_1287_Generated": {
+            "$ref": "./examples/NetworkWatchers_ListAll_1287_Generated.json"
+          },
+          "NetworkWatchers_ListAll_1289_Generated": {
+            "$ref": "./examples/NetworkWatchers_ListAll_1289_Generated.json"
+          },
+          "NetworkWatchers_ListAll_1308_Generated": {
+            "$ref": "./examples/NetworkWatchers_ListAll_1308_Generated.json"
           }
         }
       }
@@ -396,6 +426,9 @@
         "x-ms-examples": {
           "Get Topology": {
             "$ref": "./examples/NetworkWatcherTopologyGet.json"
+          },
+          "NetworkWatchers_GetTopology_1294_Generated": {
+            "$ref": "./examples/NetworkWatchers_GetTopology_1294_Generated.json"
           }
         }
       }
@@ -461,6 +494,12 @@
         "x-ms-examples": {
           "Ip flow verify": {
             "$ref": "./examples/NetworkWatcherIpFlowVerify.json"
+          },
+          "NetworkWatchers_VerifyIPFlow_1296_Generated": {
+            "$ref": "./examples/NetworkWatchers_VerifyIPFlow_1296_Generated.json"
+          },
+          "NetworkWatchers_VerifyIPFlow_1298_Generated": {
+            "$ref": "./examples/NetworkWatchers_VerifyIPFlow_1298_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -530,6 +569,9 @@
         "x-ms-examples": {
           "Get next hop": {
             "$ref": "./examples/NetworkWatcherNextHopGet.json"
+          },
+          "NetworkWatchers_GetNextHop_1302_Generated": {
+            "$ref": "./examples/NetworkWatchers_GetNextHop_1302_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -599,6 +641,9 @@
         "x-ms-examples": {
           "Get security group view": {
             "$ref": "./examples/NetworkWatcherSecurityGroupViewGet.json"
+          },
+          "NetworkWatchers_GetVMSecurityRules_1300_Generated": {
+            "$ref": "./examples/NetworkWatchers_GetVMSecurityRules_1300_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -669,6 +714,9 @@
         "x-ms-examples": {
           "Create packet capture": {
             "$ref": "./examples/NetworkWatcherPacketCaptureCreate.json"
+          },
+          "Create_packetCaptures_capture1_Generated": {
+            "$ref": "./examples/Create_packetCaptures_capture1_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -728,6 +776,9 @@
         "x-ms-examples": {
           "Get packet capture": {
             "$ref": "./examples/NetworkWatcherPacketCaptureGet.json"
+          },
+          "PacketCaptures_Get_1269_Generated": {
+            "$ref": "./examples/PacketCaptures_Get_1269_Generated.json"
           }
         }
       },
@@ -767,11 +818,11 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "Delete successful."
-          },
           "202": {
             "description": "Accepted and the operation will complete asynchronously."
+          },
+          "204": {
+            "description": "Delete successful."
           },
           "default": {
             "description": "Error response describing why the operation failed.",
@@ -783,6 +834,9 @@
         "x-ms-examples": {
           "Delete packet capture": {
             "$ref": "./examples/NetworkWatcherPacketCaptureDelete.json"
+          },
+          "PacketCaptures_Delete_1277_Generated": {
+            "$ref": "./examples/PacketCaptures_Delete_1277_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -844,6 +898,9 @@
         "x-ms-examples": {
           "Stop packet capture": {
             "$ref": "./examples/NetworkWatcherPacketCaptureStop.json"
+          },
+          "PacketCaptures_Stop_1271_Generated": {
+            "$ref": "./examples/PacketCaptures_Stop_1271_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -911,6 +968,9 @@
         "x-ms-examples": {
           "Query packet capture status": {
             "$ref": "./examples/NetworkWatcherPacketCaptureQueryStatus.json"
+          },
+          "PacketCaptures_GetStatus_1273_Generated": {
+            "$ref": "./examples/PacketCaptures_GetStatus_1273_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -968,6 +1028,12 @@
         "x-ms-examples": {
           "List packet captures": {
             "$ref": "./examples/NetworkWatcherPacketCapturesList.json"
+          },
+          "PacketCaptures_List_1275_Generated": {
+            "$ref": "./examples/PacketCaptures_List_1275_Generated.json"
+          },
+          "PacketCaptures_List_1279_Generated": {
+            "$ref": "./examples/PacketCaptures_List_1279_Generated.json"
           }
         }
       }
@@ -1033,6 +1099,9 @@
         "x-ms-examples": {
           "Get troubleshooting": {
             "$ref": "./examples/NetworkWatcherTroubleshootGet.json"
+          },
+          "NetworkWatchers_GetTroubleshooting_1286_Generated": {
+            "$ref": "./examples/NetworkWatchers_GetTroubleshooting_1286_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -1102,6 +1171,9 @@
         "x-ms-examples": {
           "Get troubleshoot result": {
             "$ref": "./examples/NetworkWatcherTroubleshootResultQuery.json"
+          },
+          "NetworkWatchers_GetTroubleshootingResult_1288_Generated": {
+            "$ref": "./examples/NetworkWatchers_GetTroubleshootingResult_1288_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -1172,6 +1244,24 @@
         "x-ms-examples": {
           "Configure flow log": {
             "$ref": "./examples/NetworkWatcherFlowLogConfigure.json"
+          },
+          "NetworkWatchers_SetFlowLogConfiguration_1228_Generated": {
+            "$ref": "./examples/NetworkWatchers_SetFlowLogConfiguration_1228_Generated.json"
+          },
+          "NetworkWatchers_SetFlowLogConfiguration_1231_Generated": {
+            "$ref": "./examples/NetworkWatchers_SetFlowLogConfiguration_1231_Generated.json"
+          },
+          "NetworkWatchers_SetFlowLogConfiguration_1236_Generated": {
+            "$ref": "./examples/NetworkWatchers_SetFlowLogConfiguration_1236_Generated.json"
+          },
+          "NetworkWatchers_SetFlowLogConfiguration_1241_Generated": {
+            "$ref": "./examples/NetworkWatchers_SetFlowLogConfiguration_1241_Generated.json"
+          },
+          "NetworkWatchers_SetFlowLogConfiguration_1246_Generated": {
+            "$ref": "./examples/NetworkWatchers_SetFlowLogConfiguration_1246_Generated.json"
+          },
+          "NetworkWatchers_SetFlowLogConfiguration_1265_Generated": {
+            "$ref": "./examples/NetworkWatchers_SetFlowLogConfiguration_1265_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -1242,6 +1332,30 @@
         "x-ms-examples": {
           "Get flow log status": {
             "$ref": "./examples/NetworkWatcherFlowLogStatusQuery.json"
+          },
+          "NetworkWatchers_GetFlowLogStatus_1227_Generated": {
+            "$ref": "./examples/NetworkWatchers_GetFlowLogStatus_1227_Generated.json"
+          },
+          "NetworkWatchers_GetFlowLogStatus_1230_Generated": {
+            "$ref": "./examples/NetworkWatchers_GetFlowLogStatus_1230_Generated.json"
+          },
+          "NetworkWatchers_GetFlowLogStatus_1233_Generated": {
+            "$ref": "./examples/NetworkWatchers_GetFlowLogStatus_1233_Generated.json"
+          },
+          "NetworkWatchers_GetFlowLogStatus_1238_Generated": {
+            "$ref": "./examples/NetworkWatchers_GetFlowLogStatus_1238_Generated.json"
+          },
+          "NetworkWatchers_GetFlowLogStatus_1243_Generated": {
+            "$ref": "./examples/NetworkWatchers_GetFlowLogStatus_1243_Generated.json"
+          },
+          "NetworkWatchers_GetFlowLogStatus_1248_Generated": {
+            "$ref": "./examples/NetworkWatchers_GetFlowLogStatus_1248_Generated.json"
+          },
+          "NetworkWatchers_GetFlowLogStatus_1264_Generated": {
+            "$ref": "./examples/NetworkWatchers_GetFlowLogStatus_1264_Generated.json"
+          },
+          "NetworkWatchers_GetFlowLogStatus_1380_Generated": {
+            "$ref": "./examples/NetworkWatchers_GetFlowLogStatus_1380_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -1311,6 +1425,9 @@
         "x-ms-examples": {
           "Check connectivity": {
             "$ref": "./examples/NetworkWatcherConnectivityCheck.json"
+          },
+          "NetworkWatchers_CheckConnectivity_1290_Generated": {
+            "$ref": "./examples/NetworkWatchers_CheckConnectivity_1290_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -1518,6 +1635,9 @@
         "x-ms-examples": {
           "Network configuration diagnostic": {
             "$ref": "./examples/NetworkWatcherNetworkConfigurationDiagnostic.json"
+          },
+          "NetworkWatchers_GetNetworkConfigurationDiagnostic_1292_Generated": {
+            "$ref": "./examples/NetworkWatchers_GetNetworkConfigurationDiagnostic_1292_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -1604,6 +1724,18 @@
           },
           "Create connection monitor V2": {
             "$ref": "./examples/NetworkWatcherConnectionMonitorV2Create.json"
+          },
+          "Create_connectionMonitors_CMv2-01_Generated": {
+            "$ref": "./examples/Create_connectionMonitors_CMv2-01_Generated.json"
+          },
+          "Create_connectionMonitors_CMv2-01_Generated_1323": {
+            "$ref": "./examples/Create_connectionMonitors_CMv2-01_Generated_1323.json"
+          },
+          "Create_connectionMonitors_cmv2-01_Generated": {
+            "$ref": "./examples/Create_connectionMonitors_cmv2-01_Generated.json"
+          },
+          "Create_connectionMonitors_CMv2-01_Generated_1334": {
+            "$ref": "./examples/Create_connectionMonitors_CMv2-01_Generated_1334.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -1663,6 +1795,27 @@
         "x-ms-examples": {
           "Get connection monitor": {
             "$ref": "./examples/NetworkWatcherConnectionMonitorGet.json"
+          },
+          "ConnectionMonitors_Get_1307_Generated": {
+            "$ref": "./examples/ConnectionMonitors_Get_1307_Generated.json"
+          },
+          "ConnectionMonitors_Get_1312_Generated": {
+            "$ref": "./examples/ConnectionMonitors_Get_1312_Generated.json"
+          },
+          "ConnectionMonitors_Get_1329_Generated": {
+            "$ref": "./examples/ConnectionMonitors_Get_1329_Generated.json"
+          },
+          "ConnectionMonitors_Get_1338_Generated": {
+            "$ref": "./examples/ConnectionMonitors_Get_1338_Generated.json"
+          },
+          "ConnectionMonitors_Get_1342_Generated": {
+            "$ref": "./examples/ConnectionMonitors_Get_1342_Generated.json"
+          },
+          "ConnectionMonitors_Get_1346_Generated": {
+            "$ref": "./examples/ConnectionMonitors_Get_1346_Generated.json"
+          },
+          "ConnectionMonitors_Get_1354_Generated": {
+            "$ref": "./examples/ConnectionMonitors_Get_1354_Generated.json"
           }
         }
       },
@@ -1702,11 +1855,11 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "Delete successful."
-          },
           "202": {
             "description": "Accepted. The operation will complete asynchronously."
+          },
+          "204": {
+            "description": "Delete successful."
           },
           "default": {
             "description": "Error response describing why the operation failed.",
@@ -1718,6 +1871,9 @@
         "x-ms-examples": {
           "Delete connection monitor": {
             "$ref": "./examples/NetworkWatcherConnectionMonitorDelete.json"
+          },
+          "ConnectionMonitors_Delete_1320_Generated": {
+            "$ref": "./examples/ConnectionMonitors_Delete_1320_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -1843,6 +1999,9 @@
         "x-ms-examples": {
           "Stop connection monitor": {
             "$ref": "./examples/NetworkWatcherConnectionMonitorStop.json"
+          },
+          "ConnectionMonitors_Stop_1314_Generated": {
+            "$ref": "./examples/ConnectionMonitors_Stop_1314_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -1904,6 +2063,9 @@
         "x-ms-examples": {
           "Start connection monitor": {
             "$ref": "./examples/NetworkWatcherConnectionMonitorStart.json"
+          },
+          "ConnectionMonitors_Start_1316_Generated": {
+            "$ref": "./examples/ConnectionMonitors_Start_1316_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -1971,6 +2133,9 @@
         "x-ms-examples": {
           "Query connection monitor": {
             "$ref": "./examples/NetworkWatcherConnectionMonitorQuery.json"
+          },
+          "ConnectionMonitors_Query_1318_Generated": {
+            "$ref": "./examples/ConnectionMonitors_Query_1318_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -2028,6 +2193,12 @@
         "x-ms-examples": {
           "List connection monitors": {
             "$ref": "./examples/NetworkWatcherConnectionMonitorList.json"
+          },
+          "ConnectionMonitors_List_1310_Generated": {
+            "$ref": "./examples/ConnectionMonitors_List_1310_Generated.json"
+          },
+          "ConnectionMonitors_List_1327_Generated": {
+            "$ref": "./examples/ConnectionMonitors_List_1327_Generated.json"
           }
         }
       }
@@ -2078,14 +2249,14 @@
           }
         ],
         "responses": {
-          "201": {
-            "description": "Request successful. The operation returns the resulting flow log resource.",
+          "200": {
+            "description": "Update successful. The operation returns the resulting flow log resource.",
             "schema": {
               "$ref": "#/definitions/FlowLog"
             }
           },
-          "200": {
-            "description": "Update successful. The operation returns the resulting flow log resource.",
+          "201": {
+            "description": "Request successful. The operation returns the resulting flow log resource.",
             "schema": {
               "$ref": "#/definitions/FlowLog"
             }
@@ -2100,6 +2271,18 @@
         "x-ms-examples": {
           "Create or update flow log": {
             "$ref": "./examples/NetworkWatcherFlowLogCreate.json"
+          },
+          "Create_flowLogs_flow_log_test_Generated": {
+            "$ref": "./examples/Create_flowLogs_flow_log_test_Generated.json"
+          },
+          "Create_flowLogs_flow_log_test2_Generated": {
+            "$ref": "./examples/Create_flowLogs_flow_log_test2_Generated.json"
+          },
+          "Create_flowLogs_flow_log_test2_Generated_1376": {
+            "$ref": "./examples/Create_flowLogs_flow_log_test2_Generated_1376.json"
+          },
+          "Create_flowLogs_flow_log_test2_Generated_1385": {
+            "$ref": "./examples/Create_flowLogs_flow_log_test2_Generated_1385.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -2223,6 +2406,18 @@
         "x-ms-examples": {
           "Get flow log": {
             "$ref": "./examples/NetworkWatcherFlowLogGet.json"
+          },
+          "FlowLogs_Get_1362_Generated": {
+            "$ref": "./examples/FlowLogs_Get_1362_Generated.json"
+          },
+          "FlowLogs_Get_1368_Generated": {
+            "$ref": "./examples/FlowLogs_Get_1368_Generated.json"
+          },
+          "FlowLogs_Get_1378_Generated": {
+            "$ref": "./examples/FlowLogs_Get_1378_Generated.json"
+          },
+          "FlowLogs_Get_1387_Generated": {
+            "$ref": "./examples/FlowLogs_Get_1387_Generated.json"
           }
         }
       },
@@ -2262,11 +2457,11 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "Delete successful."
-          },
           "202": {
             "description": "Accepted and the operation will complete asynchronously."
+          },
+          "204": {
+            "description": "Delete successful."
           },
           "default": {
             "description": "Error response describing why the operation failed.",
@@ -2278,6 +2473,9 @@
         "x-ms-examples": {
           "Delete flow log": {
             "$ref": "./examples/NetworkWatcherFlowLogDelete.json"
+          },
+          "FlowLogs_Delete_1370_Generated": {
+            "$ref": "./examples/FlowLogs_Delete_1370_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -2335,6 +2533,9 @@
         "x-ms-examples": {
           "List connection monitors": {
             "$ref": "./examples/NetworkWatcherFlowLogList.json"
+          },
+          "FlowLogs_List_1360_Generated": {
+            "$ref": "./examples/FlowLogs_List_1360_Generated.json"
           }
         }
       }

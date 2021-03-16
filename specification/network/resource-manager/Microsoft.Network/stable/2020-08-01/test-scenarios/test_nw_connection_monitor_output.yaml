@@ -1,0 +1,20 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_nw_connection_monitor_output
+    steps:
+      - step: NetworkWatchers_ListAll_1304
+        exampleFile: ../examples/NetworkWatchers_ListAll_1287_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: Create_connectionMonitors_CMv2-01
+        resourceName: connectionMonitors_CMv2-01
+        exampleFile: ../examples/Create_connectionMonitors_CMv2-01_Generated.json
+        operationId: ConnectionMonitors_CreateOrUpdate
+      - step: NetworkWatchers_ListAll_1306
+        exampleFile: ../examples/NetworkWatchers_ListAll_1287_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: ConnectionMonitors_Get_1307
+        exampleFile: ../examples/ConnectionMonitors_Get_1307_Generated.json
+        operationId: ConnectionMonitors_Get
+    variables:
+      networkWatcherName: NetworkWatcher_eastus
+      connectionMonitorName: CMv2-01

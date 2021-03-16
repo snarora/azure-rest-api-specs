@@ -1,0 +1,31 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_cross_region_lb
+    steps:
+      - step: PublicIPAddresses_Get_442
+        exampleFile: ../examples/PublicIPAddresses_Get_442_Generated.json
+        operationId: PublicIPAddresses_Get
+      - step: Create_publicIPAddresses_publicip4
+        resourceName: publicIPAddresses_publicip4
+        exampleFile: ../examples/Create_publicIPAddresses_publicip4_Generated.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+        variables:
+          publicIpAddressName: publicip4
+      - step: LoadBalancers_ListAll_444
+        exampleFile: ../examples/LoadBalancers_ListAll_444_Generated.json
+        operationId: LoadBalancers_ListAll
+      - step: LoadBalancers_List_445
+        exampleFile: ../examples/LoadBalancers_List_445_Generated.json
+        operationId: LoadBalancers_List
+      - step: LoadBalancers_Get_446
+        exampleFile: ../examples/LoadBalancers_Get_446_Generated.json
+        operationId: LoadBalancers_Get
+      - step: LoadBalancers_Delete_447
+        exampleFile: ../examples/LoadBalancers_Delete_447_Generated.json
+        operationId: LoadBalancers_Delete
+      - step: LoadBalancers_List_448
+        exampleFile: ../examples/LoadBalancers_List_448_Generated.json
+        operationId: LoadBalancers_List
+    variables:
+      publicIpAddressName: PublicIPcross-region-lb2
+      loadBalancerName: cross-region-lb1

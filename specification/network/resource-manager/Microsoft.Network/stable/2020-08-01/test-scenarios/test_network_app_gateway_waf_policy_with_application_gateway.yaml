@@ -1,0 +1,117 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_app_gateway_waf_policy_with_application_gateway
+    steps:
+      - step: Create_ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        exampleFile: >-
+          ../examples/Create_ApplicationGatewayWebApplicationFirewallPolicies_waf_1_Generated.json
+        statusCode: 201
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+      - step: Update_ApplicationGatewayWebApplicationFirewallPolicies_agp1_331
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/provisioningState
+            value: Succeeded
+          - add: /tags
+            value:
+              test: best
+      - step: WebApplicationFirewallPolicies_List_332
+        exampleFile: ../examples/WebApplicationFirewallPolicies_List_332_Generated.json
+        operationId: WebApplicationFirewallPolicies_List
+      - step: WebApplicationFirewallPolicies_Get_333
+        exampleFile: ../examples/WebApplicationFirewallPolicies_Get_333_Generated.json
+        operationId: WebApplicationFirewallPolicies_Get
+      - step: Update_ApplicationGatewayWebApplicationFirewallPolicies_agp1_335
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/provisioningState
+            value: Updating
+          - add: /properties/customRules/0
+            value:
+              name: rule1
+              priority: 50
+              ruleType: MatchRule
+              matchConditions: []
+              action: Log
+              rateLimitThreshold: 0
+              skippedManagedRuleSets: []
+      - step: Update_ApplicationGatewayWebApplicationFirewallPolicies_agp1_337
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/customRules/1
+            value:
+              name: rule2
+              priority: 100
+              ruleType: MatchRule
+              matchConditions: []
+              action: Log
+              rateLimitThreshold: 0
+              skippedManagedRuleSets: []
+      - step: Update_ApplicationGatewayWebApplicationFirewallPolicies_agp1_339
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/policySettings
+            value:
+              state: Enabled
+              mode: Prevention
+              requestBodyCheck: false
+              maxRequestBodySizeInKb: 128
+              fileUploadLimitInMb: 64
+      - step: Update_ApplicationGatewayWebApplicationFirewallPolicies_agp1_341
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/provisioningState
+            value: Succeeded
+      - step: Update_ApplicationGatewayWebApplicationFirewallPolicies_agp1_343
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/provisioningState
+            value: Updating
+      - step: Update_ApplicationGatewayWebApplicationFirewallPolicies_agp1_345
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+      - step: Update_ApplicationGatewayWebApplicationFirewallPolicies_agp1_347
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/managedRules/managedRuleSets/1
+            value:
+              ruleSetType: Microsoft_BotManagerRuleSet
+              ruleSetVersion: '0.1'
+              ruleGroupOverrides: []
+      - step: Update_ApplicationGatewayWebApplicationFirewallPolicies_agp1_349
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/managedRules/exclusions/0
+            value:
+              matchVariable: RequestHeaderNames
+              selectorMatchOperator: StartsWith
+              selector: Bing
+      - step: Create_publicIPAddresses_pip1
+        resourceName: publicIPAddresses_pip1
+        exampleFile: ../examples/Create_publicIPAddresses_pip1_Generated_351.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: Create_publicIPAddresses_pip2
+        resourceName: publicIPAddresses_pip2
+        exampleFile: ../examples/Create_publicIPAddresses_pip2_Generated.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+        variables:
+          publicIpAddressName: pip2
+      - step: ApplicationGateways_Get_353
+        exampleFile: ../examples/ApplicationGateways_Get_353_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: WebApplicationFirewallPolicies_Get_355
+        exampleFile: ../examples/WebApplicationFirewallPolicies_Get_355_Generated.json
+        operationId: WebApplicationFirewallPolicies_Get
+    variables:
+      policyName: agp1
+      publicIpAddressName: pip1
+      applicationGatewayName: ag1

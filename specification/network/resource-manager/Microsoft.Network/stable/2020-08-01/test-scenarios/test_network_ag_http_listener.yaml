@@ -1,0 +1,26 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_ag_http_listener
+    steps:
+      - step: ApplicationGateways_Get_134
+        exampleFile: ../examples/ApplicationGateways_Get_134_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: Create_applicationGateways_ag1
+        resourceName: applicationGateways_ag1
+        exampleFile: ../examples/Create_applicationGateways_ag1_Generated_136.json
+        operationId: ApplicationGateways_CreateOrUpdate
+      - step: Update_applicationGateways_ag1_138
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/httpListeners/1/properties/hostName
+            value: www.test2.com
+      - step: Update_applicationGateways_ag1_140
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - remove: /properties/frontendIPConfigurations/0/properties/httpListeners/1
+          - remove: /properties/frontendPorts/0/properties/httpListeners/1
+          - remove: /properties/httpListeners/1
+    variables:
+      applicationGatewayName: ag1

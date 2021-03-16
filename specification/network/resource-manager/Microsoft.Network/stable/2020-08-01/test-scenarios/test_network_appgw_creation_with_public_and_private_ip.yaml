@@ -1,0 +1,17 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_appgw_creation_with_public_and_private_ip
+    steps:
+      - step: Create_publicIPAddresses_publicIP
+        resourceName: publicIPAddresses_publicIP
+        exampleFile: ../examples/Create_publicIPAddresses_publicIP_Generated.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: ApplicationGateways_Get_422
+        exampleFile: ../examples/ApplicationGateways_Get_422_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: ApplicationGateways_Delete_423
+        exampleFile: ../examples/ApplicationGateways_Delete_382_Generated.json
+        operationId: ApplicationGateways_Delete
+    variables:
+      publicIpAddressName: publicIP
+      applicationGatewayName: applicationGateway

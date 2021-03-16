@@ -1,0 +1,43 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_nw_connection_monitor_v2_creation
+    steps:
+      - step: NetworkWatchers_ListAll_1321
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: Create_connectionMonitors_CMv2-01
+        resourceName: connectionMonitors_CMv2-01
+        exampleFile: ../examples/Create_connectionMonitors_CMv2-01_Generated_1323.json
+        operationId: ConnectionMonitors_CreateOrUpdate
+      - step: NetworkWatchers_ListAll_1324
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: Create_connectionMonitors_cmv2-01
+        resourceName: connectionMonitors_cmv2-01
+        exampleFile: ../examples/Create_connectionMonitors_cmv2-01_Generated.json
+        operationId: ConnectionMonitors_CreateOrUpdate
+        variables:
+          connectionMonitorName: cmv2-01
+      - step: NetworkWatchers_ListAll_1326
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: ConnectionMonitors_List_1327
+        exampleFile: ../examples/ConnectionMonitors_List_1327_Generated.json
+        operationId: ConnectionMonitors_List
+      - step: NetworkWatchers_ListAll_1328
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: ConnectionMonitors_Get_1329
+        exampleFile: ../examples/ConnectionMonitors_Get_1329_Generated.json
+        operationId: ConnectionMonitors_Get
+      - step: NetworkWatchers_ListAll_1330
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: ConnectionMonitors_Get_1331
+        exampleFile: ../examples/ConnectionMonitors_Get_1329_Generated.json
+        operationId: ConnectionMonitors_Get
+        variables:
+          connectionMonitorName: cmv2-01
+    variables:
+      networkWatcherName: NetworkWatcher_eastus
+      connectionMonitorName: CMv2-01

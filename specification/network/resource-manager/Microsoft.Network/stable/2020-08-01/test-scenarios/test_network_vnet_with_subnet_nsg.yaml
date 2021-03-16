@@ -1,0 +1,25 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_vnet_with_subnet_nsg
+    steps:
+      - step: Create_networkSecurityGroups_nsg
+        resourceName: networkSecurityGroups_nsg
+        exampleFile: ../examples/Create_networkSecurityGroups_nsg_Generated.json
+        operationId: NetworkSecurityGroups_CreateOrUpdate
+      - step: Create_virtualNetworks_vnet1
+        resourceName: virtualNetworks_vnet1
+        exampleFile: ../examples/Create_virtualNetworks_vnet1_Generated_1165.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Subnets_List_1166
+        exampleFile: ../examples/Subnets_List_1166_Generated.json
+        operationId: Subnets_List
+      - step: Subnets_Get_1167
+        exampleFile: ../examples/Subnets_Get_1167_Generated.json
+        operationId: Subnets_Get
+      - step: Subnets_Delete_1168
+        exampleFile: ../examples/Subnets_Delete_1102_Generated.json
+        operationId: Subnets_Delete
+    variables:
+      networkSecurityGroupName: nsg
+      virtualNetworkName: vnet1
+      subnetName: subnet1

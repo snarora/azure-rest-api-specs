@@ -1,0 +1,4 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_traffic_manager
+    steps: []

@@ -1,0 +1,404 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_manage_appgw_private_endpoint
+    steps:
+      - step: Create_publicIPAddresses_public_ip
+        resourceName: publicIPAddresses_public_ip
+        exampleFile: ../examples/Create_publicIPAddresses_public_ip_Generated.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: ApplicationGateways_Get_24
+        exampleFile: ../examples/ApplicationGateways_Get_24_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: VirtualNetworks_Get_25
+        exampleFile: ../examples/VirtualNetworks_Get_25_Generated.json
+        operationId: VirtualNetworks_Get
+      - step: Create_virtualNetworks_appgwVnet
+        resourceName: virtualNetworks_appgwVnet
+        exampleFile: ../examples/Create_virtualNetworks_appgwVnet_Generated.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Create_applicationGateways_appgw
+        resourceName: applicationGateways_appgw
+        exampleFile: ../examples/Create_applicationGateways_appgw_Generated.json
+        operationId: ApplicationGateways_CreateOrUpdate
+      - step: VirtualNetworks_Get_28
+        exampleFile: ../examples/VirtualNetworks_Get_28_Generated.json
+        operationId: VirtualNetworks_Get
+      - step: ApplicationGateways_Get_29
+        exampleFile: ../examples/ApplicationGateways_Get_29_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: Create_virtualNetworks_appgw_private_endpoint_vnet
+        resourceName: virtualNetworks_appgw_private_endpoint_vnet
+        exampleFile: >-
+          ../examples/Create_virtualNetworks_appgw_private_endpoint_vnet_Generated_31.json
+        operationId: VirtualNetworks_CreateOrUpdate
+        variables:
+          virtualNetworkName: appgw_private_endpoint_vnet
+      - step: Subnets_Get_32
+        exampleFile: ../examples/Subnets_Get_2_Generated.json
+        operationId: Subnets_Get
+        variables:
+          virtualNetworkName: appgw_private_endpoint_vnet
+      - step: Create_subnets_appgw_private_endpoint_subnet_for_public
+        resourceName: subnets_appgw_private_endpoint_subnet_for_public
+        exampleFile: >-
+          ../examples/Create_subnets_appgw_private_endpoint_subnet_Generated.json
+        operationId: Subnets_CreateOrUpdate
+        variables:
+          virtualNetworkName: appgw_private_endpoint_vnet
+      - step: Create_privateEndpoints_appgw_private_endpoint_for_public
+        resourceName: privateEndpoints_appgw_private_endpoint_for_public
+        exampleFile: >-
+          ../examples/Create_privateEndpoints_appgw_private_endpoint_for_public_Generated.json
+        operationId: PrivateEndpoints_CreateOrUpdate
+      - step: ApplicationGateways_Get_35
+        exampleFile: ../examples/ApplicationGateways_Get_35_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: Update_applicationGateways_appgw_37
+        resourceName: applicationGateways_appgw
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/provisioningState
+            value: Succeeded
+          - replace: /properties/gatewayIPConfigurations/0/properties/provisioningState
+            value: Succeeded
+          - replace: >-
+              /properties/frontendIPConfigurations/0/properties/provisioningState
+            value: Succeeded
+          - add: /properties/frontendIPConfigurations/1
+            value:
+              name: private_ip
+              properties:
+                privateIPAddress: 10.0.0.11
+                privateIPAllocationMethod: Static
+                subnet:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/virtualNetworks/appgwVnet/subnets/default
+                provisioningState: Succeeded
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/applicationGateways/appgw/frontendIPConfigurations/private_ip
+              type: Microsoft.Network/applicationGateways/frontendIPConfigurations
+          - replace: /properties/frontendPorts/0/properties/provisioningState
+            value: Succeeded
+          - replace: /properties/backendAddressPools/0/properties/provisioningState
+            value: Succeeded
+          - replace: >-
+              /properties/backendHttpSettingsCollection/0/properties/provisioningState
+            value: Succeeded
+          - replace: /properties/httpListeners/0/properties/provisioningState
+            value: Succeeded
+          - replace: /properties/requestRoutingRules/0/properties/provisioningState
+            value: Succeeded
+          - replace: >-
+              /properties/privateLinkConfigurations/0/properties/provisioningState
+            value: Succeeded
+          - replace: >-
+              /properties/privateLinkConfigurations/0/properties/ipConfigurations/0/properties/provisioningState
+            value: Succeeded
+          - add: /properties/privateEndpointConnections/0
+            value:
+              name: >-
+                appgw_private_endpoint_for_public.0688f62f-7c9c-49c5-896d-3fda5609f4ac
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/applicationGateways/appgw/privateEndpointConnections/appgw_private_endpoint_for_public.0688f62f-7c9c-49c5-896d-3fda5609f4ac
+              properties:
+                provisioningState: Succeeded
+                privateEndpoint:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/privateEndpoints/appgw_private_endpoint_for_public
+                privateLinkServiceConnectionState:
+                  status: Approved
+                  description: ''
+                  actionsRequired: None
+                linkIdentifier: '620819030'
+              type: Microsoft.Network/applicationGateways/privateEndpointConnections
+      - step: VirtualNetworks_Get_38
+        exampleFile: ../examples/VirtualNetworks_Get_38_Generated.json
+        operationId: VirtualNetworks_Get
+      - step: Update_virtualNetworks_appgwVnet_40
+        resourceName: virtualNetworks_appgwVnet
+        operationId: VirtualNetworks_CreateOrUpdate
+        resourceUpdate:
+          - remove: /properties/subnets/0/properties/ipConfigurations/1
+          - replace: /properties/subnets/0/properties/ipConfigurations/2
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/applicationGateways/appgw/frontendIPConfigurations/private_ip
+          - add: /properties/subnets/1/properties/ipConfigurations
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/networkInterfaces/_e41f87a2_appgw_appgw_private_link_for_publ.nic.180b203a-8555-42a4-9b3e-61e44952e58b/ipConfigurations/appgwPlsIp0
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/privateLinkServices/_e41f87a2_appgw_appgw_private_link_for_public/ipConfigurations/appgwPlsIp0
+          - add: /properties/subnets/1/properties/privateLinkIpConfigurations
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/applicationGateways/appgw/privateLinkConfigurations/appgw_private_link_for_public/ipConfigurations/PrivateLinkDefaultIPConfiguration
+          - add: /properties/subnets/2
+            value:
+              name: appgw_private_link_subnet_for_private
+              properties:
+                addressPrefix: 10.0.5.0/24
+                privateLinkServiceNetworkPolicies: Disabled
+                provisioningState: Updating
+                delegations: []
+                privateEndpointNetworkPolicies: Enabled
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/virtualNetworks/appgwVnet/subnets/appgw_private_link_subnet_for_private
+              type: Microsoft.Network/virtualNetworks/subnets
+      - step: Update_applicationGateways_appgw_42
+        resourceName: applicationGateways_appgw
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/provisioningState
+            value: Updating
+          - replace: /properties/gatewayIPConfigurations/0/properties/provisioningState
+            value: Updating
+          - replace: >-
+              /properties/frontendIPConfigurations/0/properties/provisioningState
+            value: Updating
+          - replace: >-
+              /properties/frontendIPConfigurations/1/properties/provisioningState
+            value: Updating
+          - add: >-
+              /properties/frontendIPConfigurations/1/properties/privateLinkConfiguration
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/applicationGateways/appgw/privateLinkConfigurations/appgw_private_link_for_private
+          - replace: /properties/frontendPorts/0/properties/provisioningState
+            value: Updating
+          - replace: /properties/backendAddressPools/0/properties/provisioningState
+            value: Updating
+          - replace: >-
+              /properties/backendHttpSettingsCollection/0/properties/provisioningState
+            value: Updating
+          - replace: /properties/httpListeners/0/properties/provisioningState
+            value: Updating
+          - replace: /properties/requestRoutingRules/0/properties/provisioningState
+            value: Updating
+          - replace: >-
+              /properties/privateLinkConfigurations/0/properties/provisioningState
+            value: Updating
+          - replace: >-
+              /properties/privateLinkConfigurations/0/properties/ipConfigurations/0/properties/provisioningState
+            value: Updating
+          - add: /properties/privateLinkConfigurations/1
+            value:
+              name: appgw_private_link_for_private
+              properties:
+                ipConfigurations:
+                  - name: PrivateLinkDefaultIPConfiguration
+                    properties:
+                      privateIPAllocationMethod: Dynamic
+                      subnet:
+                        id: >-
+                          /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/virtualNetworks/appgwVnet/subnets/appgw_private_link_subnet_for_private
+                      provisioningState: Updating
+                    id: >-
+                      /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/applicationGateways/appgw/privateLinkConfigurations/appgw_private_link_for_private/ipConfigurations/PrivateLinkDefaultIPConfiguration
+                    type: >-
+                      Microsoft.Network/applicationGateways/privateLinkConfigurations/ipConfigurations
+                provisioningState: Updating
+                frontendIpConfigurations:
+                  - id: >-
+                      /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/applicationGateways/appgw/frontendIPConfigurations/private_ip
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/applicationGateways/appgw/privateLinkConfigurations/appgw_private_link_for_private
+              type: Microsoft.Network/applicationGateways/privateLinkConfigurations
+          - remove: /properties/privateEndpointConnections/0
+      - step: ApplicationGateways_Get_44
+        exampleFile: ../examples/ApplicationGateways_Get_44_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: Update_applicationGateways_appgw_46
+        resourceName: applicationGateways_appgw
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/provisioningState
+            value: Succeeded
+          - replace: /properties/gatewayIPConfigurations/0/properties/provisioningState
+            value: Succeeded
+          - replace: >-
+              /properties/frontendIPConfigurations/0/properties/provisioningState
+            value: Succeeded
+          - replace: >-
+              /properties/frontendIPConfigurations/1/properties/provisioningState
+            value: Succeeded
+          - replace: /properties/frontendPorts/0/properties/provisioningState
+            value: Succeeded
+          - add: /properties/frontendPorts/1
+            value:
+              name: privatePort
+              properties:
+                port: 8080
+                provisioningState: Succeeded
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/applicationGateways/appgw/frontendPorts/privatePort
+              type: Microsoft.Network/applicationGateways/frontendPorts
+          - replace: /properties/backendAddressPools/0/properties/provisioningState
+            value: Succeeded
+          - replace: >-
+              /properties/backendHttpSettingsCollection/0/properties/provisioningState
+            value: Succeeded
+          - replace: /properties/httpListeners/0/properties/provisioningState
+            value: Succeeded
+          - replace: /properties/requestRoutingRules/0/properties/provisioningState
+            value: Succeeded
+          - replace: >-
+              /properties/privateLinkConfigurations/0/properties/provisioningState
+            value: Succeeded
+          - replace: >-
+              /properties/privateLinkConfigurations/0/properties/ipConfigurations/0/properties/provisioningState
+            value: Succeeded
+          - replace: >-
+              /properties/privateLinkConfigurations/1/properties/provisioningState
+            value: Succeeded
+          - replace: >-
+              /properties/privateLinkConfigurations/1/properties/ipConfigurations/0/properties/provisioningState
+            value: Succeeded
+          - add: /properties/privateEndpointConnections/0
+            value:
+              name: >-
+                appgw_private_endpoint_for_public.0688f62f-7c9c-49c5-896d-3fda5609f4ac
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/applicationGateways/appgw/privateEndpointConnections/appgw_private_endpoint_for_public.0688f62f-7c9c-49c5-896d-3fda5609f4ac
+              properties:
+                provisioningState: Succeeded
+                privateEndpoint:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/privateEndpoints/appgw_private_endpoint_for_public
+                privateLinkServiceConnectionState:
+                  status: Approved
+                  description: ''
+                  actionsRequired: None
+                linkIdentifier: '620819030'
+              type: Microsoft.Network/applicationGateways/privateEndpointConnections
+      - step: Update_applicationGateways_appgw_48
+        resourceName: applicationGateways_appgw
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/frontendIPConfigurations/1/properties/httpListeners
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/applicationGateways/appgw/httpListeners/privateHTTPListener
+          - add: /properties/frontendPorts/1/properties/httpListeners
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/applicationGateways/appgw/httpListeners/privateHTTPListener
+          - add: /properties/httpListeners/1
+            value:
+              name: privateHTTPListener
+              properties:
+                frontendIPConfiguration:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/applicationGateways/appgw/frontendIPConfigurations/private_ip
+                frontendPort:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/applicationGateways/appgw/frontendPorts/privatePort
+                protocol: Http
+                provisioningState: Succeeded
+                hostNames: []
+                requireServerNameIndication: false
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/applicationGateways/appgw/httpListeners/privateHTTPListener
+              type: Microsoft.Network/applicationGateways/httpListeners
+      - step: Update_applicationGateways_appgw_50
+        resourceName: applicationGateways_appgw
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/backendAddressPools/0/properties/requestRoutingRules/1
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/applicationGateways/appgw/requestRoutingRules/privateRule
+          - add: >-
+              /properties/backendHttpSettingsCollection/0/properties/requestRoutingRules/1
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/applicationGateways/appgw/requestRoutingRules/privateRule
+          - add: /properties/httpListeners/1/properties/requestRoutingRules
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/applicationGateways/appgw/requestRoutingRules/privateRule
+          - add: /properties/requestRoutingRules/1
+            value:
+              name: privateRule
+              properties:
+                ruleType: Basic
+                backendAddressPool:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/applicationGateways/appgw/backendAddressPools/appGatewayBackendPool
+                backendHttpSettings:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/applicationGateways/appgw/backendHttpSettingsCollection/appGatewayBackendHttpSettings
+                httpListener:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/applicationGateways/appgw/httpListeners/privateHTTPListener
+                provisioningState: Succeeded
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/applicationGateways/appgw/requestRoutingRules/privateRule
+              type: Microsoft.Network/applicationGateways/requestRoutingRules
+      - step: VirtualNetworks_Get_51
+        exampleFile: ../examples/VirtualNetworks_Get_51_Generated.json
+        operationId: VirtualNetworks_Get
+        variables:
+          virtualNetworkName: appgw_private_endpoint_vnet
+      - step: Update_virtualNetworks_appgw_private_endpoint_vnet_53
+        resourceName: virtualNetworks_appgw_private_endpoint_vnet
+        operationId: VirtualNetworks_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/subnets/0/properties
+            value:
+              addressPrefix: 10.0.0.0/24
+              delegations: []
+              privateEndpointNetworkPolicies: Disabled
+              privateLinkServiceNetworkPolicies: Enabled
+              provisioningState: Succeeded
+              ipConfigurations:
+                - id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/networkInterfaces/appgw_private_endpoint_for_public.nic.c1a20aec-2032-4d3a-bc59-3ca5213ad592/ipConfigurations/privateEndpointIpConfig
+              privateEndpoints:
+                - id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/privateEndpoints/appgw_private_endpoint_for_public
+              purpose: PrivateEndpoints
+          - add: /properties/subnets/1
+            value:
+              name: appgw_private_endpoint_subnet_for_private
+              properties:
+                addressPrefix: 10.0.6.0/24
+                provisioningState: Succeeded
+                delegations: []
+                privateEndpointNetworkPolicies: Enabled
+                privateLinkServiceNetworkPolicies: Enabled
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_manage_appgw_private_endpoint000001/providers/Microsoft.Network/virtualNetworks/appgw_private_endpoint_vnet/subnets/appgw_private_endpoint_subnet_for_private
+              type: Microsoft.Network/virtualNetworks/subnets
+        variables:
+          virtualNetworkName: appgw_private_endpoint_vnet
+      - step: Subnets_Get_54
+        exampleFile: ../examples/Subnets_Get_54_Generated.json
+        operationId: Subnets_Get
+        variables:
+          virtualNetworkName: appgw_private_endpoint_vnet
+          subnetName: appgw_private_endpoint_subnet_for_private
+      - step: Create_subnets_appgw_private_endpoint_subnet_for_private
+        resourceName: subnets_appgw_private_endpoint_subnet_for_private
+        exampleFile: >-
+          ../examples/Create_subnets_appgw_private_endpoint_subnet_for_private_Generated.json
+        operationId: Subnets_CreateOrUpdate
+        variables:
+          virtualNetworkName: appgw_private_endpoint_vnet
+          subnetName: appgw_private_endpoint_subnet_for_private
+      - step: Create_privateEndpoints_appgw_private_endpoint_for_private
+        resourceName: privateEndpoints_appgw_private_endpoint_for_private
+        exampleFile: >-
+          ../examples/Create_privateEndpoints_appgw_private_endpoint_for_private_Generated.json
+        operationId: PrivateEndpoints_CreateOrUpdate
+        variables:
+          privateEndpointName: appgw_private_endpoint_for_private
+      - step: ApplicationGateways_Get_57
+        exampleFile: ../examples/ApplicationGateways_Get_57_Generated.json
+        operationId: ApplicationGateways_Get
+    variables:
+      publicIpAddressName: public_ip
+      applicationGatewayName: appgw
+      virtualNetworkName: appgwVnet
+      subnetName: appgw_private_endpoint_subnet_for_public
+      privateEndpointName: appgw_private_endpoint_for_public

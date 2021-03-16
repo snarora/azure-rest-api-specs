@@ -1,0 +1,103 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_service_endpoints
+    steps:
+      - step: AvailableEndpointServices_List_999
+        exampleFile: ../examples/AvailableEndpointServices_List_999_Generated.json
+        operationId: AvailableEndpointServices_List
+      - step: Create_serviceEndpointPolicies_policy1
+        resourceName: serviceEndpointPolicies_policy1
+        exampleFile: ../examples/Create_serviceEndpointPolicies_policy1_Generated.json
+        operationId: ServiceEndpointPolicies_CreateOrUpdate
+      - step: Update_serviceEndpointPolicies_policy1_1002
+        resourceName: serviceEndpointPolicies_policy1
+        operationId: ServiceEndpointPolicies_CreateOrUpdate
+        resourceUpdate:
+          - replace: /tags/test
+            value: nest
+      - step: ServiceEndpointPolicies_ListByResourceGroup_1003
+        exampleFile: >-
+          ../examples/ServiceEndpointPolicies_ListByResourceGroup_1003_Generated.json
+        operationId: ServiceEndpointPolicies_ListByResourceGroup
+      - step: ServiceEndpointPolicies_Get_1004
+        exampleFile: ../examples/ServiceEndpointPolicies_Get_1004_Generated.json
+        operationId: ServiceEndpointPolicies_Get
+      - step: ServiceEndpointPolicies_Delete_1005
+        exampleFile: ../examples/ServiceEndpointPolicies_Delete_1005_Generated.json
+        operationId: ServiceEndpointPolicies_Delete
+      - step: ServiceEndpointPolicies_ListByResourceGroup_1006
+        exampleFile: >-
+          ../examples/ServiceEndpointPolicies_ListByResourceGroup_1006_Generated.json
+        operationId: ServiceEndpointPolicies_ListByResourceGroup
+      - step: Update_serviceEndpointPolicies_policy1_1008
+        resourceName: serviceEndpointPolicies_policy1
+        operationId: ServiceEndpointPolicies_CreateOrUpdate
+        resourceUpdate:
+          - replace: /tags/test
+            value: best
+          - replace: /properties/resourceGuid
+            value: 11e1ac6e-585f-4f07-91e8-5d16baddabf1
+      - step: Create_serviceEndpointPolicyDefinitions_storage-def
+        resourceName: serviceEndpointPolicyDefinitions_storage-def
+        exampleFile: >-
+          ../examples/Create_serviceEndpointPolicyDefinitions_storage-def_Generated.json
+        operationId: ServiceEndpointPolicyDefinitions_CreateOrUpdate
+      - step: Update_serviceEndpointPolicyDefinitions_storage-def_1011
+        resourceName: serviceEndpointPolicyDefinitions_storage-def
+        operationId: ServiceEndpointPolicyDefinitions_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/description
+            value: Better description
+      - step: ServiceEndpointPolicyDefinitions_ListByResourceGroup_1012
+        exampleFile: >-
+          ../examples/ServiceEndpointPolicyDefinitions_ListByResourceGroup_1012_Generated.json
+        operationId: ServiceEndpointPolicyDefinitions_ListByResourceGroup
+      - step: ServiceEndpointPolicyDefinitions_Get_1013
+        exampleFile: ../examples/ServiceEndpointPolicyDefinitions_Get_1013_Generated.json
+        operationId: ServiceEndpointPolicyDefinitions_Get
+      - step: ServiceEndpointPolicyDefinitions_Delete_1014
+        exampleFile: >-
+          ../examples/ServiceEndpointPolicyDefinitions_Delete_1014_Generated.json
+        operationId: ServiceEndpointPolicyDefinitions_Delete
+      - step: ServiceEndpointPolicyDefinitions_ListByResourceGroup_1015
+        exampleFile: >-
+          ../examples/ServiceEndpointPolicyDefinitions_ListByResourceGroup_1015_Generated.json
+        operationId: ServiceEndpointPolicyDefinitions_ListByResourceGroup
+      - step: Update_serviceEndpointPolicyDefinitions_storage-def_1017
+        resourceName: serviceEndpointPolicyDefinitions_storage-def
+        operationId: ServiceEndpointPolicyDefinitions_CreateOrUpdate
+        resourceUpdate:
+          - remove: /properties/description
+      - step: Create_virtualNetworks_vnet1
+        resourceName: virtualNetworks_vnet1
+        exampleFile: ../examples/Create_virtualNetworks_vnet1_Generated_1019.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Update_virtualNetworks_vnet1_1021
+        resourceName: virtualNetworks_vnet1
+        operationId: VirtualNetworks_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/subnets/0
+            value:
+              name: subnet1
+              properties:
+                addressPrefix: 10.0.0.0/24
+                serviceEndpoints:
+                  - service: Microsoft.Storage
+                    provisioningState: Succeeded
+                    locations:
+                      - '*'
+                serviceEndpointPolicies:
+                  - id: >-
+                      /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/network_service_endpoint_scenario_test000001/providers/Microsoft.Network/serviceEndpointPolicies/policy1
+                provisioningState: Succeeded
+                delegations: []
+                privateEndpointNetworkPolicies: Enabled
+                privateLinkServiceNetworkPolicies: Enabled
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/network_service_endpoint_scenario_test000001/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1
+              type: Microsoft.Network/virtualNetworks/subnets
+    variables:
+      location: westcentralus
+      serviceEndpointPolicyName: policy1
+      serviceEndpointPolicyDefinitionName: storage-def
+      virtualNetworkName: vnet1

@@ -1,0 +1,39 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_vnet_gateway_ipsec
+    steps:
+      - step: Create_virtualNetworks_vnet1
+        resourceName: virtualNetworks_vnet1
+        exampleFile: ../examples/Create_virtualNetworks_vnet1_Generated_1112.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Create_publicIPAddresses_pip1
+        resourceName: publicIPAddresses_pip1
+        exampleFile: ../examples/Create_publicIPAddresses_pip1_Generated_1114.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: Create_virtualNetworkGateways_gw1
+        resourceName: virtualNetworkGateways_gw1
+        exampleFile: ../examples/Create_virtualNetworkGateways_gw1_Generated_1116.json
+        operationId: VirtualNetworkGateways_CreateOrUpdate
+      - step: Update_virtualNetworkGateways_gw1_1118
+        resourceName: virtualNetworkGateways_gw1
+        operationId: VirtualNetworkGateways_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/vpnClientConfiguration/vpnClientIpsecPolicies/0
+            value:
+              saLifeTimeSeconds: 7200
+              saDataSizeKilobytes: 2048
+              ipsecEncryption: GCMAES256
+              ipsecIntegrity: GCMAES256
+              ikeEncryption: AES256
+              ikeIntegrity: SHA384
+              dhGroup: DHGroup24
+              pfsGroup: PFS24
+      - step: Update_virtualNetworkGateways_gw1_1120
+        resourceName: virtualNetworkGateways_gw1
+        operationId: VirtualNetworkGateways_CreateOrUpdate
+        resourceUpdate:
+          - remove: /properties/vpnClientConfiguration/vpnClientIpsecPolicies/0
+    variables:
+      virtualNetworkName: vnet1
+      publicIpAddressName: pip1
+      virtualNetworkGatewayName: gw1

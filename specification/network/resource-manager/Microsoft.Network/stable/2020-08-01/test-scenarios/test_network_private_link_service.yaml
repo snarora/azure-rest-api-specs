@@ -1,0 +1,89 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_private_link_service
+    steps:
+      - step: Create_virtualNetworks_vnet1
+        resourceName: virtualNetworks_vnet1
+        exampleFile: ../examples/Create_virtualNetworks_vnet1_Generated_919.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Subnets_Get_920
+        exampleFile: ../examples/Subnets_Get_2_Generated.json
+        operationId: Subnets_Get
+      - step: Create_subnets_subnet1
+        resourceName: subnets_subnet1
+        exampleFile: ../examples/Create_subnets_subnet1_Generated.json
+        operationId: Subnets_CreateOrUpdate
+      - step: VirtualNetworks_Get_922
+        exampleFile: ../examples/VirtualNetworks_Get_922_Generated.json
+        operationId: VirtualNetworks_Get
+      - step: Update_virtualNetworks_vnet1_924
+        resourceName: virtualNetworks_vnet1
+        operationId: VirtualNetworks_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/subnets/0/properties/privateLinkServiceNetworkPolicies
+            value: Disabled
+          - add: /properties/subnets/1
+            value:
+              name: subnet2
+              properties:
+                addressPrefix: 10.0.2.0/24
+                provisioningState: Succeeded
+                delegations: []
+                privateEndpointNetworkPolicies: Enabled
+                privateLinkServiceNetworkPolicies: Enabled
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_network_private_link_service000001/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet2
+              type: Microsoft.Network/virtualNetworks/subnets
+      - step: Subnets_Get_925
+        exampleFile: ../examples/Subnets_Get_905_Generated.json
+        operationId: Subnets_Get
+        variables:
+          subnetName: subnet2
+      - step: Create_subnets_subnet2
+        resourceName: subnets_subnet2
+        exampleFile: ../examples/Create_subnets_subnet2_Generated.json
+        operationId: Subnets_CreateOrUpdate
+        variables:
+          subnetName: subnet2
+      - step: Create_privateLinkServices_lks1
+        resourceName: privateLinkServices_lks1
+        exampleFile: ../examples/Create_privateLinkServices_lks1_Generated_928.json
+        operationId: PrivateLinkServices_CreateOrUpdate
+      - step: Update_privateLinkServices_lks1_930
+        resourceName: privateLinkServices_lks1
+        operationId: PrivateLinkServices_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/enableProxyProtocol
+            value: false
+          - add: /properties/visibility
+            value:
+              subscriptions:
+                - 00000000-0000-0000-0000-000000000000
+                - 00000000-0000-0000-0000-000000000000
+          - add: /properties/autoApproval
+            value:
+              subscriptions:
+                - 00000000-0000-0000-0000-000000000000
+                - 00000000-0000-0000-0000-000000000000
+      - step: PrivateLinkServices_List_931
+        exampleFile: ../examples/PrivateLinkServices_List_931_Generated.json
+        operationId: PrivateLinkServices_List
+      - step: PrivateLinkServices_Get_932
+        exampleFile: ../examples/PrivateLinkServices_Get_932_Generated.json
+        operationId: PrivateLinkServices_Get
+      - step: PrivateLinkServices_Delete_933
+        exampleFile: ../examples/PrivateLinkServices_Delete_933_Generated.json
+        operationId: PrivateLinkServices_Delete
+      - step: Subnets_Get_934
+        exampleFile: ../examples/Subnets_Get_934_Generated.json
+        operationId: Subnets_Get
+      - step: Update_subnets_subnet1_936
+        resourceName: subnets_subnet1
+        operationId: Subnets_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/privateLinkServiceNetworkPolicies
+            value: Enabled
+    variables:
+      virtualNetworkName: vnet1
+      subnetName: subnet1
+      serviceName: lks1

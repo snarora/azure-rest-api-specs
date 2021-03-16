@@ -1,0 +1,10 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_traffic_manager_subnet_routing
+    steps:
+      - step: Create_publicIPAddresses_ip1
+        resourceName: publicIPAddresses_ip1
+        exampleFile: ../examples/Create_publicIPAddresses_ip1_Generated_1065.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+    variables:
+      publicIpAddressName: ip1

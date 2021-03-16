@@ -1,0 +1,80 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_vnet
+    steps:
+      - step: Create_virtualNetworks_vnet1
+        resourceName: virtualNetworks_vnet1
+        exampleFile: ../examples/Create_virtualNetworks_vnet1_Generated_1087.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: VirtualNetworks_CheckIPAddressAvailability_1088
+        exampleFile: >-
+          ../examples/VirtualNetworks_CheckIPAddressAvailability_1088_Generated.json
+        operationId: VirtualNetworks_CheckIPAddressAvailability
+      - step: VirtualNetworks_ListAll_1089
+        exampleFile: ../examples/VirtualNetworks_ListAll_1089_Generated.json
+        operationId: VirtualNetworks_ListAll
+      - step: VirtualNetworks_List_1090
+        exampleFile: ../examples/VirtualNetworks_List_1090_Generated.json
+        operationId: VirtualNetworks_List
+      - step: VirtualNetworks_Get_1091
+        exampleFile: ../examples/VirtualNetworks_Get_1091_Generated.json
+        operationId: VirtualNetworks_Get
+      - step: Update_virtualNetworks_vnet1_1093
+        resourceName: virtualNetworks_vnet1
+        operationId: VirtualNetworks_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/addressSpace/addressPrefixes/0
+            value: 20.0.0.0/16
+          - add: /properties/dhcpOptions/dnsServers/0
+            value: 1.2.3.4
+      - step: Update_virtualNetworks_vnet1_1095
+        resourceName: virtualNetworks_vnet1
+        operationId: VirtualNetworks_CreateOrUpdate
+        resourceUpdate:
+          - remove: /properties/dhcpOptions/dnsServers/0
+      - step: Update_virtualNetworks_vnet1_1097
+        resourceName: virtualNetworks_vnet1
+        operationId: VirtualNetworks_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/addressSpace/addressPrefixes/0
+            value: 20.0.0.0/24
+      - step: Update_virtualNetworks_vnet1_1099
+        resourceName: virtualNetworks_vnet1
+        operationId: VirtualNetworks_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/subnets/1
+            value:
+              name: subnet1
+              properties:
+                addressPrefix: 20.0.0.0/24
+                provisioningState: Succeeded
+                delegations: []
+                privateEndpointNetworkPolicies: Enabled
+                privateLinkServiceNetworkPolicies: Enabled
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_vnet_test000001/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1
+              type: Microsoft.Network/virtualNetworks/subnets
+      - step: Subnets_List_1100
+        exampleFile: ../examples/Subnets_List_1100_Generated.json
+        operationId: Subnets_List
+      - step: Subnets_Get_1101
+        exampleFile: ../examples/Subnets_Get_1101_Generated.json
+        operationId: Subnets_Get
+      - step: Subnets_Delete_1102
+        exampleFile: ../examples/Subnets_Delete_1102_Generated.json
+        operationId: Subnets_Delete
+      - step: Subnets_List_1103
+        exampleFile: ../examples/Subnets_List_1103_Generated.json
+        operationId: Subnets_List
+      - step: VirtualNetworks_List_1104
+        exampleFile: ../examples/VirtualNetworks_List_1104_Generated.json
+        operationId: VirtualNetworks_List
+      - step: VirtualNetworks_Delete_1105
+        exampleFile: ../examples/VirtualNetworks_Delete_1039_Generated.json
+        operationId: VirtualNetworks_Delete
+      - step: VirtualNetworks_List_1106
+        exampleFile: ../examples/VirtualNetworks_List_1106_Generated.json
+        operationId: VirtualNetworks_List
+    variables:
+      virtualNetworkName: vnet1
+      subnetName: subnet1

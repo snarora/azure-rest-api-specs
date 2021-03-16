@@ -1,0 +1,15 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_express_route_ipv6_peering2
+    steps:
+      - step: Create_expressRouteCircuits_test_circuit
+        resourceName: expressRouteCircuits_test_circuit
+        exampleFile: ../examples/Create_expressRouteCircuits_test_circuit_Generated.json
+        operationId: ExpressRouteCircuits_CreateOrUpdate
+      - step: Create_peerings_AzurePrivatePeering
+        resourceName: peerings_AzurePrivatePeering
+        exampleFile: ../examples/Create_peerings_AzurePrivatePeering_Generated_554.json
+        operationId: ExpressRouteCircuitPeerings_CreateOrUpdate
+    variables:
+      circuitName: test_circuit
+      peeringName: AzurePrivatePeering

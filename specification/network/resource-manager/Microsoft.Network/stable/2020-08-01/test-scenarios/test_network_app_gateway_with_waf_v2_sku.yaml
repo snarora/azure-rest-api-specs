@@ -1,0 +1,15 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_app_gateway_with_waf_v2_sku
+    steps:
+      - step: ApplicationGateways_Get_418
+        exampleFile: ../examples/ApplicationGateways_Get_418_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: ApplicationGateways_List_419
+        exampleFile: ../examples/ApplicationGateways_List_419_Generated.json
+        operationId: ApplicationGateways_List
+      - step: ApplicationGateways_Get_420
+        exampleFile: ../examples/ApplicationGateways_Get_418_Generated.json
+        operationId: ApplicationGateways_Get
+    variables:
+      applicationGatewayName: ag1

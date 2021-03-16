@@ -1,0 +1,38 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_extended_nsg
+    steps:
+      - step: Create_networkSecurityGroups_nsg1
+        resourceName: networkSecurityGroups_nsg1
+        exampleFile: ../examples/Create_networkSecurityGroups_nsg1_Generated.json
+        operationId: NetworkSecurityGroups_CreateOrUpdate
+      - step: Create_securityRules_rule1
+        resourceName: securityRules_rule1
+        exampleFile: ../examples/Create_securityRules_rule1_Generated.json
+        operationId: SecurityRules_CreateOrUpdate
+      - step: Update_securityRules_rule1_566
+        resourceName: securityRules_rule1
+        operationId: SecurityRules_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties
+            value:
+              protocol: '*'
+              sourcePortRange: '*'
+              sourceAddressPrefix: ''
+              sourceAddressPrefixes:
+                - 10.0.0.0/24
+                - 11.0.0.0/24
+              destinationAddressPrefix: Internet
+              destinationPortRanges:
+                - 500-1000
+                - '2000'
+                - '3000'
+              access: Allow
+              priority: 1000
+              direction: Inbound
+              provisioningState: Succeeded
+              sourcePortRanges: []
+              destinationAddressPrefixes: []
+    variables:
+      networkSecurityGroupName: nsg1
+      securityRuleName: rule1

@@ -1,0 +1,13 @@
+scope: ResourceGroup
+
+prepareSteps:
+  - armTemplateDeployment: depStorage.json
+
+testScenarios:
+  - description: DataExportCreate
+    steps:
+      - exampleFile: ../examples/WorkspacesCreate.json
+      - exampleFile: ../examples/DataExportCreateOrUpdate.json
+        replace:
+          - pathInBody: properties.destination.resourceId
+            to: $(storageAccountId)

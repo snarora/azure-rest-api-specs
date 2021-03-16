@@ -1,0 +1,86 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_cross_region_lb_probes
+    steps:
+      - step: LoadBalancers_Get_466
+        exampleFile: ../examples/LoadBalancers_Get_466_Generated.json
+        operationId: LoadBalancers_Get
+      - step: Create_loadBalancers_lb1
+        resourceName: loadBalancers_lb1
+        exampleFile: ../examples/Create_loadBalancers_lb1_Generated.json
+        operationId: LoadBalancers_CreateOrUpdate
+      - step: Update_loadBalancers_lb1_469
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/probes/1
+            value:
+              name: probe2
+              properties:
+                protocol: Http
+                port: 2
+                requestPath: /test2
+                provisioningState: Succeeded
+                intervalInSeconds: 15
+                numberOfProbes: 2
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_cross_region_lb_probes000001/providers/Microsoft.Network/loadBalancers/lb1/probes/probe2
+              type: Microsoft.Network/loadBalancers/probes
+      - step: Update_loadBalancers_lb1_471
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/probes/2
+            value:
+              name: probe3
+              properties:
+                protocol: Http
+                port: 3
+                requestPath: /test3
+                provisioningState: Succeeded
+                intervalInSeconds: 15
+                numberOfProbes: 2
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_cross_region_lb_probes000001/providers/Microsoft.Network/loadBalancers/lb1/probes/probe3
+              type: Microsoft.Network/loadBalancers/probes
+      - step: Update_loadBalancers_lb1_473
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/probes/0/properties/intervalInSeconds
+            value: 20
+          - replace: /properties/probes/0/properties/numberOfProbes
+            value: 5
+      - step: Update_loadBalancers_lb1_475
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/probes/1/properties/protocol
+            value: Tcp
+          - remove: /properties/probes/1/properties/requestPath
+      - step: Update_loadBalancers_lb1_477
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/probes/0/properties/intervalInSeconds
+            value: 15
+          - replace: /properties/probes/0/properties/numberOfProbes
+            value: 3
+      - step: Update_loadBalancers_lb1_479
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - remove: /properties/probes/2
+      - step: LoadBalancers_Get_480
+        exampleFile: ../examples/LoadBalancers_Get_480_Generated.json
+        operationId: LoadBalancers_Get
+        variables:
+          loadBalancerName: lb2
+      - step: Create_loadBalancers_lb2
+        resourceName: loadBalancers_lb2
+        exampleFile: ../examples/Create_loadBalancers_lb2_Generated.json
+        operationId: LoadBalancers_CreateOrUpdate
+        variables:
+          loadBalancerName: lb2
+    variables:
+      loadBalancerName: lb1

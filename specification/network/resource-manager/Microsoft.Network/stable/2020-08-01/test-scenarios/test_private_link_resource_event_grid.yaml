@@ -1,0 +1,4 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_private_link_resource_event_grid
+    steps: []

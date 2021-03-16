@@ -1,0 +1,88 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_vpn_connection_ipsec
+    steps:
+      - step: Create_virtualNetworks_vnet1
+        resourceName: virtualNetworks_vnet1
+        exampleFile: ../examples/Create_virtualNetworks_vnet1_Generated_1170.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Update_virtualNetworks_vnet1_1172
+        resourceName: virtualNetworks_vnet1
+        operationId: VirtualNetworks_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/subnets/0
+            value:
+              name: FrontEnd
+              properties:
+                addressPrefix: 10.11.0.0/24
+                provisioningState: Succeeded
+                delegations: []
+                privateEndpointNetworkPolicies: Enabled
+                privateLinkServiceNetworkPolicies: Enabled
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vpn_connection_ipsec000001/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/FrontEnd
+              type: Microsoft.Network/virtualNetworks/subnets
+      - step: Update_virtualNetworks_vnet1_1174
+        resourceName: virtualNetworks_vnet1
+        operationId: VirtualNetworks_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/subnets/1
+            value:
+              name: BackEnd
+              properties:
+                addressPrefix: 10.12.0.0/24
+                provisioningState: Succeeded
+                delegations: []
+                privateEndpointNetworkPolicies: Enabled
+                privateLinkServiceNetworkPolicies: Enabled
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vpn_connection_ipsec000001/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/BackEnd
+              type: Microsoft.Network/virtualNetworks/subnets
+      - step: Update_virtualNetworks_vnet1_1176
+        resourceName: virtualNetworks_vnet1
+        operationId: VirtualNetworks_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/subnets/2
+            value:
+              name: GatewaySubnet
+              properties:
+                addressPrefix: 10.12.255.0/27
+                provisioningState: Succeeded
+                delegations: []
+                privateEndpointNetworkPolicies: Enabled
+                privateLinkServiceNetworkPolicies: Enabled
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_vpn_connection_ipsec000001/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/GatewaySubnet
+              type: Microsoft.Network/virtualNetworks/subnets
+      - step: Create_publicIPAddresses_pip1
+        resourceName: publicIPAddresses_pip1
+        exampleFile: ../examples/Create_publicIPAddresses_pip1_Generated_1178.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: Create_virtualNetworkGateways_gw1
+        resourceName: virtualNetworkGateways_gw1
+        exampleFile: ../examples/Create_virtualNetworkGateways_gw1_Generated_1180.json
+        operationId: VirtualNetworkGateways_CreateOrUpdate
+      - step: Create_localNetworkGateways_lgw1
+        resourceName: localNetworkGateways_lgw1
+        exampleFile: ../examples/Create_localNetworkGateways_lgw1_Generated_1182.json
+        operationId: LocalNetworkGateways_CreateOrUpdate
+      - step: VirtualNetworkGatewayConnections_Get_1183
+        exampleFile: ../examples/VirtualNetworkGatewayConnections_Get_1183_Generated.json
+        operationId: VirtualNetworkGatewayConnections_Get
+      - step: Create_connections_conn1
+        resourceName: connections_conn1
+        exampleFile: ../examples/Create_connections_conn1_Generated.json
+        operationId: VirtualNetworkGatewayConnections_CreateOrUpdate
+      - step: Update_connections_conn1_1186
+        resourceName: connections_conn1
+        operationId: VirtualNetworkGatewayConnections_CreateOrUpdate
+        resourceUpdate:
+          - remove: /properties/ipsecPolicies/0
+          - replace: /properties/connectionStatus
+            value: NotConnected
+    variables:
+      virtualNetworkName: vnet1
+      publicIpAddressName: pip1
+      virtualNetworkGatewayName: gw1
+      localNetworkGatewayName: lgw1
+      virtualNetworkGatewayConnectionName: conn1

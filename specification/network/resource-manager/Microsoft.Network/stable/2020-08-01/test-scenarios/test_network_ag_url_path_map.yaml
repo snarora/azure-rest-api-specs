@@ -1,0 +1,237 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_ag_url_path_map
+    steps:
+      - step: Create_publicIPAddresses_pip1
+        resourceName: publicIPAddresses_pip1
+        exampleFile: ../examples/Create_publicIPAddresses_pip1_Generated_213.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: ApplicationGateways_Get_214
+        exampleFile: ../examples/ApplicationGateways_Get_214_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: Create_applicationGateways_ag1
+        resourceName: applicationGateways_ag1
+        exampleFile: ../examples/Create_applicationGateways_ag1_Generated_216.json
+        operationId: ApplicationGateways_CreateOrUpdate
+      - step: Update_applicationGateways_ag1_218
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/provisioningState
+            value: Succeeded
+          - replace: /properties/operationalState
+            value: Running
+          - replace: /properties/gatewayIPConfigurations/0/properties/provisioningState
+            value: Succeeded
+          - replace: >-
+              /properties/frontendIPConfigurations/0/properties/provisioningState
+            value: Succeeded
+          - replace: /properties/frontendPorts/0/properties/provisioningState
+            value: Succeeded
+          - replace: /properties/backendAddressPools/0/properties/provisioningState
+            value: Succeeded
+          - replace: >-
+              /properties/backendHttpSettingsCollection/0/properties/provisioningState
+            value: Succeeded
+          - replace: /properties/httpListeners/0/properties/provisioningState
+            value: Succeeded
+          - replace: /properties/httpListeners/1/properties/provisioningState
+            value: Succeeded
+          - replace: /properties/requestRoutingRules/0/properties/provisioningState
+            value: Succeeded
+          - add: /properties/rewriteRuleSets/0
+            value:
+              name: myruleset
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_url_path_map000001/providers/Microsoft.Network/applicationGateways/ag1/rewriteRuleSets/myruleset
+              properties:
+                provisioningState: Succeeded
+                rewriteRules: []
+              type: Microsoft.Network/applicationGateways/rewriteRuleSets
+      - step: Update_applicationGateways_ag1_220
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/provisioningState
+            value: Updating
+          - replace: /properties/gatewayIPConfigurations/0/properties/provisioningState
+            value: Updating
+          - replace: >-
+              /properties/frontendIPConfigurations/0/properties/provisioningState
+            value: Updating
+          - replace: /properties/frontendPorts/0/properties/provisioningState
+            value: Updating
+          - replace: /properties/backendAddressPools/0/properties/provisioningState
+            value: Updating
+          - add: /properties/backendAddressPools/1
+            value:
+              name: mypool
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_url_path_map000001/providers/Microsoft.Network/applicationGateways/ag1/backendAddressPools/mypool
+              properties:
+                provisioningState: Updating
+                backendAddresses: []
+              type: Microsoft.Network/applicationGateways/backendAddressPools
+          - replace: >-
+              /properties/backendHttpSettingsCollection/0/properties/provisioningState
+            value: Updating
+          - replace: /properties/httpListeners/0/properties/provisioningState
+            value: Updating
+          - replace: /properties/httpListeners/1/properties/provisioningState
+            value: Updating
+          - replace: /properties/requestRoutingRules/0/properties/provisioningState
+            value: Updating
+          - replace: /properties/rewriteRuleSets/0/properties/provisioningState
+            value: Updating
+      - step: Update_applicationGateways_ag1_222
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/provisioningState
+            value: Succeeded
+          - replace: /properties/gatewayIPConfigurations/0/properties/provisioningState
+            value: Succeeded
+          - replace: >-
+              /properties/frontendIPConfigurations/0/properties/provisioningState
+            value: Succeeded
+          - replace: /properties/frontendPorts/0/properties/provisioningState
+            value: Succeeded
+          - replace: /properties/backendAddressPools/0/properties/provisioningState
+            value: Succeeded
+          - replace: /properties/backendAddressPools/1/properties/provisioningState
+            value: Succeeded
+          - replace: >-
+              /properties/backendHttpSettingsCollection/0/properties/provisioningState
+            value: Succeeded
+          - add: /properties/backendHttpSettingsCollection/1
+            value:
+              name: http_settings
+              properties:
+                port: 443
+                protocol: Https
+                cookieBasedAffinity: Disabled
+                authenticationCertificates: []
+                trustedRootCertificates: []
+                connectionDraining:
+                  enabled: false
+                  drainTimeoutInSec: 1
+                provisioningState: Succeeded
+                pickHostNameFromBackendAddress: false
+                requestTimeout: 30
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_url_path_map000001/providers/Microsoft.Network/applicationGateways/ag1/backendHttpSettingsCollection/http_settings
+              type: >-
+                Microsoft.Network/applicationGateways/backendHttpSettingsCollection
+          - replace: /properties/httpListeners/0/properties/provisioningState
+            value: Succeeded
+          - replace: /properties/httpListeners/1/properties/provisioningState
+            value: Succeeded
+          - replace: /properties/requestRoutingRules/0/properties/provisioningState
+            value: Succeeded
+          - replace: /properties/rewriteRuleSets/0/properties/provisioningState
+            value: Succeeded
+      - step: Update_applicationGateways_ag1_224
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/backendAddressPools/1/properties/urlPathMaps
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_url_path_map000001/providers/Microsoft.Network/applicationGateways/ag1/urlPathMaps/mypathmap
+          - add: /properties/backendAddressPools/1/properties/pathRules
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_url_path_map000001/providers/Microsoft.Network/applicationGateways/ag1/urlPathMaps/mypathmap/pathRules/myurlrule
+          - add: /properties/backendHttpSettingsCollection/1/properties/urlPathMaps
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_url_path_map000001/providers/Microsoft.Network/applicationGateways/ag1/urlPathMaps/mypathmap
+          - add: /properties/backendHttpSettingsCollection/1/properties/pathRules
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_url_path_map000001/providers/Microsoft.Network/applicationGateways/ag1/urlPathMaps/mypathmap/pathRules/myurlrule
+          - add: /properties/urlPathMaps/0
+            value:
+              name: mypathmap
+              properties:
+                defaultBackendAddressPool:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_url_path_map000001/providers/Microsoft.Network/applicationGateways/ag1/backendAddressPools/mypool
+                defaultBackendHttpSettings:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_url_path_map000001/providers/Microsoft.Network/applicationGateways/ag1/backendHttpSettingsCollection/http_settings
+                defaultRewriteRuleSet:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_url_path_map000001/providers/Microsoft.Network/applicationGateways/ag1/rewriteRuleSets/myruleset
+                pathRules:
+                  - name: myurlrule
+                    properties:
+                      paths:
+                        - /mypath1/*
+                      backendAddressPool:
+                        id: >-
+                          /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_url_path_map000001/providers/Microsoft.Network/applicationGateways/ag1/backendAddressPools/mypool
+                      backendHttpSettings:
+                        id: >-
+                          /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_url_path_map000001/providers/Microsoft.Network/applicationGateways/ag1/backendHttpSettingsCollection/http_settings
+                      rewriteRuleSet:
+                        id: >-
+                          /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_url_path_map000001/providers/Microsoft.Network/applicationGateways/ag1/rewriteRuleSets/myruleset
+                      provisioningState: Succeeded
+                    id: >-
+                      /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_url_path_map000001/providers/Microsoft.Network/applicationGateways/ag1/urlPathMaps/mypathmap/pathRules/myurlrule
+                    type: >-
+                      Microsoft.Network/applicationGateways/urlPathMaps/pathRules
+                provisioningState: Succeeded
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_url_path_map000001/providers/Microsoft.Network/applicationGateways/ag1/urlPathMaps/mypathmap
+              type: Microsoft.Network/applicationGateways/urlPathMaps
+          - add: /properties/rewriteRuleSets/0/properties/urlPathMaps
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_url_path_map000001/providers/Microsoft.Network/applicationGateways/ag1/urlPathMaps/mypathmap
+          - add: /properties/rewriteRuleSets/0/properties/pathRules
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_url_path_map000001/providers/Microsoft.Network/applicationGateways/ag1/urlPathMaps/mypathmap/pathRules/myurlrule
+      - step: Update_applicationGateways_ag1_226
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+      - step: Update_applicationGateways_ag1_228
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/backendAddressPools/1/properties/pathRules/1
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_url_path_map000001/providers/Microsoft.Network/applicationGateways/ag1/urlPathMaps/mypathmap/pathRules/myurlrule2
+          - add: /properties/backendHttpSettingsCollection/1/properties/pathRules/1
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_url_path_map000001/providers/Microsoft.Network/applicationGateways/ag1/urlPathMaps/mypathmap/pathRules/myurlrule2
+          - add: /properties/urlPathMaps/0/properties/pathRules/1
+            value:
+              name: myurlrule2
+              properties:
+                paths:
+                  - /mypath122/*
+                backendAddressPool:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_url_path_map000001/providers/Microsoft.Network/applicationGateways/ag1/backendAddressPools/mypool
+                backendHttpSettings:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_url_path_map000001/providers/Microsoft.Network/applicationGateways/ag1/backendHttpSettingsCollection/http_settings
+                rewriteRuleSet:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_url_path_map000001/providers/Microsoft.Network/applicationGateways/ag1/rewriteRuleSets/myruleset
+                provisioningState: Succeeded
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_url_path_map000001/providers/Microsoft.Network/applicationGateways/ag1/urlPathMaps/mypathmap/pathRules/myurlrule2
+              type: Microsoft.Network/applicationGateways/urlPathMaps/pathRules
+          - add: /properties/rewriteRuleSets/0/properties/pathRules/1
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_url_path_map000001/providers/Microsoft.Network/applicationGateways/ag1/urlPathMaps/mypathmap/pathRules/myurlrule2
+    variables:
+      publicIpAddressName: pip1
+      applicationGatewayName: ag1

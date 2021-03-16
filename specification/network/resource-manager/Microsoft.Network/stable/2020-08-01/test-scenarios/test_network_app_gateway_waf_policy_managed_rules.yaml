@@ -1,0 +1,33 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_app_gateway_waf_policy_managed_rules
+    steps:
+      - step: Create_ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        exampleFile: >-
+          ../examples/Create_ApplicationGatewayWebApplicationFirewallPolicies_waf_1_Generated.json
+        statusCode: 201
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+      - step: Update_ApplicationGatewayWebApplicationFirewallPolicies_agp1_306
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+      - step: Update_ApplicationGatewayWebApplicationFirewallPolicies_agp1_308
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+      - step: Update_ApplicationGatewayWebApplicationFirewallPolicies_agp1_310
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+      - step: Update_ApplicationGatewayWebApplicationFirewallPolicies_agp1_312
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+      - step: Update_ApplicationGatewayWebApplicationFirewallPolicies_agp1_314
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+      - step: Update_ApplicationGatewayWebApplicationFirewallPolicies_agp1_316
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+      - step: Update_ApplicationGatewayWebApplicationFirewallPolicies_agp1_318
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+    variables:
+      policyName: agp1

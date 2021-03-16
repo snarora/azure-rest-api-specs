@@ -77,6 +77,12 @@
           },
           "List usages spaced location": {
             "$ref": "./examples/UsageListSpacedLocation.json"
+          },
+          "Usages_List_1052_Generated": {
+            "$ref": "./examples/Usages_List_1052_Generated.json"
+          },
+          "Usages_List_1050_Generated": {
+            "$ref": "./examples/Usages_List_1050_Generated.json"
           }
         },
         "x-ms-pageable": {

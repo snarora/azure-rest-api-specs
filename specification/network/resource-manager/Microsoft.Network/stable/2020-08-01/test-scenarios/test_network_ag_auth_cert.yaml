@@ -1,0 +1,75 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_ag_auth_cert
+    steps:
+      - step: ApplicationGateways_Get_101
+        exampleFile: ../examples/ApplicationGateways_Get_101_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: Create_applicationGateways_ag1
+        resourceName: applicationGateways_ag1
+        exampleFile: ../examples/Create_applicationGateways_ag1_Generated_103.json
+        operationId: ApplicationGateways_CreateOrUpdate
+      - step: Update_applicationGateways_ag1_105
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/authenticationCertificates/1
+            value:
+              name: cert2
+              properties:
+                data: >-
+                  MIIBvzCCAW2gAwIBAgIQdxrzWOg4waxNCWLqZDjNpjAJBgUrDgMCHQUAMBYxFDASBgNVBAMTC1Jvb3QgQWdlbmN5MB4XDTE2MDgyMzEzMzIzNloXDTM5MTIzMTIzNTk1OVowIjEgMB4GA1UEAxMXSm9lJ3MtU29mdHdhcmUtRW1wb3JpdW0wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAKH7RFdzRTwt8QPGQwBlLQox9ZvEjCIKzrB17IkWcAyRHpJMm+b00Ik8Sjm5UXwZY/DkXfkOBQ+RA9eaP5I1Aj043QQREs3MTFX7JppINYUk3gJzKPCHFHDb9qchy4qJjJAO/+PlWTP1M0T63Ln1fSIy3bjlPMfXoZK9+B+RJpIDAgMBAAGjSzBJMEcGA1UdAQRAMD6AEBLkCS0GHR1PAI1hIdwWZGOhGDAWMRQwEgYDVQQDEwtSb290IEFnZW5jeYIQBjdsAKoAZIoRz7jUqlw19DAJBgUrDgMCHQUAA0EAY8c6yN4viFBfeW1aPIfW04IgqXz4nwUlGcKYr4Kdq887PgevaqZdsEcy6okZ7qjFZw4EtafD12cBQ1/Djl5j6Q==
+                provisioningState: Updating
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_auth_cert000001/providers/Microsoft.Network/applicationGateways/ag1/authenticationCertificates/cert2
+              type: Microsoft.Network/applicationGateways/authenticationCertificates
+      - step: Update_applicationGateways_ag1_107
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - add: >-
+              /properties/authenticationCertificates/0/properties/backendHttpSettings
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_auth_cert000001/providers/Microsoft.Network/applicationGateways/ag1/backendHttpSettingsCollection/https_settings
+          - add: >-
+              /properties/authenticationCertificates/1/properties/backendHttpSettings
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_auth_cert000001/providers/Microsoft.Network/applicationGateways/ag1/backendHttpSettingsCollection/https_settings
+          - add: /properties/backendHttpSettingsCollection/1
+            value:
+              name: https_settings
+              properties:
+                port: 443
+                protocol: Https
+                cookieBasedAffinity: Disabled
+                authenticationCertificates:
+                  - id: >-
+                      /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_auth_cert000001/providers/Microsoft.Network/applicationGateways/ag1/authenticationCertificates/cert1
+                  - id: >-
+                      /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_auth_cert000001/providers/Microsoft.Network/applicationGateways/ag1/authenticationCertificates/cert2
+                trustedRootCertificates: []
+                connectionDraining:
+                  enabled: false
+                  drainTimeoutInSec: 1
+                provisioningState: Updating
+                pickHostNameFromBackendAddress: false
+                requestTimeout: 30
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_auth_cert000001/providers/Microsoft.Network/applicationGateways/ag1/backendHttpSettingsCollection/https_settings
+              type: >-
+                Microsoft.Network/applicationGateways/backendHttpSettingsCollection
+      - step: Update_applicationGateways_ag1_109
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - remove: >-
+              /properties/backendHttpSettingsCollection/1/properties/authenticationCertificates/1
+          - add: >-
+              /properties/backendHttpSettingsCollection/1/properties/authenticationCertificates/0
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_auth_cert000001/providers/Microsoft.Network/applicationGateways/ag1/authenticationCertificates/cert2
+    variables:
+      applicationGatewayName: ag1

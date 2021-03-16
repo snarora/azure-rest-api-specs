@@ -1,0 +1,93 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_ag_http_listener_with_waf_policy
+    steps:
+      - step: Create_ApplicationGatewayWebApplicationFirewallPolicies_waf_1
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_waf_1
+        exampleFile: >-
+          ../examples/Create_ApplicationGatewayWebApplicationFirewallPolicies_waf_1_Generated.json
+        statusCode: 201
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+      - step: Create_ApplicationGatewayWebApplicationFirewallPolicies_waf_2
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_waf_2
+        exampleFile: >-
+          ../examples/Create_ApplicationGatewayWebApplicationFirewallPolicies_waf_1_Generated.json
+        statusCode: 201
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+        variables:
+          policyName: waf_2
+      - step: Create_ApplicationGatewayWebApplicationFirewallPolicies_waf_3
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_waf_3
+        exampleFile: >-
+          ../examples/Create_ApplicationGatewayWebApplicationFirewallPolicies_waf_1_Generated.json
+        statusCode: 201
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+        variables:
+          policyName: waf_3
+      - step: Create_publicIPAddresses_ip-1
+        resourceName: publicIPAddresses_ip-1
+        exampleFile: ../examples/Create_publicIPAddresses_ip-1_Generated.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: ApplicationGateways_Get_155
+        exampleFile: ../examples/ApplicationGateways_Get_155_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: Create_applicationGateways_ag1
+        resourceName: applicationGateways_ag1
+        exampleFile: ../examples/Create_applicationGateways_ag1_Generated_157.json
+        operationId: ApplicationGateways_CreateOrUpdate
+      - step: Update_applicationGateways_ag1_159
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/frontendPorts/1
+            value:
+              name: '9020'
+              properties:
+                port: 9020
+                provisioningState: Succeeded
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_network_ag_http_listener_with_waf_policy000001/providers/Microsoft.Network/applicationGateways/ag1/frontendPorts/9020
+              type: Microsoft.Network/applicationGateways/frontendPorts
+      - step: Update_applicationGateways_ag1_161
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/frontendIPConfigurations/0/properties/httpListeners/1
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_network_ag_http_listener_with_waf_policy000001/providers/Microsoft.Network/applicationGateways/ag1/httpListeners/listener_2
+          - add: /properties/frontendPorts/1/properties/httpListeners
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_network_ag_http_listener_with_waf_policy000001/providers/Microsoft.Network/applicationGateways/ag1/httpListeners/listener_2
+          - add: /properties/httpListeners/1
+            value:
+              name: listener_2
+              properties:
+                frontendIPConfiguration:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_network_ag_http_listener_with_waf_policy000001/providers/Microsoft.Network/applicationGateways/ag1/frontendIPConfigurations/appGatewayFrontendIP
+                frontendPort:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_network_ag_http_listener_with_waf_policy000001/providers/Microsoft.Network/applicationGateways/ag1/frontendPorts/9020
+                protocol: Http
+                firewallPolicy:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_network_ag_http_listener_with_waf_policy000001/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/waf_2
+                provisioningState: Succeeded
+                hostNames: []
+                requireServerNameIndication: false
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_network_ag_http_listener_with_waf_policy000001/providers/Microsoft.Network/applicationGateways/ag1/httpListeners/listener_2
+              type: Microsoft.Network/applicationGateways/httpListeners
+      - step: Update_applicationGateways_ag1_163
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/httpListeners/1/properties/firewallPolicy/id
+            value: >-
+              /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_network_ag_http_listener_with_waf_policy000001/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/waf_3
+    variables:
+      policyName: waf_1
+      publicIpAddressName: ip-1
+      applicationGatewayName: ag1

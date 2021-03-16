@@ -1,0 +1,105 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_ag_root_cert
+    steps:
+      - step: Create_publicIPAddresses_myip1
+        resourceName: publicIPAddresses_myip1
+        exampleFile: ../examples/Create_publicIPAddresses_myip1_Generated_180.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: ApplicationGateways_Get_181
+        exampleFile: ../examples/ApplicationGateways_Get_181_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: Create_applicationGateways_ag1
+        resourceName: applicationGateways_ag1
+        exampleFile: ../examples/Create_applicationGateways_ag1_Generated_183.json
+        operationId: ApplicationGateways_CreateOrUpdate
+      - step: Update_applicationGateways_ag1_185
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/trustedRootCertificates/1
+            value:
+              name: cert2
+              properties:
+                data: >-
+                  LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlDclRDQ0FoWUNBUUV3RFFZSktvWklodmNOQVFFRUJRQXdnWjR4SURBZUJnTlZCQW9URjAxcFkzSnZjMjltDQpkQ0JVY25WemRDQk9aWFIzYjNKck1SNHdIQVlEVlFRTEV4Vk5hV055YjNOdlpuUWdRMjl5Y0c5eVlYUnBiMjR4DQpMVEFyQmdOVkJBc1RKRTFwWTNKdmMyOW1kQ0JVYVcxbElGTjBZVzF3YVc1bklGTmxjblpwWTJVZ1VtOXZkREVyDQpNQ2tHQTFVRUN4TWlRMjl3ZVhKcFoyaDBJQ2hqS1NBeE9UazNJRTFwWTNKdmMyOW1kQ0JEYjNKd0xqQWVGdzA1DQpOekExTVRNeE5qRXlOVGxhRncwNU9URXlNekF5TXpVNU5UbGFNSUdlTVNBd0hnWURWUVFLRXhkTmFXTnliM052DQpablFnVkhKMWMzUWdUbVYwZDI5eWF6RWVNQndHQTFVRUN4TVZUV2xqY205emIyWjBJRU52Y25CdmNtRjBhVzl1DQpNUzB3S3dZRFZRUUxFeVJOYVdOeWIzTnZablFnVkdsdFpTQlRkR0Z0Y0dsdVp5QlRaWEoyYVdObElGSnZiM1F4DQpLekFwQmdOVkJBc1RJa052Y0hseWFXZG9kQ0FvWXlrZ01UazVOeUJOYVdOeWIzTnZablFnUTI5eWNDNHdnWjh3DQpEUVlKS29aSWh2Y05BUUVCQlFBRGdZMEFNSUdKQW9HQkFMZGFPUFVmTjh5cFE4VGNKQmkrOG9WU3RCMWJYeGk1DQpDNDlMYmFqL3pVQlFiTk9nMDF4SHdybjNodVROZlRVRmFUY2ZyejNkSC8yUEZUVEN4SG5NV1hTS2I0d093K2dSDQo2NFE0UjVoVDRmRU1EZVFCRFBBYkhpRGFLbm85d2hWU2pvci9leksvV0I0bG1JTW15NHJKeEFjVUpMeEpudGQ2DQpzNGNhSlRPOGJRaEhBZ01CQUFFd0RRWUpLb1pJaHZjTkFRRUVCUUFEZ1lFQVVGdkZhMitOVWxzTnliMnNOSE9ZDQp5Z3FIeXE1TVNyb1VwT3RTY0pVaDRMV2hZRTczUXdKUkFhOGVPbkRPdnhpMmhpaVpaK3NJNkpkQVhCYUMvYmdsDQorelp2YjNZK3hVeU80cWRSK3NyQlk3cGVneVJIQzVOeTlrU2F6cWVWT285UUVKNGRzVmtXcTg4KzM0T0x4L3JEDQphOXhrbjBBckgwVWtCSzVKTC9iZkRKRT0NCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0NCg==
+                provisioningState: Succeeded
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_root_cert000001/providers/Microsoft.Network/applicationGateways/ag1/trustedRootCertificates/cert2
+              type: Microsoft.Network/applicationGateways/trustedRootCertificates
+      - step: Update_applicationGateways_ag1_187
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/provisioningState
+            value: Updating
+          - replace: /properties/gatewayIPConfigurations/0/properties/provisioningState
+            value: Updating
+          - replace: /properties/trustedRootCertificates/0/properties/provisioningState
+            value: Updating
+          - add: >-
+              /properties/trustedRootCertificates/0/properties/backendHttpSettings
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_root_cert000001/providers/Microsoft.Network/applicationGateways/ag1/backendHttpSettingsCollection/https_settings
+          - replace: /properties/trustedRootCertificates/1/properties/provisioningState
+            value: Updating
+          - add: >-
+              /properties/trustedRootCertificates/1/properties/backendHttpSettings
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_root_cert000001/providers/Microsoft.Network/applicationGateways/ag1/backendHttpSettingsCollection/https_settings
+          - replace: >-
+              /properties/frontendIPConfigurations/0/properties/provisioningState
+            value: Updating
+          - replace: /properties/frontendPorts/0/properties/provisioningState
+            value: Updating
+          - replace: /properties/backendAddressPools/0/properties/provisioningState
+            value: Updating
+          - replace: >-
+              /properties/backendHttpSettingsCollection/0/properties/provisioningState
+            value: Updating
+          - add: /properties/backendHttpSettingsCollection/1
+            value:
+              name: https_settings
+              properties:
+                port: 443
+                protocol: Https
+                cookieBasedAffinity: Disabled
+                authenticationCertificates: []
+                trustedRootCertificates:
+                  - id: >-
+                      /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_root_cert000001/providers/Microsoft.Network/applicationGateways/ag1/trustedRootCertificates/cert1
+                  - id: >-
+                      /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_root_cert000001/providers/Microsoft.Network/applicationGateways/ag1/trustedRootCertificates/cert2
+                connectionDraining:
+                  enabled: false
+                  drainTimeoutInSec: 1
+                pickHostNameFromBackendAddress: true
+                provisioningState: Updating
+                requestTimeout: 30
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_root_cert000001/providers/Microsoft.Network/applicationGateways/ag1/backendHttpSettingsCollection/https_settings
+              type: >-
+                Microsoft.Network/applicationGateways/backendHttpSettingsCollection
+          - replace: /properties/httpListeners/0/properties/provisioningState
+            value: Updating
+          - replace: /properties/requestRoutingRules/0/properties/provisioningState
+            value: Updating
+      - step: Update_applicationGateways_ag1_189
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - remove: >-
+              /properties/backendHttpSettingsCollection/1/properties/trustedRootCertificates/1
+          - add: >-
+              /properties/backendHttpSettingsCollection/1/properties/trustedRootCertificates/0
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_root_cert000001/providers/Microsoft.Network/applicationGateways/ag1/trustedRootCertificates/cert2
+      - step: Update_applicationGateways_ag1_191
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+    variables:
+      publicIpAddressName: myip1
+      applicationGatewayName: ag1

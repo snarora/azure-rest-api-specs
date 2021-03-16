@@ -1,0 +1,4 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_app_gateway_with_public_ip
+    steps: []

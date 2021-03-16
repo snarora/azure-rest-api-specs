@@ -1,0 +1,10 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_app_gateway_with_existing_subnet
+    steps:
+      - step: Create_virtualNetworks_vnet2
+        resourceName: virtualNetworks_vnet2
+        exampleFile: ../examples/Create_virtualNetworks_vnet2_Generated_385.json
+        operationId: VirtualNetworks_CreateOrUpdate
+    variables:
+      virtualNetworkName: vnet2

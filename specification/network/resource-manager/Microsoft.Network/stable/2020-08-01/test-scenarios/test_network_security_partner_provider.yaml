@@ -1,0 +1,28 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_security_partner_provider
+    steps:
+      - step: Create_securityPartnerProviders_clisecuritypartnerprovider
+        resourceName: securityPartnerProviders_clisecuritypartnerprovider
+        exampleFile: >-
+          ../examples/Create_securityPartnerProviders_clisecuritypartnerprovider_Generated.json
+        operationId: SecurityPartnerProviders_CreateOrUpdate
+      - step: Update_securityPartnerProviders_clisecuritypartnerprovider_993
+        resourceName: securityPartnerProviders_clisecuritypartnerprovider
+        operationId: SecurityPartnerProviders_CreateOrUpdate
+        resourceUpdate:
+          - add: /tags
+            value:
+              a: b
+      - step: SecurityPartnerProviders_ListByResourceGroup_994
+        exampleFile: >-
+          ../examples/SecurityPartnerProviders_ListByResourceGroup_994_Generated.json
+        operationId: SecurityPartnerProviders_ListByResourceGroup
+      - step: SecurityPartnerProviders_List_995
+        exampleFile: ../examples/SecurityPartnerProviders_List_995_Generated.json
+        operationId: SecurityPartnerProviders_List
+      - step: SecurityPartnerProviders_Delete_996
+        exampleFile: ../examples/SecurityPartnerProviders_Delete_996_Generated.json
+        operationId: SecurityPartnerProviders_Delete
+    variables:
+      securityPartnerProviderName: clisecuritypartnerprovider

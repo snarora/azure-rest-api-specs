@@ -1,0 +1,67 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_app_gateway_with_defaults
+    steps:
+      - step: ApplicationGateways_Get_372
+        exampleFile: ../examples/ApplicationGateways_Get_372_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: Create_applicationGateways_ag1
+        resourceName: applicationGateways_ag1
+        exampleFile: ../examples/Create_applicationGateways_ag1_Generated_374.json
+        operationId: ApplicationGateways_CreateOrUpdate
+      - step: Update_applicationGateways_ag1_376
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - add: /tags/foo
+            value: doo
+          - replace: /properties/provisioningState
+            value: Succeeded
+          - replace: /properties/sku
+            value:
+              name: Standard_Small
+              tier: Standard
+              capacity: 3
+          - replace: /properties/operationalState
+            value: Running
+          - replace: /properties/gatewayIPConfigurations/0/properties/provisioningState
+            value: Succeeded
+          - replace: >-
+              /properties/frontendIPConfigurations/0/properties/provisioningState
+            value: Succeeded
+          - add: /properties/frontendIPConfigurations/0/properties/privateIPAddress
+            value: 10.0.0.7
+          - replace: /properties/frontendPorts/0/properties/provisioningState
+            value: Succeeded
+          - replace: /properties/backendAddressPools/0/properties/provisioningState
+            value: Succeeded
+          - replace: >-
+              /properties/backendHttpSettingsCollection/0/properties/provisioningState
+            value: Succeeded
+          - replace: /properties/httpListeners/0/properties/provisioningState
+            value: Succeeded
+          - replace: /properties/requestRoutingRules/0/properties/provisioningState
+            value: Succeeded
+      - step: ApplicationGateways_List_377
+        exampleFile: ../examples/ApplicationGateways_List_377_Generated.json
+        operationId: ApplicationGateways_List
+      - step: ApplicationGateways_Get_378
+        exampleFile: ../examples/ApplicationGateways_Get_378_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: ApplicationGateways_BackendHealth_379
+        exampleFile: ../examples/ApplicationGateways_BackendHealth_379_Generated.json
+        operationId: ApplicationGateways_BackendHealth
+      - step: ApplicationGateways_Stop_380
+        exampleFile: ../examples/ApplicationGateways_Stop_380_Generated.json
+        operationId: ApplicationGateways_Stop
+      - step: ApplicationGateways_Start_381
+        exampleFile: ../examples/ApplicationGateways_Start_381_Generated.json
+        operationId: ApplicationGateways_Start
+      - step: ApplicationGateways_Delete_382
+        exampleFile: ../examples/ApplicationGateways_Delete_382_Generated.json
+        operationId: ApplicationGateways_Delete
+      - step: ApplicationGateways_List_383
+        exampleFile: ../examples/ApplicationGateways_List_383_Generated.json
+        operationId: ApplicationGateways_List
+    variables:
+      applicationGatewayName: ag1

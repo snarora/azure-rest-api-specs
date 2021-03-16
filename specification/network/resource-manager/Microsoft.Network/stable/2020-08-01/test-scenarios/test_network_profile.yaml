@@ -1,0 +1,15 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_profile
+    steps:
+      - step: NetworkProfiles_ListAll_937
+        exampleFile: ../examples/NetworkProfiles_ListAll_937_Generated.json
+        operationId: NetworkProfiles_ListAll
+      - step: NetworkProfiles_List_938
+        exampleFile: ../examples/NetworkProfiles_List_938_Generated.json
+        operationId: NetworkProfiles_List
+      - step: NetworkProfiles_Delete_939
+        exampleFile: ../examples/NetworkProfiles_Delete_939_Generated.json
+        operationId: NetworkProfiles_Delete
+    variables:
+      networkProfileName: dummy

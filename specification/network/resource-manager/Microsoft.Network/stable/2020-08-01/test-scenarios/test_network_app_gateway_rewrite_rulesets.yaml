@@ -1,0 +1,192 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_app_gateway_rewrite_rulesets
+    steps:
+      - step: Create_publicIPAddresses_pip1
+        resourceName: publicIPAddresses_pip1
+        exampleFile: ../examples/Create_publicIPAddresses_pip1_Generated_259.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: ApplicationGateways_Get_260
+        exampleFile: ../examples/ApplicationGateways_Get_260_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: Create_applicationGateways_gw1
+        resourceName: applicationGateways_gw1
+        exampleFile: ../examples/Create_applicationGateways_gw1_Generated.json
+        operationId: ApplicationGateways_CreateOrUpdate
+      - step: Update_applicationGateways_gw1_263
+        resourceName: applicationGateways_gw1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/rewriteRuleSets/0/properties/rewriteRules/0
+            value:
+              name: rule1
+              ruleSequence: 123
+              actionSet:
+                requestHeaderConfigurations:
+                  - headerName: foo
+                    headerValue: bar
+                responseHeaderConfigurations:
+                  - headerName: cat
+                    headerValue: hat
+              conditions: []
+      - step: Update_applicationGateways_gw1_265
+        resourceName: applicationGateways_gw1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/rewriteRuleSets/0/properties/rewriteRules/0
+            value:
+              name: rule1
+              ruleSequence: 321
+              conditions: []
+              actionSet:
+                requestHeaderConfigurations:
+                  - headerName: bar
+                    headerValue: foo
+                responseHeaderConfigurations:
+                  - headerName: hat
+                    headerValue: cat
+      - step: Update_applicationGateways_gw1_267
+        resourceName: applicationGateways_gw1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - remove: >-
+              /properties/rewriteRuleSets/0/properties/rewriteRules/0/actionSet/responseHeaderConfigurations/0
+      - step: ApplicationGateways_ListAvailableRequestHeaders_268
+        exampleFile: >-
+          ../examples/ApplicationGateways_ListAvailableRequestHeaders_268_Generated.json
+        operationId: ApplicationGateways_ListAvailableRequestHeaders
+      - step: ApplicationGateways_ListAvailableResponseHeaders_269
+        exampleFile: >-
+          ../examples/ApplicationGateways_ListAvailableResponseHeaders_269_Generated.json
+        operationId: ApplicationGateways_ListAvailableResponseHeaders
+      - step: ApplicationGateways_Get_270
+        exampleFile: ../examples/ApplicationGateways_Get_270_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: Update_applicationGateways_gw1_272
+        resourceName: applicationGateways_gw1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/provisioningState
+            value: Succeeded
+          - replace: /properties/operationalState
+            value: Running
+          - replace: /properties/gatewayIPConfigurations/0/properties/provisioningState
+            value: Succeeded
+          - replace: >-
+              /properties/frontendIPConfigurations/0/properties/provisioningState
+            value: Succeeded
+          - replace: /properties/frontendPorts/0/properties/provisioningState
+            value: Succeeded
+          - replace: /properties/backendAddressPools/0/properties/provisioningState
+            value: Succeeded
+          - replace: >-
+              /properties/backendHttpSettingsCollection/0/properties/provisioningState
+            value: Succeeded
+          - replace: /properties/httpListeners/0/properties/provisioningState
+            value: Succeeded
+          - replace: /properties/requestRoutingRules/0/properties/provisioningState
+            value: Succeeded
+          - replace: /properties/rewriteRuleSets/0/properties/provisioningState
+            value: Succeeded
+          - add: /properties/rewriteRuleSets/0/properties/rewriteRules/1
+            value:
+              name: rule2
+              ruleSequence: 123
+              actionSet:
+                requestHeaderConfigurations:
+                  - headerName: foo
+                    headerValue: bar
+                responseHeaderConfigurations:
+                  - headerName: cat
+                    headerValue: hat
+                urlConfiguration:
+                  modifiedPath: /def
+                  modifiedQueryString: a=b&c=d%20f
+                  reroute: false
+              conditions: []
+      - step: Update_applicationGateways_gw1_274
+        resourceName: applicationGateways_gw1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/rewriteRuleSets/0/properties/rewriteRules/1
+            value:
+              name: rule2
+              ruleSequence: 321
+              conditions: []
+              actionSet:
+                requestHeaderConfigurations:
+                  - headerName: bar
+                    headerValue: foo
+                responseHeaderConfigurations:
+                  - headerName: hat
+                    headerValue: cat
+                urlConfiguration:
+                  modifiedPath: /def2
+                  modifiedQueryString: a=b&c=d%20f12
+                  reroute: true
+      - step: Update_applicationGateways_gw1_276
+        resourceName: applicationGateways_gw1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/provisioningState
+            value: Updating
+          - replace: /properties/gatewayIPConfigurations/0/properties/provisioningState
+            value: Updating
+          - replace: >-
+              /properties/frontendIPConfigurations/0/properties/provisioningState
+            value: Updating
+          - replace: /properties/frontendPorts/0/properties/provisioningState
+            value: Updating
+          - replace: /properties/backendAddressPools/0/properties/provisioningState
+            value: Updating
+          - replace: >-
+              /properties/backendHttpSettingsCollection/0/properties/provisioningState
+            value: Updating
+          - replace: /properties/httpListeners/0/properties/provisioningState
+            value: Updating
+          - replace: /properties/requestRoutingRules/0/properties/provisioningState
+            value: Updating
+          - replace: /properties/rewriteRuleSets/0/properties/provisioningState
+            value: Updating
+          - remove: >-
+              /properties/rewriteRuleSets/0/properties/rewriteRules/1/actionSet/responseHeaderConfigurations/0
+      - step: Update_applicationGateways_gw1_278
+        resourceName: applicationGateways_gw1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - add: >-
+              /properties/rewriteRuleSets/0/properties/rewriteRules/0/conditions/0
+            value:
+              variable: http_req_Authorization
+              pattern: ^Bearer
+              ignoreCase: false
+              negate: true
+      - step: Update_applicationGateways_gw1_280
+        resourceName: applicationGateways_gw1
+        operationId: ApplicationGateways_CreateOrUpdate
+      - step: Update_applicationGateways_gw1_282
+        resourceName: applicationGateways_gw1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - remove: >-
+              /properties/rewriteRuleSets/0/properties/rewriteRules/0/conditions/0
+      - step: ApplicationGateways_ListAvailableServerVariables_283
+        exampleFile: >-
+          ../examples/ApplicationGateways_ListAvailableServerVariables_283_Generated.json
+        operationId: ApplicationGateways_ListAvailableServerVariables
+      - step: ApplicationGateways_Get_284
+        exampleFile: ../examples/ApplicationGateways_Get_284_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: Update_applicationGateways_gw1_286
+        resourceName: applicationGateways_gw1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - remove: /properties/rewriteRuleSets/0/properties/rewriteRules/0
+      - step: Update_applicationGateways_gw1_288
+        resourceName: applicationGateways_gw1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - remove: /properties/rewriteRuleSets/0
+    variables:
+      publicIpAddressName: pip1
+      applicationGatewayName: gw1

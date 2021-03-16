@@ -1,0 +1,34 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_ag_http_settings
+    steps:
+      - step: ApplicationGateways_Get_164
+        exampleFile: ../examples/ApplicationGateways_Get_164_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: Create_applicationGateways_ag1
+        resourceName: applicationGateways_ag1
+        exampleFile: ../examples/Create_applicationGateways_ag1_Generated_166.json
+        operationId: ApplicationGateways_CreateOrUpdate
+      - step: Update_applicationGateways_ag1_168
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/backendHttpSettingsCollection/1/properties
+            value:
+              port: 71
+              protocol: Http
+              cookieBasedAffinity: Disabled
+              requestTimeout: 40
+              connectionDraining:
+                enabled: false
+                drainTimeoutInSec: 1
+              pickHostNameFromBackendAddress: false
+              affinityCookieName: mycookie2
+              provisioningState: Updating
+      - step: Update_applicationGateways_ag1_170
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - remove: /properties/backendHttpSettingsCollection/1
+    variables:
+      applicationGatewayName: ag1

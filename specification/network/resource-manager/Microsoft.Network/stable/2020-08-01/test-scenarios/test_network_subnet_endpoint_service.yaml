@@ -1,0 +1,44 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_subnet_endpoint_service
+    steps:
+      - step: AvailableEndpointServices_List_1022
+        exampleFile: ../examples/AvailableEndpointServices_List_1022_Generated.json
+        operationId: AvailableEndpointServices_List
+      - step: Create_virtualNetworks_vnet1
+        resourceName: virtualNetworks_vnet1
+        exampleFile: ../examples/Create_virtualNetworks_vnet1_Generated_1024.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Update_virtualNetworks_vnet1_1026
+        resourceName: virtualNetworks_vnet1
+        operationId: VirtualNetworks_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/subnets/0
+            value:
+              name: subnet1
+              properties:
+                addressPrefix: 10.0.1.0/24
+                serviceEndpoints:
+                  - service: Microsoft.Storage
+                    provisioningState: Succeeded
+                    locations:
+                      - westus
+                      - eastus
+                provisioningState: Succeeded
+                delegations: []
+                privateEndpointNetworkPolicies: Enabled
+                privateLinkServiceNetworkPolicies: Enabled
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_subnet_endpoint_service_test000001/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1
+              type: Microsoft.Network/virtualNetworks/subnets
+      - step: Subnets_Get_1027
+        exampleFile: ../examples/Subnets_Get_1027_Generated.json
+        operationId: Subnets_Get
+      - step: Create_subnets_subnet1
+        resourceName: subnets_subnet1
+        exampleFile: ../examples/Create_subnets_subnet1_Generated_1029.json
+        operationId: Subnets_CreateOrUpdate
+    variables:
+      location: westus
+      virtualNetworkName: vnet1
+      subnetName: subnet1

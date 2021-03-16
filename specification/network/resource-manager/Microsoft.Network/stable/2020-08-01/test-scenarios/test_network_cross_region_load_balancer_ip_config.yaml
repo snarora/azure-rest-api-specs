@@ -1,0 +1,51 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_cross_region_load_balancer_ip_config
+    steps:
+      - step: Create_publicIPAddresses_publicip1
+        resourceName: publicIPAddresses_publicip1
+        exampleFile: ../examples/Create_publicIPAddresses_publicip1_Generated.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: Create_publicIPAddresses_publicip2
+        resourceName: publicIPAddresses_publicip2
+        exampleFile: ../examples/Create_publicIPAddresses_publicip2_Generated.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+        variables:
+          publicIpAddressName: publicip2
+      - step: Create_publicIPAddresses_publicip3
+        resourceName: publicIPAddresses_publicip3
+        exampleFile: ../examples/Create_publicIPAddresses_publicip3_Generated.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+        variables:
+          publicIpAddressName: publicip3
+      - step: LoadBalancers_Get_503
+        exampleFile: ../examples/LoadBalancers_Get_503_Generated.json
+        operationId: LoadBalancers_Get
+      - step: Create_loadBalancers_lb1
+        resourceName: loadBalancers_lb1
+        exampleFile: ../examples/Create_loadBalancers_lb1_Generated_505.json
+        operationId: LoadBalancers_CreateOrUpdate
+      - step: Update_loadBalancers_lb1_507
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - replace: >-
+              /properties/frontendIPConfigurations/1/properties/publicIPAddress/id
+            value: >-
+              /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_cross_region_load_balancer_ip_config000001/providers/Microsoft.Network/publicIPAddresses/publicip3
+      - step: Update_loadBalancers_lb1_509
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - replace: >-
+              /properties/frontendIPConfigurations/1/properties/publicIPAddress/id
+            value: >-
+              /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_cross_region_load_balancer_ip_config000001/providers/Microsoft.Network/publicIPAddresses/publicip2
+      - step: Update_loadBalancers_lb1_511
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - remove: /properties/frontendIPConfigurations/1
+    variables:
+      publicIpAddressName: publicip1
+      loadBalancerName: lb1

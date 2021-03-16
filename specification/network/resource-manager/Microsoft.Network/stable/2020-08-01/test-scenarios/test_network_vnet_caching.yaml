@@ -1,0 +1,18 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_vnet_caching
+    steps:
+      - step: Create_virtualNetworks_vnet1
+        resourceName: virtualNetworks_vnet1
+        exampleFile: ../examples/Create_virtualNetworks_vnet1_Generated_1108.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Update_virtualNetworks_vnet1_1110
+        resourceName: virtualNetworks_vnet1
+        operationId: VirtualNetworks_CreateOrUpdate
+        resourceUpdate:
+          - replace: /tags
+            value:
+              a: '1'
+              b: '2'
+    variables:
+      virtualNetworkName: vnet1

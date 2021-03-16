@@ -1,0 +1,50 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_route_table_operation
+    steps:
+      - step: Create_routeTables_cli-test-route-table
+        resourceName: routeTables_cli-test-route-table
+        exampleFile: ../examples/Create_routeTables_cli-test-route-table_Generated.json
+        operationId: RouteTables_CreateOrUpdate
+      - step: Update_routeTables_cli-test-route-table_980
+        resourceName: routeTables_cli-test-route-table
+        operationId: RouteTables_CreateOrUpdate
+        resourceUpdate:
+          - replace: /tags/foo
+            value: boo
+          - replace: /properties/disableBgpRoutePropagation
+            value: true
+      - step: Create_routes_my-route
+        resourceName: routes_my-route
+        exampleFile: ../examples/Create_routes_my-route_Generated.json
+        operationId: Routes_CreateOrUpdate
+      - step: RouteTables_ListAll_982
+        exampleFile: ../examples/RouteTables_ListAll_982_Generated.json
+        operationId: RouteTables_ListAll
+      - step: RouteTables_List_983
+        exampleFile: ../examples/RouteTables_List_983_Generated.json
+        operationId: RouteTables_List
+      - step: RouteTables_Get_984
+        exampleFile: ../examples/RouteTables_Get_984_Generated.json
+        operationId: RouteTables_Get
+      - step: Routes_List_985
+        exampleFile: ../examples/Routes_List_985_Generated.json
+        operationId: Routes_List
+      - step: Routes_Get_986
+        exampleFile: ../examples/Routes_Get_986_Generated.json
+        operationId: Routes_Get
+      - step: Routes_Delete_987
+        exampleFile: ../examples/Routes_Delete_987_Generated.json
+        operationId: Routes_Delete
+      - step: Routes_List_988
+        exampleFile: ../examples/Routes_List_988_Generated.json
+        operationId: Routes_List
+      - step: RouteTables_Delete_989
+        exampleFile: ../examples/RouteTables_Delete_989_Generated.json
+        operationId: RouteTables_Delete
+      - step: RouteTables_List_990
+        exampleFile: ../examples/RouteTables_List_990_Generated.json
+        operationId: RouteTables_List
+    variables:
+      routeTableName: cli-test-route-table
+      routeName: my-route

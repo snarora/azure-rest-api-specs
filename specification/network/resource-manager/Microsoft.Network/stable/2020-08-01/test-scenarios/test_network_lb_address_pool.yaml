@@ -1,0 +1,55 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_lb_address_pool
+    steps:
+      - step: LoadBalancers_Get_576
+        exampleFile: ../examples/LoadBalancers_Get_576_Generated.json
+        operationId: LoadBalancers_Get
+      - step: Create_loadBalancers_lb1
+        resourceName: loadBalancers_lb1
+        exampleFile: ../examples/Create_loadBalancers_lb1_Generated_578.json
+        operationId: LoadBalancers_CreateOrUpdate
+      - step: Update_loadBalancers_lb1_580
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/backendAddressPools/2
+            value:
+              name: bap2
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_address_pool000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/bap2
+              properties:
+                provisioningState: Succeeded
+              type: Microsoft.Network/loadBalancers/backendAddressPools
+      - step: Update_loadBalancers_lb1_582
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/backendAddressPools/3
+            value:
+              name: bap3
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_address_pool000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/bap3
+              properties:
+                provisioningState: Succeeded
+              type: Microsoft.Network/loadBalancers/backendAddressPools
+      - step: LoadBalancerBackendAddressPools_List_583
+        exampleFile: ../examples/LoadBalancerBackendAddressPools_List_583_Generated.json
+        operationId: LoadBalancerBackendAddressPools_List
+      - step: LoadBalancerBackendAddressPools_Get_584
+        exampleFile: ../examples/LoadBalancerBackendAddressPools_Get_584_Generated.json
+        operationId: LoadBalancerBackendAddressPools_Get
+      - step: LoadBalancers_Get_585
+        exampleFile: ../examples/LoadBalancers_Get_585_Generated.json
+        operationId: LoadBalancers_Get
+      - step: Update_loadBalancers_lb1_587
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - remove: /properties/backendAddressPools/1
+      - step: LoadBalancerBackendAddressPools_List_588
+        exampleFile: ../examples/LoadBalancerBackendAddressPools_List_588_Generated.json
+        operationId: LoadBalancerBackendAddressPools_List
+    variables:
+      loadBalancerName: lb1
+      backendAddressPoolName: bap1

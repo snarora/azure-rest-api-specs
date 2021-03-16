@@ -1,0 +1,117 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_lb_nat_rules
+    steps:
+      - step: LoadBalancers_Get_631
+        exampleFile: ../examples/LoadBalancers_Get_631_Generated.json
+        operationId: LoadBalancers_Get
+      - step: Create_loadBalancers_lb1
+        resourceName: loadBalancers_lb1
+        exampleFile: ../examples/Create_loadBalancers_lb1_Generated_633.json
+        operationId: LoadBalancers_CreateOrUpdate
+      - step: Update_loadBalancers_lb1_635
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - add: >-
+              /properties/frontendIPConfigurations/0/properties/inboundNatRules/1
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_rules000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatRules/rule2
+          - add: /properties/inboundNatRules/1
+            value:
+              name: rule2
+              properties:
+                frontendIPConfiguration:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_rules000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd
+                  name: LoadBalancerFrontEnd
+                  properties:
+                    privateIPAllocationMethod: Dynamic
+                    privateIPAddressVersion: IPv4
+                    publicIPAddress:
+                      id: >-
+                        /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_rules000001/providers/Microsoft.Network/publicIPAddresses/PublicIPlb1
+                protocol: Tcp
+                frontendPort: 2
+                backendPort: 2
+                provisioningState: Succeeded
+                enableFloatingIP: false
+                idleTimeoutInMinutes: 4
+                enableDestinationServiceEndpoint: false
+                enableTcpReset: false
+                allowBackendPortConflict: false
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_rules000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatRules/rule2
+              type: Microsoft.Network/loadBalancers/inboundNatRules
+      - step: Update_loadBalancers_lb1_637
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - add: >-
+              /properties/frontendIPConfigurations/0/properties/inboundNatRules/2
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_rules000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatRules/rule3
+          - add: /properties/inboundNatRules/2
+            value:
+              name: rule3
+              properties:
+                frontendIPConfiguration:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_rules000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd
+                  name: LoadBalancerFrontEnd
+                  properties:
+                    privateIPAllocationMethod: Dynamic
+                    privateIPAddressVersion: IPv4
+                    publicIPAddress:
+                      id: >-
+                        /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_rules000001/providers/Microsoft.Network/publicIPAddresses/PublicIPlb1
+                protocol: Tcp
+                frontendPort: 3
+                backendPort: 3
+                provisioningState: Succeeded
+                enableFloatingIP: false
+                idleTimeoutInMinutes: 4
+                enableDestinationServiceEndpoint: false
+                enableTcpReset: false
+                allowBackendPortConflict: false
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_nat_rules000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatRules/rule3
+              type: Microsoft.Network/loadBalancers/inboundNatRules
+      - step: Update_loadBalancers_lb1_639
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/inboundNatRules/0/properties/enableFloatingIP
+            value: true
+          - replace: /properties/inboundNatRules/0/properties/idleTimeoutInMinutes
+            value: 10
+      - step: Update_loadBalancers_lb1_641
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/inboundNatRules/0/properties/idleTimeoutInMinutes
+            value: 5
+      - step: Update_loadBalancers_lb1_643
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - remove: >-
+              /properties/frontendIPConfigurations/0/properties/inboundNatRules/0
+          - remove: /properties/inboundNatRules/0
+      - step: Update_loadBalancers_lb1_645
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - remove: >-
+              /properties/frontendIPConfigurations/0/properties/inboundNatRules/0
+          - remove: /properties/inboundNatRules/0
+      - step: Update_loadBalancers_lb1_647
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - remove: /properties/frontendIPConfigurations/0/properties/inboundNatRules
+          - remove: /properties/inboundNatRules/0
+    variables:
+      loadBalancerName: lb1

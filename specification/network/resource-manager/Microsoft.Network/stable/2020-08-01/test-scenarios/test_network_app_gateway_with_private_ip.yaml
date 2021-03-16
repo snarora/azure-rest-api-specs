@@ -1,0 +1,60 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_app_gateway_with_private_ip
+    steps:
+      - step: ApplicationGateways_Get_396
+        exampleFile: ../examples/ApplicationGateways_Get_396_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: Create_applicationGateways_ag3
+        resourceName: applicationGateways_ag3
+        exampleFile: ../examples/Create_applicationGateways_ag3_Generated.json
+        operationId: ApplicationGateways_CreateOrUpdate
+      - step: Update_applicationGateways_ag3_399
+        resourceName: applicationGateways_ag3
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/provisioningState
+            value: Updating
+          - replace: /properties/gatewayIPConfigurations/0/properties/provisioningState
+            value: Updating
+          - replace: /properties/sslCertificates/0/properties/provisioningState
+            value: Updating
+          - replace: >-
+              /properties/frontendIPConfigurations/0/properties/provisioningState
+            value: Updating
+          - replace: /properties/frontendPorts/0/properties/provisioningState
+            value: Updating
+          - replace: /properties/backendAddressPools/0/properties/provisioningState
+            value: Updating
+          - replace: >-
+              /properties/backendHttpSettingsCollection/0/properties/provisioningState
+            value: Updating
+          - replace: /properties/httpListeners/0/properties/provisioningState
+            value: Updating
+          - replace: /properties/requestRoutingRules/0/properties/provisioningState
+            value: Updating
+          - add: /properties/sslPolicy
+            value:
+              disabledSslProtocols:
+                - TLSv1_0
+                - TLSv1_1
+      - step: Update_applicationGateways_ag3_401
+        resourceName: applicationGateways_ag3
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/sslPolicy
+            value:
+              policyType: Custom
+              cipherSuites:
+                - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+              minProtocolVersion: TLSv1_0
+      - step: Update_applicationGateways_ag3_403
+        resourceName: applicationGateways_ag3
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/sslPolicy
+            value:
+              policyType: Predefined
+              policyName: AppGwSslPolicy20150501
+    variables:
+      applicationGatewayName: ag3

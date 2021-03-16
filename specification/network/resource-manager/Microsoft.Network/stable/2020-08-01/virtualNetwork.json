@@ -64,13 +64,13 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Delete successful."
+          },
           "202": {
             "description": "Accepted and the operation will complete asynchronously."
           },
           "204": {
-            "description": "Delete successful."
-          },
-          "200": {
             "description": "Delete successful."
           },
           "default": {
@@ -87,6 +87,12 @@
         "x-ms-examples": {
           "Delete virtual network": {
             "$ref": "./examples/VirtualNetworkDelete.json"
+          },
+          "VirtualNetworks_Delete_1048_Generated": {
+            "$ref": "./examples/VirtualNetworks_Delete_1048_Generated.json"
+          },
+          "VirtualNetworks_Delete_1039_Generated": {
+            "$ref": "./examples/VirtualNetworks_Delete_1039_Generated.json"
           }
         }
       },
@@ -148,6 +154,48 @@
           },
           "Get virtual network with service association links": {
             "$ref": "./examples/VirtualNetworkGetWithServiceAssociationLink.json"
+          },
+          "VirtualNetworks_Get_5_Generated": {
+            "$ref": "./examples/VirtualNetworks_Get_5_Generated.json"
+          },
+          "VirtualNetworks_Get_15_Generated": {
+            "$ref": "./examples/VirtualNetworks_Get_15_Generated.json"
+          },
+          "VirtualNetworks_Get_25_Generated": {
+            "$ref": "./examples/VirtualNetworks_Get_25_Generated.json"
+          },
+          "VirtualNetworks_Get_28_Generated": {
+            "$ref": "./examples/VirtualNetworks_Get_28_Generated.json"
+          },
+          "VirtualNetworks_Get_38_Generated": {
+            "$ref": "./examples/VirtualNetworks_Get_38_Generated.json"
+          },
+          "VirtualNetworks_Get_51_Generated": {
+            "$ref": "./examples/VirtualNetworks_Get_51_Generated.json"
+          },
+          "VirtualNetworks_Get_902_Generated": {
+            "$ref": "./examples/VirtualNetworks_Get_902_Generated.json"
+          },
+          "VirtualNetworks_Get_922_Generated": {
+            "$ref": "./examples/VirtualNetworks_Get_922_Generated.json"
+          },
+          "VirtualNetworks_Get_1070_Generated": {
+            "$ref": "./examples/VirtualNetworks_Get_1070_Generated.json"
+          },
+          "VirtualNetworks_Get_1091_Generated": {
+            "$ref": "./examples/VirtualNetworks_Get_1091_Generated.json"
+          },
+          "VirtualNetworks_Get_1125_Generated": {
+            "$ref": "./examples/VirtualNetworks_Get_1125_Generated.json"
+          },
+          "VirtualNetworks_Get_1131_Generated": {
+            "$ref": "./examples/VirtualNetworks_Get_1131_Generated.json"
+          },
+          "VirtualNetworks_Get_1149_Generated": {
+            "$ref": "./examples/VirtualNetworks_Get_1149_Generated.json"
+          },
+          "VirtualNetworks_Get_1151_Generated": {
+            "$ref": "./examples/VirtualNetworks_Get_1151_Generated.json"
           }
         }
       },
@@ -233,6 +281,183 @@
           },
           "Create virtual network with delegated subnets": {
             "$ref": "./examples/VirtualNetworkCreateSubnetWithDelegation.json"
+          },
+          "Create_virtualNetworks_appgw_private_endpoint_vnet_Generated": {
+            "$ref": "./examples/Create_virtualNetworks_appgw_private_endpoint_vnet_Generated.json"
+          },
+          "Create_virtualNetworks_appgw_private_endpoint_vnet_Generated_11": {
+            "$ref": "./examples/Create_virtualNetworks_appgw_private_endpoint_vnet_Generated_11.json"
+          },
+          "Create_virtualNetworks_private_endpoint_vnet_Generated": {
+            "$ref": "./examples/Create_virtualNetworks_private_endpoint_vnet_Generated.json"
+          },
+          "Create_virtualNetworks_appgwVnet_Generated": {
+            "$ref": "./examples/Create_virtualNetworks_appgwVnet_Generated.json"
+          },
+          "Create_virtualNetworks_appgw_private_endpoint_vnet_Generated_31": {
+            "$ref": "./examples/Create_virtualNetworks_appgw_private_endpoint_vnet_Generated_31.json"
+          },
+          "Create_virtualNetworks_cli-vnet-000003_Generated": {
+            "$ref": "./examples/Create_virtualNetworks_cli-vnet-000003_Generated.json"
+          },
+          "Create_virtualNetworks_cli-vnet-000003_Generated_65": {
+            "$ref": "./examples/Create_virtualNetworks_cli-vnet-000003_Generated_65.json"
+          },
+          "Create_virtualNetworks_vnet1_Generated": {
+            "$ref": "./examples/Create_virtualNetworks_vnet1_Generated.json"
+          },
+          "Create_virtualNetworks_vnet1_Generated_85": {
+            "$ref": "./examples/Create_virtualNetworks_vnet1_Generated_85.json"
+          },
+          "Create_virtualNetworks_vnet2_Generated": {
+            "$ref": "./examples/Create_virtualNetworks_vnet2_Generated.json"
+          },
+          "Create_virtualNetworks_vnet1_Generated_112": {
+            "$ref": "./examples/Create_virtualNetworks_vnet1_Generated_112.json"
+          },
+          "Create_virtualNetworks_vnet2_Generated_385": {
+            "$ref": "./examples/Create_virtualNetworks_vnet2_Generated_385.json"
+          },
+          "Create_virtualNetworks_vnet_Generated": {
+            "$ref": "./examples/Create_virtualNetworks_vnet_Generated.json"
+          },
+          "Create_virtualNetworks_mytestvnet_Generated": {
+            "$ref": "./examples/Create_virtualNetworks_mytestvnet_Generated.json"
+          },
+          "Create_virtualNetworks_clitestvnet_Generated": {
+            "$ref": "./examples/Create_virtualNetworks_clitestvnet_Generated.json"
+          },
+          "Create_virtualNetworks_vnet1_Generated_702": {
+            "$ref": "./examples/Create_virtualNetworks_vnet1_Generated_702.json"
+          },
+          "Create_virtualNetworks_myvnet_Generated": {
+            "$ref": "./examples/Create_virtualNetworks_myvnet_Generated.json"
+          },
+          "Create_virtualNetworks_vnet1_Generated_777": {
+            "$ref": "./examples/Create_virtualNetworks_vnet1_Generated_777.json"
+          },
+          "Create_virtualNetworks_vnet1_Generated_791": {
+            "$ref": "./examples/Create_virtualNetworks_vnet1_Generated_791.json"
+          },
+          "Create_virtualNetworks_vnet1_Generated_813": {
+            "$ref": "./examples/Create_virtualNetworks_vnet1_Generated_813.json"
+          },
+          "Create_virtualNetworks_vnet1_Generated_830": {
+            "$ref": "./examples/Create_virtualNetworks_vnet1_Generated_830.json"
+          },
+          "Create_virtualNetworks_vnet2_Generated_840": {
+            "$ref": "./examples/Create_virtualNetworks_vnet2_Generated_840.json"
+          },
+          "Create_virtualNetworks_cli-vnet-000003_Generated_884": {
+            "$ref": "./examples/Create_virtualNetworks_cli-vnet-000003_Generated_884.json"
+          },
+          "Create_virtualNetworks_vnet1_Generated_899": {
+            "$ref": "./examples/Create_virtualNetworks_vnet1_Generated_899.json"
+          },
+          "Create_virtualNetworks_vnet1_Generated_919": {
+            "$ref": "./examples/Create_virtualNetworks_vnet1_Generated_919.json"
+          },
+          "Create_virtualNetworks_vnet1_Generated_1019": {
+            "$ref": "./examples/Create_virtualNetworks_vnet1_Generated_1019.json"
+          },
+          "Create_virtualNetworks_vnet1_Generated_1025": {
+            "$ref": "./examples/Create_virtualNetworks_vnet1_Generated_1025.json"
+          },
+          "Create_virtualNetworks_vnet1_Generated_1033": {
+            "$ref": "./examples/Create_virtualNetworks_vnet1_Generated_1033.json"
+          },
+          "Create_virtualNetworks_vnet1_Generated_1040": {
+            "$ref": "./examples/Create_virtualNetworks_vnet1_Generated_1040.json"
+          },
+          "Create_virtualNetworks_vnet2_Generated_1067": {
+            "$ref": "./examples/Create_virtualNetworks_vnet2_Generated_1067.json"
+          },
+          "Create_virtualNetworks_vnet1_Generated_1087": {
+            "$ref": "./examples/Create_virtualNetworks_vnet1_Generated_1087.json"
+          },
+          "Create_virtualNetworks_vnet1_Generated_1108": {
+            "$ref": "./examples/Create_virtualNetworks_vnet1_Generated_1108.json"
+          },
+          "Create_virtualNetworks_vnet1_Generated_1112": {
+            "$ref": "./examples/Create_virtualNetworks_vnet1_Generated_1112.json"
+          },
+          "Create_virtualNetworks_vnet1_Generated_1122": {
+            "$ref": "./examples/Create_virtualNetworks_vnet1_Generated_1122.json"
+          },
+          "Create_virtualNetworks_vnet2_Generated_1124": {
+            "$ref": "./examples/Create_virtualNetworks_vnet2_Generated_1124.json"
+          },
+          "Create_virtualNetworks_vnet1_Generated_1133": {
+            "$ref": "./examples/Create_virtualNetworks_vnet1_Generated_1133.json"
+          },
+          "Create_virtualNetworks_vnet-000002_Generated": {
+            "$ref": "./examples/Create_virtualNetworks_vnet-000002_Generated.json"
+          },
+          "Create_virtualNetworks_vnet1_Generated_1144": {
+            "$ref": "./examples/Create_virtualNetworks_vnet1_Generated_1144.json"
+          },
+          "Create_virtualNetworks_vnet2_Generated_1146": {
+            "$ref": "./examples/Create_virtualNetworks_vnet2_Generated_1146.json"
+          },
+          "Create_virtualNetworks_vnet1_Generated_1165": {
+            "$ref": "./examples/Create_virtualNetworks_vnet1_Generated_1165.json"
+          },
+          "Create_virtualNetworks_vnet1_Generated_1170": {
+            "$ref": "./examples/Create_virtualNetworks_vnet1_Generated_1170.json"
+          },
+          "Create_virtualNetworks_myvnet1_Generated": {
+            "$ref": "./examples/Create_virtualNetworks_myvnet1_Generated.json"
+          },
+          "Create_virtualNetworks_myvnet2_Generated": {
+            "$ref": "./examples/Create_virtualNetworks_myvnet2_Generated.json"
+          },
+          "Create_virtualNetworks_myvnet3_Generated": {
+            "$ref": "./examples/Create_virtualNetworks_myvnet3_Generated.json"
+          },
+          "Create_virtualNetworks_vnet_Generated_1218": {
+            "$ref": "./examples/Create_virtualNetworks_vnet_Generated_1218.json"
+          },
+          "Create_virtualNetworks_vnet1_Generated_1281": {
+            "$ref": "./examples/Create_virtualNetworks_vnet1_Generated_1281.json"
+          },
+          "Create_virtualNetworks_cmv2-vnet_Generated": {
+            "$ref": "./examples/Create_virtualNetworks_cmv2-vnet_Generated.json"
+          },
+          "Create_virtualNetworks_cli-vnet-000003_Generated_1393": {
+            "$ref": "./examples/Create_virtualNetworks_cli-vnet-000003_Generated_1393.json"
+          },
+          "Create_virtualNetworks_testvnet000003_Generated": {
+            "$ref": "./examples/Create_virtualNetworks_testvnet000003_Generated.json"
+          },
+          "Create_virtualNetworks_cli-vnet-000003_Generated_1408": {
+            "$ref": "./examples/Create_virtualNetworks_cli-vnet-000003_Generated_1408.json"
+          },
+          "Create_virtualNetworks_cli000003_Generated": {
+            "$ref": "./examples/Create_virtualNetworks_cli000003_Generated.json"
+          },
+          "Create_virtualNetworks_cli000003_Generated_1423": {
+            "$ref": "./examples/Create_virtualNetworks_cli000003_Generated_1423.json"
+          },
+          "Create_virtualNetworks_cli-vnet-000003_Generated_1434": {
+            "$ref": "./examples/Create_virtualNetworks_cli-vnet-000003_Generated_1434.json"
+          },
+          "Create_virtualNetworks_webapp-privatelink-vnet000004_Generated": {
+            "$ref": "./examples/Create_virtualNetworks_webapp-privatelink-vnet000004_Generated.json"
+          },
+          "Create_virtualNetworks_testvnet000002_Generated": {
+            "$ref": "./examples/Create_virtualNetworks_testvnet000002_Generated.json"
+          },
+          "Create_virtualNetworks_MyVnet_Generated": {
+            "$ref": "./examples/Create_virtualNetworks_MyVnet_Generated.json"
+          },
+          "Create_virtualNetworks_vnet1_Generated_1024": {
+            "$ref": "./examples/Create_virtualNetworks_vnet1_Generated_1024.json"
+          },
+          "Create_virtualNetworks_vnet1_Generated_1031": {
+            "$ref": "./examples/Create_virtualNetworks_vnet1_Generated_1031.json"
+          },
+          "Create_virtualNetworks_vnet1_Generated_1044": {
+            "$ref": "./examples/Create_virtualNetworks_vnet1_Generated_1044.json"
           }
         }
       },
@@ -326,6 +551,9 @@
         "x-ms-examples": {
           "List all virtual networks": {
             "$ref": "./examples/VirtualNetworkListAll.json"
+          },
+          "VirtualNetworks_ListAll_1089_Generated": {
+            "$ref": "./examples/VirtualNetworks_ListAll_1089_Generated.json"
           }
         },
         "x-ms-pageable": {
@@ -372,6 +600,18 @@
         "x-ms-examples": {
           "List virtual networks in resource group": {
             "$ref": "./examples/VirtualNetworkList.json"
+          },
+          "VirtualNetworks_List_1090_Generated": {
+            "$ref": "./examples/VirtualNetworks_List_1090_Generated.json"
+          },
+          "VirtualNetworks_List_1104_Generated": {
+            "$ref": "./examples/VirtualNetworks_List_1104_Generated.json"
+          },
+          "VirtualNetworks_List_1106_Generated": {
+            "$ref": "./examples/VirtualNetworks_List_1106_Generated.json"
+          },
+          "VirtualNetworks_List_1126_Generated": {
+            "$ref": "./examples/VirtualNetworks_List_1126_Generated.json"
           }
         },
         "x-ms-pageable": {
@@ -419,11 +659,11 @@
           "200": {
             "description": "Delete successful."
           },
-          "204": {
-            "description": "Request successful. Resource does not exist."
-          },
           "202": {
             "description": "Accepted and the operation will complete asynchronously."
+          },
+          "204": {
+            "description": "Request successful. Resource does not exist."
           },
           "default": {
             "description": "Error response describing why the operation failed.",
@@ -435,6 +675,9 @@
         "x-ms-examples": {
           "Delete subnet": {
             "$ref": "./examples/SubnetDelete.json"
+          },
+          "Subnets_Delete_1102_Generated": {
+            "$ref": "./examples/Subnets_Delete_1102_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -504,6 +747,42 @@
           },
           "Get subnet with a delegation": {
             "$ref": "./examples/SubnetGetWithDelegation.json"
+          },
+          "Subnets_Get_2_Generated": {
+            "$ref": "./examples/Subnets_Get_2_Generated.json"
+          },
+          "Subnets_Get_54_Generated": {
+            "$ref": "./examples/Subnets_Get_54_Generated.json"
+          },
+          "Subnets_Get_905_Generated": {
+            "$ref": "./examples/Subnets_Get_905_Generated.json"
+          },
+          "Subnets_Get_934_Generated": {
+            "$ref": "./examples/Subnets_Get_934_Generated.json"
+          },
+          "Subnets_Get_1028_Generated": {
+            "$ref": "./examples/Subnets_Get_1028_Generated.json"
+          },
+          "Subnets_Get_1036_Generated": {
+            "$ref": "./examples/Subnets_Get_1036_Generated.json"
+          },
+          "Subnets_Get_1042_Generated": {
+            "$ref": "./examples/Subnets_Get_1042_Generated.json"
+          },
+          "Subnets_Get_1101_Generated": {
+            "$ref": "./examples/Subnets_Get_1101_Generated.json"
+          },
+          "Subnets_Get_1167_Generated": {
+            "$ref": "./examples/Subnets_Get_1167_Generated.json"
+          },
+          "Subnets_Get_1027_Generated": {
+            "$ref": "./examples/Subnets_Get_1027_Generated.json"
+          },
+          "Subnets_Get_1033_Generated": {
+            "$ref": "./examples/Subnets_Get_1033_Generated.json"
+          },
+          "Subnets_Get_1047_Generated": {
+            "$ref": "./examples/Subnets_Get_1047_Generated.json"
           }
         }
       },
@@ -584,6 +863,39 @@
           },
           "Create subnet with a delegation": {
             "$ref": "./examples/SubnetCreateWithDelegation.json"
+          },
+          "Create_subnets_appgw_private_endpoint_subnet_Generated": {
+            "$ref": "./examples/Create_subnets_appgw_private_endpoint_subnet_Generated.json"
+          },
+          "Create_subnets_appgw_private_endpoint_subnet_for_private_Generated": {
+            "$ref": "./examples/Create_subnets_appgw_private_endpoint_subnet_for_private_Generated.json"
+          },
+          "Create_subnets_subnet1_Generated": {
+            "$ref": "./examples/Create_subnets_subnet1_Generated.json"
+          },
+          "Create_subnets_subnet2_Generated": {
+            "$ref": "./examples/Create_subnets_subnet2_Generated.json"
+          },
+          "Create_subnets_subnet1_Generated_1030": {
+            "$ref": "./examples/Create_subnets_subnet1_Generated_1030.json"
+          },
+          "Create_subnets_subnet1_Generated_1038": {
+            "$ref": "./examples/Create_subnets_subnet1_Generated_1038.json"
+          },
+          "Create_subnets_default_Generated": {
+            "$ref": "./examples/Create_subnets_default_Generated.json"
+          },
+          "Create_subnets_RouteServerSubnet_Generated": {
+            "$ref": "./examples/Create_subnets_RouteServerSubnet_Generated.json"
+          },
+          "Create_subnets_webapp-privatelink-subnet000005_Generated": {
+            "$ref": "./examples/Create_subnets_webapp-privatelink-subnet000005_Generated.json"
+          },
+          "Create_subnets_subnet1_Generated_1029": {
+            "$ref": "./examples/Create_subnets_subnet1_Generated_1029.json"
+          },
+          "Create_subnets_subnet1_Generated_1049": {
+            "$ref": "./examples/Create_subnets_subnet1_Generated_1049.json"
           }
         }
       }
@@ -879,6 +1191,15 @@
         "x-ms-examples": {
           "List subnets": {
             "$ref": "./examples/SubnetList.json"
+          },
+          "Subnets_List_1100_Generated": {
+            "$ref": "./examples/Subnets_List_1100_Generated.json"
+          },
+          "Subnets_List_1103_Generated": {
+            "$ref": "./examples/Subnets_List_1103_Generated.json"
+          },
+          "Subnets_List_1166_Generated": {
+            "$ref": "./examples/Subnets_List_1166_Generated.json"
           }
         }
       }
@@ -923,11 +1244,11 @@
           "200": {
             "description": "Delete successful."
           },
-          "204": {
-            "description": "Delete successful."
-          },
           "202": {
             "description": "Accepted and the operation will complete asynchronously."
+          },
+          "204": {
+            "description": "Delete successful."
           },
           "default": {
             "description": "Error response describing why the operation failed.",
@@ -939,6 +1260,9 @@
         "x-ms-examples": {
           "Delete peering": {
             "$ref": "./examples/VirtualNetworkPeeringDelete.json"
+          },
+          "VirtualNetworkPeerings_Delete_1159_Generated": {
+            "$ref": "./examples/VirtualNetworkPeerings_Delete_1159_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -998,6 +1322,9 @@
         "x-ms-examples": {
           "Get peering": {
             "$ref": "./examples/VirtualNetworkPeeringGet.json"
+          },
+          "VirtualNetworkPeerings_Get_1156_Generated": {
+            "$ref": "./examples/VirtualNetworkPeerings_Get_1156_Generated.json"
           }
         }
       },
@@ -1068,6 +1395,12 @@
         "x-ms-examples": {
           "Create peering": {
             "$ref": "./examples/VirtualNetworkPeeringCreate.json"
+          },
+          "Create_virtualNetworkPeerings_peering2_Generated": {
+            "$ref": "./examples/Create_virtualNetworkPeerings_peering2_Generated.json"
+          },
+          "Create_virtualNetworkPeerings_peering1_Generated": {
+            "$ref": "./examples/Create_virtualNetworkPeerings_peering1_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -1125,6 +1458,12 @@
         "x-ms-examples": {
           "List peerings": {
             "$ref": "./examples/VirtualNetworkPeeringList.json"
+          },
+          "VirtualNetworkPeerings_List_1155_Generated": {
+            "$ref": "./examples/VirtualNetworkPeerings_List_1155_Generated.json"
+          },
+          "VirtualNetworkPeerings_List_1160_Generated": {
+            "$ref": "./examples/VirtualNetworkPeerings_List_1160_Generated.json"
           }
         }
       }
@@ -1179,6 +1518,12 @@
         "x-ms-examples": {
           "Check IP address availability": {
             "$ref": "./examples/VirtualNetworkCheckIPAddressAvailability.json"
+          },
+          "VirtualNetworks_CheckIPAddressAvailability_1088_Generated": {
+            "$ref": "./examples/VirtualNetworks_CheckIPAddressAvailability_1088_Generated.json"
+          },
+          "VirtualNetworks_CheckIPAddressAvailability_1138_Generated": {
+            "$ref": "./examples/VirtualNetworks_CheckIPAddressAvailability_1138_Generated.json"
           }
         }
       }

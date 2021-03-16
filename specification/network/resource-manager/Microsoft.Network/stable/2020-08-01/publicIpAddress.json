@@ -64,14 +64,14 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "Request successful. Resource does not exist."
+          "200": {
+            "description": "Delete successful."
           },
           "202": {
             "description": "Accepted and the operation will complete asynchronously."
           },
-          "200": {
-            "description": "Delete successful."
+          "204": {
+            "description": "Request successful. Resource does not exist."
           },
           "default": {
             "description": "Error response describing why the operation failed.",
@@ -83,6 +83,12 @@
         "x-ms-examples": {
           "Delete public IP address": {
             "$ref": "./examples/PublicIpAddressDelete.json"
+          },
+          "PublicIPAddresses_Delete_Generated_10": {
+            "$ref": "./examples/PublicIPAddresses_Delete_Generated_10.json"
+          },
+          "PublicIPAddresses_Delete_946_Generated": {
+            "$ref": "./examples/PublicIPAddresses_Delete_946_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -142,6 +148,27 @@
         "x-ms-examples": {
           "Get public IP address": {
             "$ref": "./examples/PublicIpAddressGet.json"
+          },
+          "PublicIPAddresses_Get_Generated_8": {
+            "$ref": "./examples/PublicIPAddresses_Get_Generated_8.json"
+          },
+          "PublicIPAddresses_Get_442_Generated": {
+            "$ref": "./examples/PublicIPAddresses_Get_442_Generated.json"
+          },
+          "PublicIPAddresses_Get_567_Generated": {
+            "$ref": "./examples/PublicIPAddresses_Get_567_Generated.json"
+          },
+          "PublicIPAddresses_Get_686_Generated": {
+            "$ref": "./examples/PublicIPAddresses_Get_686_Generated.json"
+          },
+          "PublicIPAddresses_Get_688_Generated": {
+            "$ref": "./examples/PublicIPAddresses_Get_688_Generated.json"
+          },
+          "PublicIPAddresses_Get_743_Generated": {
+            "$ref": "./examples/PublicIPAddresses_Get_743_Generated.json"
+          },
+          "PublicIPAddresses_Get_945_Generated": {
+            "$ref": "./examples/PublicIPAddresses_Get_945_Generated.json"
           }
         }
       },
@@ -183,14 +210,14 @@
           }
         ],
         "responses": {
-          "201": {
-            "description": "Create successful. The operation returns the resulting PublicIPAddress resource.",
+          "200": {
+            "description": "Update successful. The operation returns the resulting PublicIPAddress resource.",
             "schema": {
               "$ref": "#/definitions/PublicIPAddress"
             }
           },
-          "200": {
-            "description": "Update successful. The operation returns the resulting PublicIPAddress resource.",
+          "201": {
+            "description": "Create successful. The operation returns the resulting PublicIPAddress resource.",
             "schema": {
               "$ref": "#/definitions/PublicIPAddress"
             }
@@ -211,6 +238,195 @@
           },
           "Create public IP address DNS": {
             "$ref": "./examples/PublicIpAddressCreateDns.json"
+          },
+          "PublicIPAddresses_CreateOrUpdate_Generated_1": {
+            "$ref": "./examples/PublicIPAddresses_CreateOrUpdate_Generated_1.json"
+          },
+          "PublicIPAddresses_CreateOrUpdate_Generated_3": {
+            "$ref": "./examples/PublicIPAddresses_CreateOrUpdate_Generated_3.json"
+          },
+          "Create_publicIPAddresses_appgw_ip_Generated": {
+            "$ref": "./examples/Create_publicIPAddresses_appgw_ip_Generated.json"
+          },
+          "Create_publicIPAddresses_appgw_ip_Generated_9": {
+            "$ref": "./examples/Create_publicIPAddresses_appgw_ip_Generated_9.json"
+          },
+          "Create_publicIPAddresses_public_ip_Generated": {
+            "$ref": "./examples/Create_publicIPAddresses_public_ip_Generated.json"
+          },
+          "Create_publicIPAddresses_gwip1_Generated": {
+            "$ref": "./examples/Create_publicIPAddresses_gwip1_Generated.json"
+          },
+          "Create_publicIPAddresses_gwip2_Generated": {
+            "$ref": "./examples/Create_publicIPAddresses_gwip2_Generated.json"
+          },
+          "Create_publicIPAddresses_gw1ip1_Generated": {
+            "$ref": "./examples/Create_publicIPAddresses_gw1ip1_Generated.json"
+          },
+          "Create_publicIPAddresses_gw1ip2_Generated": {
+            "$ref": "./examples/Create_publicIPAddresses_gw1ip2_Generated.json"
+          },
+          "Create_publicIPAddresses_gw2ip1_Generated": {
+            "$ref": "./examples/Create_publicIPAddresses_gw2ip1_Generated.json"
+          },
+          "Create_publicIPAddresses_gw2ip2_Generated": {
+            "$ref": "./examples/Create_publicIPAddresses_gw2ip2_Generated.json"
+          },
+          "Create_publicIPAddresses_myip1_Generated": {
+            "$ref": "./examples/Create_publicIPAddresses_myip1_Generated.json"
+          },
+          "Create_publicIPAddresses_myip1_Generated_120": {
+            "$ref": "./examples/Create_publicIPAddresses_myip1_Generated_120.json"
+          },
+          "Create_publicIPAddresses_myip2_Generated": {
+            "$ref": "./examples/Create_publicIPAddresses_myip2_Generated.json"
+          },
+          "Create_publicIPAddresses_ip1_Generated": {
+            "$ref": "./examples/Create_publicIPAddresses_ip1_Generated.json"
+          },
+          "Create_publicIPAddresses_ip-1_Generated": {
+            "$ref": "./examples/Create_publicIPAddresses_ip-1_Generated.json"
+          },
+          "Create_publicIPAddresses_gateway_ip_Generated": {
+            "$ref": "./examples/Create_publicIPAddresses_gateway_ip_Generated.json"
+          },
+          "Create_publicIPAddresses_myip1_Generated_180": {
+            "$ref": "./examples/Create_publicIPAddresses_myip1_Generated_180.json"
+          },
+          "Create_publicIPAddresses_pip1_Generated": {
+            "$ref": "./examples/Create_publicIPAddresses_pip1_Generated.json"
+          },
+          "Create_publicIPAddresses_pip1_Generated_213": {
+            "$ref": "./examples/Create_publicIPAddresses_pip1_Generated_213.json"
+          },
+          "Create_publicIPAddresses_pip1_Generated_230": {
+            "$ref": "./examples/Create_publicIPAddresses_pip1_Generated_230.json"
+          },
+          "Create_publicIPAddresses_pubip1_Generated": {
+            "$ref": "./examples/Create_publicIPAddresses_pubip1_Generated.json"
+          },
+          "Create_publicIPAddresses_pip1_Generated_259": {
+            "$ref": "./examples/Create_publicIPAddresses_pip1_Generated_259.json"
+          },
+          "Create_publicIPAddresses_pip1_Generated_351": {
+            "$ref": "./examples/Create_publicIPAddresses_pip1_Generated_351.json"
+          },
+          "Create_publicIPAddresses_pip2_Generated": {
+            "$ref": "./examples/Create_publicIPAddresses_pip2_Generated.json"
+          },
+          "Create_publicIPAddresses_pip1_Generated_368": {
+            "$ref": "./examples/Create_publicIPAddresses_pip1_Generated_368.json"
+          },
+          "Create_publicIPAddresses_ip1_Generated_387": {
+            "$ref": "./examples/Create_publicIPAddresses_ip1_Generated_387.json"
+          },
+          "Create_publicIPAddresses_ip1_Generated_405": {
+            "$ref": "./examples/Create_publicIPAddresses_ip1_Generated_405.json"
+          },
+          "Create_publicIPAddresses_ip1_Generated_412": {
+            "$ref": "./examples/Create_publicIPAddresses_ip1_Generated_412.json"
+          },
+          "Create_publicIPAddresses_publicIP_Generated": {
+            "$ref": "./examples/Create_publicIPAddresses_publicIP_Generated.json"
+          },
+          "Create_publicIPAddresses_ip1_Generated_436": {
+            "$ref": "./examples/Create_publicIPAddresses_ip1_Generated_436.json"
+          },
+          "Create_publicIPAddresses_publicip4_Generated": {
+            "$ref": "./examples/Create_publicIPAddresses_publicip4_Generated.json"
+          },
+          "Create_publicIPAddresses_publicip1_Generated": {
+            "$ref": "./examples/Create_publicIPAddresses_publicip1_Generated.json"
+          },
+          "Create_publicIPAddresses_publicip2_Generated": {
+            "$ref": "./examples/Create_publicIPAddresses_publicip2_Generated.json"
+          },
+          "Create_publicIPAddresses_publicip3_Generated": {
+            "$ref": "./examples/Create_publicIPAddresses_publicip3_Generated.json"
+          },
+          "Create_publicIPAddresses_publicip4_Generated_570": {
+            "$ref": "./examples/Create_publicIPAddresses_publicip4_Generated_570.json"
+          },
+          "Create_publicIPAddresses_pubip2_Generated": {
+            "$ref": "./examples/Create_publicIPAddresses_pubip2_Generated.json"
+          },
+          "Create_publicIPAddresses_publicip1_Generated_696": {
+            "$ref": "./examples/Create_publicIPAddresses_publicip1_Generated_696.json"
+          },
+          "Create_publicIPAddresses_publicip2_Generated_698": {
+            "$ref": "./examples/Create_publicIPAddresses_publicip2_Generated_698.json"
+          },
+          "Create_publicIPAddresses_publicip3_Generated_700": {
+            "$ref": "./examples/Create_publicIPAddresses_publicip3_Generated_700.json"
+          },
+          "Create_publicIPAddresses_pip1_Generated_740": {
+            "$ref": "./examples/Create_publicIPAddresses_pip1_Generated_740.json"
+          },
+          "Create_publicIPAddresses_pip2_Generated_742": {
+            "$ref": "./examples/Create_publicIPAddresses_pip2_Generated_742.json"
+          },
+          "Create_publicIPAddresses_publicip1_Generated_750": {
+            "$ref": "./examples/Create_publicIPAddresses_publicip1_Generated_750.json"
+          },
+          "Create_publicIPAddresses_publicip2_Generated_842": {
+            "$ref": "./examples/Create_publicIPAddresses_publicip2_Generated_842.json"
+          },
+          "Create_publicIPAddresses_pubipdns_Generated": {
+            "$ref": "./examples/Create_publicIPAddresses_pubipdns_Generated.json"
+          },
+          "Create_publicIPAddresses_pubipnodns_Generated": {
+            "$ref": "./examples/Create_publicIPAddresses_pubipnodns_Generated.json"
+          },
+          "Create_publicIPAddresses_pip1_Generated_958": {
+            "$ref": "./examples/Create_publicIPAddresses_pip1_Generated_958.json"
+          },
+          "Create_publicIPAddresses_pubip1_Generated_962": {
+            "$ref": "./examples/Create_publicIPAddresses_pubip1_Generated_962.json"
+          },
+          "Create_publicIPAddresses_pubip2_Generated_964": {
+            "$ref": "./examples/Create_publicIPAddresses_pubip2_Generated_964.json"
+          },
+          "Create_publicIPAddresses_pubip3_Generated": {
+            "$ref": "./examples/Create_publicIPAddresses_pubip3_Generated.json"
+          },
+          "Create_publicIPAddresses_pubip4_Generated": {
+            "$ref": "./examples/Create_publicIPAddresses_pubip4_Generated.json"
+          },
+          "Create_publicIPAddresses_ip_Generated": {
+            "$ref": "./examples/Create_publicIPAddresses_ip_Generated.json"
+          },
+          "Create_publicIPAddresses_ip1_Generated_1051": {
+            "$ref": "./examples/Create_publicIPAddresses_ip1_Generated_1051.json"
+          },
+          "Create_publicIPAddresses_pip1_Generated_1114": {
+            "$ref": "./examples/Create_publicIPAddresses_pip1_Generated_1114.json"
+          },
+          "Create_publicIPAddresses_ip1_Generated_1148": {
+            "$ref": "./examples/Create_publicIPAddresses_ip1_Generated_1148.json"
+          },
+          "Create_publicIPAddresses_pip1_Generated_1178": {
+            "$ref": "./examples/Create_publicIPAddresses_pip1_Generated_1178.json"
+          },
+          "Create_publicIPAddresses_pubip1_Generated_1188": {
+            "$ref": "./examples/Create_publicIPAddresses_pubip1_Generated_1188.json"
+          },
+          "Create_publicIPAddresses_pubip2_Generated_1190": {
+            "$ref": "./examples/Create_publicIPAddresses_pubip2_Generated_1190.json"
+          },
+          "Create_publicIPAddresses_pubip3_Generated_1192": {
+            "$ref": "./examples/Create_publicIPAddresses_pubip3_Generated_1192.json"
+          },
+          "Create_publicIPAddresses_ip_Generated_1216": {
+            "$ref": "./examples/Create_publicIPAddresses_ip_Generated_1216.json"
+          },
+          "Create_publicIPAddresses_vgw1-pip_Generated": {
+            "$ref": "./examples/Create_publicIPAddresses_vgw1-pip_Generated.json"
+          },
+          "Create_publicIPAddresses_pubip_Generated": {
+            "$ref": "./examples/Create_publicIPAddresses_pubip_Generated.json"
+          },
+          "Create_publicIPAddresses_ip1_Generated_1065": {
+            "$ref": "./examples/Create_publicIPAddresses_ip1_Generated_1065.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -354,6 +570,18 @@
         "x-ms-examples": {
           "List resource group public IP addresses": {
             "$ref": "./examples/PublicIpAddressList.json"
+          },
+          "PublicIPAddresses_List_Generated_6": {
+            "$ref": "./examples/PublicIPAddresses_List_Generated_6.json"
+          },
+          "PublicIPAddresses_List_Generated_12": {
+            "$ref": "./examples/PublicIPAddresses_List_Generated_12.json"
+          },
+          "PublicIPAddresses_List_944_Generated": {
+            "$ref": "./examples/PublicIPAddresses_List_944_Generated.json"
+          },
+          "PublicIPAddresses_List_947_Generated": {
+            "$ref": "./examples/PublicIPAddresses_List_947_Generated.json"
           }
         },
         "x-ms-pageable": {

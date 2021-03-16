@@ -1,0 +1,4 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_dns_if_none_match
+    steps: []

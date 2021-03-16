@@ -1,0 +1,108 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_vpn_gateway
+    steps:
+      - step: Create_publicIPAddresses_pubip1
+        resourceName: publicIPAddresses_pubip1
+        exampleFile: ../examples/Create_publicIPAddresses_pubip1_Generated_1188.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: Create_publicIPAddresses_pubip2
+        resourceName: publicIPAddresses_pubip2
+        exampleFile: ../examples/Create_publicIPAddresses_pubip2_Generated_1190.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+        variables:
+          publicIpAddressName: pubip2
+      - step: Create_publicIPAddresses_pubip3
+        resourceName: publicIPAddresses_pubip3
+        exampleFile: ../examples/Create_publicIPAddresses_pubip3_Generated_1192.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+        variables:
+          publicIpAddressName: pubip3
+      - step: Create_virtualNetworks_myvnet1
+        resourceName: virtualNetworks_myvnet1
+        exampleFile: ../examples/Create_virtualNetworks_myvnet1_Generated.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Create_virtualNetworks_myvnet2
+        resourceName: virtualNetworks_myvnet2
+        exampleFile: ../examples/Create_virtualNetworks_myvnet2_Generated.json
+        operationId: VirtualNetworks_CreateOrUpdate
+        variables:
+          virtualNetworkName: myvnet2
+      - step: Create_virtualNetworks_myvnet3
+        resourceName: virtualNetworks_myvnet3
+        exampleFile: ../examples/Create_virtualNetworks_myvnet3_Generated.json
+        operationId: VirtualNetworks_CreateOrUpdate
+        variables:
+          virtualNetworkName: myvnet3
+      - step: Create_virtualNetworkGateways_gateway1
+        resourceName: virtualNetworkGateways_gateway1
+        exampleFile: ../examples/Create_virtualNetworkGateways_gateway1_Generated_1197.json
+        operationId: VirtualNetworkGateways_CreateOrUpdate
+      - step: Create_virtualNetworkGateways_gateway2
+        resourceName: virtualNetworkGateways_gateway2
+        exampleFile: ../examples/Create_virtualNetworkGateways_gateway2_Generated.json
+        operationId: VirtualNetworkGateways_CreateOrUpdate
+        variables:
+          virtualNetworkGatewayName: gateway2
+      - step: Create_virtualNetworkGateways_gateway3
+        resourceName: virtualNetworkGateways_gateway3
+        exampleFile: ../examples/Create_virtualNetworkGateways_gateway3_Generated.json
+        operationId: VirtualNetworkGateways_CreateOrUpdate
+        variables:
+          virtualNetworkGatewayName: gateway3
+      - step: VirtualNetworkGateways_Get_1200
+        exampleFile: ../examples/VirtualNetworkGateways_Get_1200_Generated.json
+        operationId: VirtualNetworkGateways_Get
+      - step: Update_virtualNetworkGateways_gateway1_1205
+        resourceName: virtualNetworkGateways_gateway1
+        operationId: VirtualNetworkGateways_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/provisioningState
+            value: Succeeded
+          - replace: /properties/ipConfigurations/0/properties/provisioningState
+            value: Succeeded
+          - replace: /properties/sku
+            value:
+              name: Standard
+              tier: Standard
+              capacity: 2
+          - remove: /properties/vpnClientConfiguration
+          - replace: /properties/bgpSettings/asn
+            value: 65515
+          - add: >-
+              /properties/bgpSettings/bgpPeeringAddresses/0/defaultBgpIpAddresses/0
+            value: 10.0.0.254
+          - add: /properties/bgpSettings/bgpPeeringAddresses/0/tunnelIpAddresses
+            value:
+              - 23.101.196.134
+          - add: /properties/bgpSettings/bgpPeeringAddress
+            value: 10.0.0.254
+          - add: /properties/customRoutes/addressPrefixes/1
+            value: 102.168.0.6/32
+      - step: VirtualNetworkGatewayConnections_Get_1208
+        exampleFile: ../examples/VirtualNetworkGatewayConnections_Get_1208_Generated.json
+        operationId: VirtualNetworkGatewayConnections_Get
+      - step: VirtualNetworkGateways_Get_1209
+        exampleFile: ../examples/VirtualNetworkGateways_Get_1209_Generated.json
+        operationId: VirtualNetworkGateways_Get
+      - step: Create_connections_conn1to2
+        resourceName: connections_conn1to2
+        exampleFile: ../examples/Create_connections_conn1to2_Generated.json
+        operationId: VirtualNetworkGatewayConnections_CreateOrUpdate
+      - step: VirtualNetworkGateways_GetLearnedRoutes_1212
+        exampleFile: >-
+          ../examples/VirtualNetworkGateways_GetLearnedRoutes_1212_Generated.json
+        operationId: VirtualNetworkGateways_GetLearnedRoutes
+      - step: VirtualNetworkGateways_GetAdvertisedRoutes_1213
+        exampleFile: >-
+          ../examples/VirtualNetworkGateways_GetAdvertisedRoutes_1213_Generated.json
+        operationId: VirtualNetworkGateways_GetAdvertisedRoutes
+      - step: VirtualNetworkGateways_GetBgpPeerStatus_1214
+        exampleFile: >-
+          ../examples/VirtualNetworkGateways_GetBgpPeerStatus_1214_Generated.json
+        operationId: VirtualNetworkGateways_GetBgpPeerStatus
+    variables:
+      publicIpAddressName: pubip1
+      virtualNetworkName: myvnet1
+      virtualNetworkGatewayName: gateway1
+      virtualNetworkGatewayConnectionName: conn1to2

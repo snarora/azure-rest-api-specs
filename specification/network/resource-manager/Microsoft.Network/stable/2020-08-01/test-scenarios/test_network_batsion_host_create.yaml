@@ -1,0 +1,48 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_batsion_host_create
+    steps:
+      - step: Create_virtualNetworks_vnet
+        resourceName: virtualNetworks_vnet
+        exampleFile: ../examples/Create_virtualNetworks_vnet_Generated.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Update_virtualNetworks_vnet_434
+        resourceName: virtualNetworks_vnet
+        operationId: VirtualNetworks_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/subnets/1
+            value:
+              name: vmSubnet
+              properties:
+                addressPrefix: 10.0.2.0/24
+                provisioningState: Succeeded
+                delegations: []
+                privateEndpointNetworkPolicies: Enabled
+                privateLinkServiceNetworkPolicies: Enabled
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_network_bastion_host000001/providers/Microsoft.Network/virtualNetworks/vnet/subnets/vmSubnet
+              type: Microsoft.Network/virtualNetworks/subnets
+      - step: Create_publicIPAddresses_ip1
+        resourceName: publicIPAddresses_ip1
+        exampleFile: ../examples/Create_publicIPAddresses_ip1_Generated_436.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: Create_bastionHosts_clibastion
+        resourceName: bastionHosts_clibastion
+        exampleFile: ../examples/Create_bastionHosts_clibastion_Generated.json
+        operationId: BastionHosts_CreateOrUpdate
+      - step: BastionHosts_List_438
+        exampleFile: ../examples/BastionHosts_List_438_Generated.json
+        operationId: BastionHosts_List
+      - step: BastionHosts_ListByResourceGroup_439
+        exampleFile: ../examples/BastionHosts_ListByResourceGroup_439_Generated.json
+        operationId: BastionHosts_ListByResourceGroup
+      - step: BastionHosts_Get_440
+        exampleFile: ../examples/BastionHosts_Get_440_Generated.json
+        operationId: BastionHosts_Get
+      - step: BastionHosts_Delete_441
+        exampleFile: ../examples/BastionHosts_Delete_441_Generated.json
+        operationId: BastionHosts_Delete
+    variables:
+      virtualNetworkName: vnet
+      publicIpAddressName: ip1
+      bastionHostName: clibastion

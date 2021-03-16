@@ -1,0 +1,45 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_nw_flow_log_update
+    steps:
+      - step: Create_networkSecurityGroups_nsg1
+        resourceName: networkSecurityGroups_nsg1
+        exampleFile: ../examples/Create_networkSecurityGroups_nsg1_Generated_1382.json
+        operationId: NetworkSecurityGroups_CreateOrUpdate
+      - step: NetworkWatchers_ListAll_1383
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: Create_flowLogs_flow_log_test2
+        resourceName: flowLogs_flow_log_test2
+        exampleFile: ../examples/Create_flowLogs_flow_log_test2_Generated_1385.json
+        operationId: FlowLogs_CreateOrUpdate
+      - step: NetworkWatchers_ListAll_1386
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: FlowLogs_Get_1387
+        exampleFile: ../examples/FlowLogs_Get_1387_Generated.json
+        operationId: FlowLogs_Get
+      - step: NetworkWatchers_ListAll_1388
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: FlowLogs_Get_1389
+        exampleFile: ../examples/FlowLogs_Get_1387_Generated.json
+        operationId: FlowLogs_Get
+      - step: Update_flowLogs_flow_log_test2_1391
+        resourceName: flowLogs_flow_log_test2
+        operationId: FlowLogs_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/storageId
+            value: >-
+              /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_nw_flow_log_000001/providers/Microsoft.Storage/storageAccounts/storageaccount0395
+          - replace: /properties/retentionPolicy
+            value:
+              days: 2
+              enabled: true
+          - add: /tags
+            value:
+              foo: bar
+    variables:
+      networkSecurityGroupName: nsg1
+      networkWatcherName: NetworkWatcher_eastus
+      flowLogName: flow_log_test2

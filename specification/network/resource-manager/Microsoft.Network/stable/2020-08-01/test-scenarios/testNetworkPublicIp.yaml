@@ -1,0 +1,53 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_public_ip
+    steps:
+      - step: PublicIPAddresses_CreateOrUpdate_0
+        exampleFile: ../examples/PublicIPAddresses_CreateOrUpdate_Generated_1.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: PublicIPAddresses_CreateOrUpdate_2
+        exampleFile: ../examples/PublicIPAddresses_CreateOrUpdate_Generated_3.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: PublicIPAddresses_CreateOrUpdate_4
+        fromStep: PublicIPAddresses_CreateOrUpdate_2
+        operationId: PublicIPAddresses_CreateOrUpdate
+        patchRequest:
+          - replace: /parameters/properties/idleTimeoutInMinutes
+            value: 10
+          - replace: /parameters/properties/publicIPAllocationMethod
+            value: Static
+          - add: /parameters/properties/dnsSettings
+            value:
+              domainNameLabel: wowza2
+          - add: /parameters/tags
+            value:
+              foo: doo
+        patchResponse:
+          - replace: /properties/idleTimeoutInMinutes
+            value: 10
+          - replace: /properties/publicIPAllocationMethod
+            value: Static
+          - add: /properties/ipAddress
+            value: 13.88.11.155
+          - add: /properties/dnsSettings
+            value:
+              domainNameLabel: wowza2
+              fqdn: wowza2.westus.cloudapp.azure.com
+          - replace: /etag
+            value: W/"0211d1f6-fb21-481b-9124-0a15157cef61"
+          - add: /tags
+            value:
+              foo: doo
+      - step: PublicIPAddresses_List_5
+        exampleFile: ../examples/PublicIPAddresses_List_Generated_6.json
+        operationId: PublicIPAddresses_List
+      - step: PublicIPAddresses_Get_7
+        exampleFile: ../examples/PublicIPAddresses_Get_Generated_8.json
+        operationId: PublicIPAddresses_Get
+      - step: PublicIPAddresses_Delete_9
+        exampleFile: ../examples/PublicIPAddresses_Delete_Generated_10.json
+        statusCode: 202
+        operationId: PublicIPAddresses_Delete
+      - step: PublicIPAddresses_List_11
+        exampleFile: ../examples/PublicIPAddresses_List_Generated_12.json
+        operationId: PublicIPAddresses_List

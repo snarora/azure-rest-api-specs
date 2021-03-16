@@ -1,0 +1,23 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_app_gateway_with_trusted_client_cert
+    steps:
+      - step: Create_publicIPAddresses_ip1
+        resourceName: publicIPAddresses_ip1
+        exampleFile: ../examples/Create_publicIPAddresses_ip1_Generated_412.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: ApplicationGateways_Get_413
+        exampleFile: ../examples/ApplicationGateways_Get_413_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: Create_applicationGateways_gateway
+        resourceName: applicationGateways_gateway
+        exampleFile: ../examples/Create_applicationGateways_gateway_Generated_415.json
+        operationId: ApplicationGateways_CreateOrUpdate
+      - step: Update_applicationGateways_gateway_417
+        resourceName: applicationGateways_gateway
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - remove: /properties/trustedClientCertificates/1
+    variables:
+      publicIpAddressName: ip1
+      applicationGatewayName: gateway

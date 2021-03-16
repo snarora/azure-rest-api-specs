@@ -1,0 +1,36 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_route_filter
+    steps:
+      - step: Create_routeFilters_filter1
+        resourceName: routeFilters_filter1
+        exampleFile: ../examples/Create_routeFilters_filter1_Generated.json
+        operationId: RouteFilters_CreateOrUpdate
+      - step: Update_routeFilters_filter1_970
+        resourceName: routeFilters_filter1
+        operationId: RouteFilters_CreateOrUpdate
+      - step: RouteFilters_ListByResourceGroup_971
+        exampleFile: ../examples/RouteFilters_ListByResourceGroup_971_Generated.json
+        operationId: RouteFilters_ListByResourceGroup
+      - step: Create_routeFilterRules_rule1
+        resourceName: routeFilterRules_rule1
+        exampleFile: ../examples/Create_routeFilterRules_rule1_Generated.json
+        operationId: RouteFilterRules_CreateOrUpdate
+      - step: Update_routeFilterRules_rule1_974
+        resourceName: routeFilterRules_rule1
+        operationId: RouteFilterRules_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/access
+            value: Deny
+      - step: RouteFilterRules_ListByRouteFilter_975
+        exampleFile: ../examples/RouteFilterRules_ListByRouteFilter_975_Generated.json
+        operationId: RouteFilterRules_ListByRouteFilter
+      - step: RouteFilterRules_Delete_976
+        exampleFile: ../examples/RouteFilterRules_Delete_976_Generated.json
+        operationId: RouteFilterRules_Delete
+      - step: RouteFilters_Delete_977
+        exampleFile: ../examples/RouteFilters_Delete_977_Generated.json
+        operationId: RouteFilters_Delete
+    variables:
+      routeFilterName: filter1
+      ruleName: rule1

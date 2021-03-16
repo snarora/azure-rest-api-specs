@@ -1,0 +1,52 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_public_ip_prefix
+    steps:
+      - step: Create_publicIPPrefixes_prefix1
+        resourceName: publicIPPrefixes_prefix1
+        exampleFile: ../examples/Create_publicIPPrefixes_prefix1_Generated_949.json
+        operationId: PublicIPPrefixes_CreateOrUpdate
+      - step: Update_publicIPPrefixes_prefix1_951
+        resourceName: publicIPPrefixes_prefix1
+        operationId: PublicIPPrefixes_CreateOrUpdate
+        resourceUpdate:
+          - add: /tags
+            value:
+              foo: doo
+      - step: PublicIPPrefixes_List_952
+        exampleFile: ../examples/PublicIPPrefixes_List_952_Generated.json
+        operationId: PublicIPPrefixes_List
+      - step: PublicIPPrefixes_Delete_953
+        exampleFile: ../examples/PublicIPPrefixes_Delete_953_Generated.json
+        operationId: PublicIPPrefixes_Delete
+      - step: PublicIPPrefixes_List_954
+        exampleFile: ../examples/PublicIPPrefixes_List_954_Generated.json
+        operationId: PublicIPPrefixes_List
+      - step: Update_publicIPPrefixes_prefix1_956
+        resourceName: publicIPPrefixes_prefix1
+        operationId: PublicIPPrefixes_CreateOrUpdate
+        resourceUpdate:
+          - remove: /tags
+          - replace: /properties/resourceGuid
+            value: 8c815e0d-1dce-4fdc-8e7e-1ac3f3014f8a
+          - replace: /properties/ipPrefix
+            value: 40.65.199.200/30
+      - step: Create_publicIPAddresses_pip1
+        resourceName: publicIPAddresses_pip1
+        exampleFile: ../examples/Create_publicIPAddresses_pip1_Generated_958.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: Create_publicIPPrefixes_public_ip_prefix_0
+        resourceName: publicIPPrefixes_public_ip_prefix_0
+        exampleFile: ../examples/Create_publicIPPrefixes_public_ip_prefix_0_Generated.json
+        operationId: PublicIPPrefixes_CreateOrUpdate
+        variables:
+          publicIpPrefixName: public_ip_prefix_0
+      - step: Create_publicIPPrefixes_public_ip_prefix_2
+        resourceName: publicIPPrefixes_public_ip_prefix_2
+        exampleFile: ../examples/Create_publicIPPrefixes_public_ip_prefix_2_Generated.json
+        operationId: PublicIPPrefixes_CreateOrUpdate
+        variables:
+          publicIpPrefixName: public_ip_prefix_2
+    variables:
+      publicIpPrefixName: prefix1
+      publicIpAddressName: pip1

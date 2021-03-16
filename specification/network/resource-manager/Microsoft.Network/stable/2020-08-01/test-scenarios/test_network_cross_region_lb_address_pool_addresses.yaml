@@ -1,0 +1,46 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_cross_region_lb_address_pool_addresses
+    steps:
+      - step: Create_backendAddressPools_address_pool000005
+        resourceName: backendAddressPools_address_pool000005
+        exampleFile: >-
+          ../examples/Create_backendAddressPools_address_pool000005_Generated.json
+        operationId: LoadBalancerBackendAddressPools_CreateOrUpdate
+      - step: Update_backendAddressPools_address_pool000005_459
+        resourceName: backendAddressPools_address_pool000005
+        operationId: LoadBalancerBackendAddressPools_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/loadBalancerBackendAddresses/1
+            value:
+              name: backend_address000007
+              properties:
+                loadBalancerFrontendIPConfiguration:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_cross_region_lb_address_pool_addresses000001/providers/Microsoft.Network/loadBalancers/regional_lb000003/frontendIPConfigurations/LoadBalancerFrontEnd
+                provisioningState: Succeeded
+                ipAddress: 40.112.253.186
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_cross_region_lb_address_pool_addresses000001/providers/Microsoft.Network/loadBalancers/cross_region_lb000004/backendAddressPools/address_pool000005/loadBalancerBackendAddresses/backend_address000007
+              type: >-
+                Microsoft.Network/loadBalancers/backendAddressPools/loadBalancerBackendAddresses
+      - step: Update_backendAddressPools_address_pool000005_461
+        resourceName: backendAddressPools_address_pool000005
+        operationId: LoadBalancerBackendAddressPools_CreateOrUpdate
+        resourceUpdate:
+          - remove: /properties/loadBalancerBackendAddresses/1
+      - step: LoadBalancerBackendAddressPools_List_462
+        exampleFile: ../examples/LoadBalancerBackendAddressPools_List_462_Generated.json
+        operationId: LoadBalancerBackendAddressPools_List
+      - step: LoadBalancerBackendAddressPools_Get_463
+        exampleFile: ../examples/LoadBalancerBackendAddressPools_Get_463_Generated.json
+        operationId: LoadBalancerBackendAddressPools_Get
+      - step: LoadBalancerBackendAddressPools_Delete_464
+        exampleFile: ../examples/LoadBalancerBackendAddressPools_Delete_455_Generated.json
+        operationId: LoadBalancerBackendAddressPools_Delete
+      - step: LoadBalancerBackendAddressPools_List_465
+        exampleFile: ../examples/LoadBalancerBackendAddressPools_List_465_Generated.json
+        operationId: LoadBalancerBackendAddressPools_List
+    variables:
+      loadBalancerName: cross_region_lb000004
+      backendAddressPoolName: address_pool000005

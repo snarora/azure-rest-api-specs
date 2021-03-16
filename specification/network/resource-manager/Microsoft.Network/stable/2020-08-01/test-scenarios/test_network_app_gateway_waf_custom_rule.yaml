@@ -1,0 +1,68 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_app_gateway_waf_custom_rule
+    steps:
+      - step: Create_ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        exampleFile: >-
+          ../examples/Create_ApplicationGatewayWebApplicationFirewallPolicies_waf_1_Generated.json
+        statusCode: 201
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+      - step: Update_ApplicationGatewayWebApplicationFirewallPolicies_agp1_295
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/customRules/0
+            value:
+              name: rule1
+              priority: 50
+              ruleType: MatchRule
+              matchConditions: []
+              action: Log
+              rateLimitThreshold: 0
+              skippedManagedRuleSets: []
+      - step: Update_ApplicationGatewayWebApplicationFirewallPolicies_agp1_297
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/customRules/0/matchConditions/0
+            value:
+              matchVariables:
+                - variableName: RequestHeaders
+                  selector: value
+              operator: Contains
+              matchValues:
+                - foo
+                - boo
+              transforms:
+                - Lowercase
+              negationConditon: false
+      - step: Update_ApplicationGatewayWebApplicationFirewallPolicies_agp1_299
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/customRules/0/priority
+            value: 75
+      - step: Update_ApplicationGatewayWebApplicationFirewallPolicies_agp1_301
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/customRules/0/matchConditions/1
+            value:
+              matchVariables:
+                - variableName: RequestHeaders
+                  selector: value
+              operator: Contains
+              matchValues:
+                - remove
+                - this
+              transforms:
+                - Lowercase
+              negationConditon: false
+      - step: Update_ApplicationGatewayWebApplicationFirewallPolicies_agp1_303
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+        resourceUpdate:
+          - remove: /properties/customRules/0/matchConditions/1
+    variables:
+      policyName: agp1

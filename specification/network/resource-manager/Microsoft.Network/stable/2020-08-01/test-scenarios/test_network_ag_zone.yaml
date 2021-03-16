@@ -1,0 +1,14 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_ag_zone
+    steps:
+      - step: Create_publicIPAddresses_pubip1
+        resourceName: publicIPAddresses_pubip1
+        exampleFile: ../examples/Create_publicIPAddresses_pubip1_Generated.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: ApplicationGateways_Get_247
+        exampleFile: ../examples/ApplicationGateways_Get_247_Generated.json
+        operationId: ApplicationGateways_Get
+    variables:
+      publicIpAddressName: pubip1
+      applicationGatewayName: ag1

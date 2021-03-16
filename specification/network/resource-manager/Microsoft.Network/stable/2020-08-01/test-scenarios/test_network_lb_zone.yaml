@@ -1,0 +1,41 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_lb_zone
+    steps:
+      - step: LoadBalancers_Get_687
+        exampleFile: ../examples/LoadBalancers_Get_687_Generated.json
+        operationId: LoadBalancers_Get
+      - step: PublicIPAddresses_Get_688
+        exampleFile: ../examples/PublicIPAddresses_Get_688_Generated.json
+        operationId: PublicIPAddresses_Get
+      - step: LoadBalancers_Get_689
+        exampleFile: ../examples/LoadBalancers_Get_689_Generated.json
+        operationId: LoadBalancers_Get
+        variables:
+          loadBalancerName: lb2
+      - step: Create_loadBalancers_lb2
+        resourceName: loadBalancers_lb2
+        exampleFile: ../examples/Create_loadBalancers_lb2_Generated_691.json
+        operationId: LoadBalancers_CreateOrUpdate
+        variables:
+          loadBalancerName: lb2
+      - step: Create_publicIPAddresses_pubip2
+        resourceName: publicIPAddresses_pubip2
+        exampleFile: ../examples/Create_publicIPAddresses_pubip2_Generated.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+        variables:
+          publicIpAddressName: pubip2
+      - step: LoadBalancers_Get_693
+        exampleFile: ../examples/LoadBalancers_Get_693_Generated.json
+        operationId: LoadBalancers_Get
+        variables:
+          loadBalancerName: lb4
+      - step: Create_loadBalancers_lb4
+        resourceName: loadBalancers_lb4
+        exampleFile: ../examples/Create_loadBalancers_lb4_Generated.json
+        operationId: LoadBalancers_CreateOrUpdate
+        variables:
+          loadBalancerName: lb4
+    variables:
+      loadBalancerName: lb1
+      publicIpAddressName: pubip1

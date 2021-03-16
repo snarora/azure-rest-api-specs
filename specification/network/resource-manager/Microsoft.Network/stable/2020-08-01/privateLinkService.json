@@ -64,13 +64,13 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Delete successful."
+          },
           "202": {
             "description": "Accepted and the operation will complete asynchronously."
           },
           "204": {
-            "description": "Delete successful."
-          },
-          "200": {
             "description": "Delete successful."
           },
           "default": {
@@ -87,6 +87,9 @@
         "x-ms-examples": {
           "Delete private link service": {
             "$ref": "./examples/PrivateLinkServiceDelete.json"
+          },
+          "PrivateLinkServices_Delete_933_Generated": {
+            "$ref": "./examples/PrivateLinkServices_Delete_933_Generated.json"
           }
         }
       },
@@ -142,6 +145,15 @@
         "x-ms-examples": {
           "Get private link service": {
             "$ref": "./examples/PrivateLinkServiceGet.json"
+          },
+          "PrivateLinkServices_Get_912_Generated": {
+            "$ref": "./examples/PrivateLinkServices_Get_912_Generated.json"
+          },
+          "PrivateLinkServices_Get_916_Generated": {
+            "$ref": "./examples/PrivateLinkServices_Get_916_Generated.json"
+          },
+          "PrivateLinkServices_Get_932_Generated": {
+            "$ref": "./examples/PrivateLinkServices_Get_932_Generated.json"
           }
         }
       },
@@ -209,6 +221,12 @@
         "x-ms-examples": {
           "Create private link service": {
             "$ref": "./examples/PrivateLinkServiceCreate.json"
+          },
+          "Create_privateLinkServices_lks1_Generated": {
+            "$ref": "./examples/Create_privateLinkServices_lks1_Generated.json"
+          },
+          "Create_privateLinkServices_lks1_Generated_928": {
+            "$ref": "./examples/Create_privateLinkServices_lks1_Generated_928.json"
           }
         }
       }
@@ -252,6 +270,9 @@
         "x-ms-examples": {
           "List private link service in resource group": {
             "$ref": "./examples/PrivateLinkServiceList.json"
+          },
+          "PrivateLinkServices_List_931_Generated": {
+            "$ref": "./examples/PrivateLinkServices_List_931_Generated.json"
           }
         },
         "x-ms-pageable": {
@@ -422,6 +443,9 @@
         "x-ms-examples": {
           "approve or reject private end point connection for a private link service": {
             "$ref": "./examples/PrivateLinkServiceUpdatePrivateEndpointConnection.json"
+          },
+          "Create_privateEndpointConnections_pe1.c39a6349-ed87-46f8-bc25-16e3010d75ea_Generated": {
+            "$ref": "./examples/Create_privateEndpointConnections_pe1.c39a6349-ed87-46f8-bc25-16e3010d75ea_Generated.json"
           }
         }
       },
@@ -461,13 +485,13 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Delete successful."
+          },
           "202": {
             "description": "Accepted and the operation will complete asynchronously."
           },
           "204": {
-            "description": "Delete successful."
-          },
-          "200": {
             "description": "Delete successful."
           },
           "default": {
@@ -480,6 +504,9 @@
         "x-ms-examples": {
           "delete private end point connection for a private link service": {
             "$ref": "./examples/PrivateLinkServiceDeletePrivateEndpointConnection.json"
+          },
+          "PrivateLinkServices_DeletePrivateEndpointConnection_915_Generated": {
+            "$ref": "./examples/PrivateLinkServices_DeletePrivateEndpointConnection_915_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,

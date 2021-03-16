@@ -1,0 +1,27 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_private_link_resource_batch_account
+    steps:
+      - step: Create_virtualNetworks_testvnet000002
+        resourceName: virtualNetworks_testvnet000002
+        exampleFile: ../examples/Create_virtualNetworks_testvnet000002_Generated.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Subnets_Get_1447
+        exampleFile: ../examples/Subnets_Get_2_Generated.json
+        operationId: Subnets_Get
+      - step: Create_subnets_testsubnet000003
+        resourceName: subnets_testsubnet000003
+        exampleFile: >-
+          ../examples/Create_subnets_appgw_private_endpoint_subnet_Generated.json
+        operationId: Subnets_CreateOrUpdate
+      - step: Create_privateEndpoints_priv_endpoint000004
+        resourceName: privateEndpoints_priv_endpoint000004
+        exampleFile: ../examples/Create_privateEndpoints_priv_endpoint000004_Generated.json
+        operationId: PrivateEndpoints_CreateOrUpdate
+      - step: PrivateEndpoints_Delete_1450
+        exampleFile: ../examples/PrivateEndpoints_Delete_7_Generated.json
+        operationId: PrivateEndpoints_Delete
+    variables:
+      virtualNetworkName: testvnet000002
+      subnetName: testsubnet000003
+      privateEndpointName: priv_endpoint000004

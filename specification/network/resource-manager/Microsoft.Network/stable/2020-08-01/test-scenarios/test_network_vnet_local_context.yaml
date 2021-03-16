@@ -1,0 +1,20 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_vnet_local_context
+    steps:
+      - step: Create_virtualNetworks_vnet-000002
+        resourceName: virtualNetworks_vnet-000002
+        exampleFile: ../examples/Create_virtualNetworks_vnet-000002_Generated.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Subnets_Get_1140
+        exampleFile: ../examples/Subnets_Get_2_Generated.json
+        operationId: Subnets_Get
+      - step: Subnets_Delete_1141
+        exampleFile: ../examples/Subnets_Delete_1102_Generated.json
+        operationId: Subnets_Delete
+      - step: VirtualNetworks_Delete_1142
+        exampleFile: ../examples/VirtualNetworks_Delete_1039_Generated.json
+        operationId: VirtualNetworks_Delete
+    variables:
+      virtualNetworkName: vnet-000002
+      subnetName: subnet-000003

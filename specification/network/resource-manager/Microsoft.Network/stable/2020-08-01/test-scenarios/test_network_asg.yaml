@@ -1,0 +1,31 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_asg
+    steps:
+      - step: ApplicationSecurityGroups_ListAll_424
+        exampleFile: ../examples/ApplicationSecurityGroups_ListAll_424_Generated.json
+        operationId: ApplicationSecurityGroups_ListAll
+      - step: Create_applicationSecurityGroups_asg1
+        resourceName: applicationSecurityGroups_asg1
+        exampleFile: ../examples/Create_applicationSecurityGroups_asg1_Generated.json
+        operationId: ApplicationSecurityGroups_CreateOrUpdate
+      - step: Update_applicationSecurityGroups_asg1_427
+        resourceName: applicationSecurityGroups_asg1
+        operationId: ApplicationSecurityGroups_CreateOrUpdate
+        resourceUpdate:
+          - replace: /tags/foo
+            value: bar
+      - step: ApplicationSecurityGroups_ListAll_428
+        exampleFile: ../examples/ApplicationSecurityGroups_ListAll_428_Generated.json
+        operationId: ApplicationSecurityGroups_ListAll
+      - step: ApplicationSecurityGroups_Get_429
+        exampleFile: ../examples/ApplicationSecurityGroups_Get_429_Generated.json
+        operationId: ApplicationSecurityGroups_Get
+      - step: ApplicationSecurityGroups_Delete_430
+        exampleFile: ../examples/ApplicationSecurityGroups_Delete_430_Generated.json
+        operationId: ApplicationSecurityGroups_Delete
+      - step: ApplicationSecurityGroups_ListAll_431
+        exampleFile: ../examples/ApplicationSecurityGroups_ListAll_424_Generated.json
+        operationId: ApplicationSecurityGroups_ListAll
+    variables:
+      applicationSecurityGroupName: asg1

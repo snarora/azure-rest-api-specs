@@ -1,0 +1,21 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_app_gateway_redirect_config
+    steps:
+      - step: ApplicationGateways_Get_253
+        exampleFile: ../examples/ApplicationGateways_Get_253_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: Create_applicationGateways_ag1
+        resourceName: applicationGateways_ag1
+        exampleFile: ../examples/Create_applicationGateways_ag1_Generated_255.json
+        operationId: ApplicationGateways_CreateOrUpdate
+      - step: Update_applicationGateways_ag1_257
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/redirectConfigurations/0/properties/includePath
+            value: true
+          - replace: /properties/redirectConfigurations/0/properties/includeQueryString
+            value: false
+    variables:
+      applicationGatewayName: ag1

@@ -1,0 +1,34 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_watcher_troubleshooting
+    steps:
+      - step: Create_virtualNetworks_vnet1
+        resourceName: virtualNetworks_vnet1
+        exampleFile: ../examples/Create_virtualNetworks_vnet1_Generated_1281.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Create_publicIPAddresses_vgw1-pip
+        resourceName: publicIPAddresses_vgw1-pip
+        exampleFile: ../examples/Create_publicIPAddresses_vgw1-pip_Generated.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: Create_virtualNetworkGateways_vgw1
+        resourceName: virtualNetworkGateways_vgw1
+        exampleFile: ../examples/Create_virtualNetworkGateways_vgw1_Generated_1284.json
+        operationId: VirtualNetworkGateways_CreateOrUpdate
+      - step: NetworkWatchers_ListAll_1285
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: NetworkWatchers_GetTroubleshooting_1286
+        exampleFile: ../examples/NetworkWatchers_GetTroubleshooting_1286_Generated.json
+        operationId: NetworkWatchers_GetTroubleshooting
+      - step: NetworkWatchers_ListAll_1287
+        exampleFile: ../examples/NetworkWatchers_ListAll_1287_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: NetworkWatchers_GetTroubleshootingResult_1288
+        exampleFile: >-
+          ../examples/NetworkWatchers_GetTroubleshootingResult_1288_Generated.json
+        operationId: NetworkWatchers_GetTroubleshootingResult
+    variables:
+      virtualNetworkName: vnet1
+      publicIpAddressName: vgw1-pip
+      virtualNetworkGatewayName: vgw1
+      networkWatcherName: NetworkWatcher_westcentralus

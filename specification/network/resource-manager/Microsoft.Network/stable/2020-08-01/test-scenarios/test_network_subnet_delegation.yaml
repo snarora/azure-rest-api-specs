@@ -1,0 +1,52 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_subnet_delegation
+    steps:
+      - step: AvailableDelegations_List_1041
+        exampleFile: ../examples/AvailableDelegations_List_1041_Generated.json
+        operationId: AvailableDelegations_List
+      - step: AvailableResourceGroupDelegations_List_1042
+        exampleFile: ../examples/AvailableResourceGroupDelegations_List_1042_Generated.json
+        operationId: AvailableResourceGroupDelegations_List
+        variables:
+          location: westus
+      - step: Create_virtualNetworks_vnet1
+        resourceName: virtualNetworks_vnet1
+        exampleFile: ../examples/Create_virtualNetworks_vnet1_Generated_1044.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Update_virtualNetworks_vnet1_1046
+        resourceName: virtualNetworks_vnet1
+        operationId: VirtualNetworks_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/subnets/0
+            value:
+              name: subnet1
+              properties:
+                addressPrefix: 10.0.0.0/24
+                delegations:
+                  - name: '0'
+                    properties:
+                      serviceName: Microsoft.Web/serverFarms
+                      provisioningState: Succeeded
+                      actions:
+                        - Microsoft.Network/virtualNetworks/subnets/action
+                    id: >-
+                      /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_subnet_delegation000001/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1/delegations/0
+                    type: Microsoft.Network/virtualNetworks/subnets/delegations
+                provisioningState: Succeeded
+                privateEndpointNetworkPolicies: Enabled
+                privateLinkServiceNetworkPolicies: Enabled
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_subnet_delegation000001/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1
+              type: Microsoft.Network/virtualNetworks/subnets
+      - step: Subnets_Get_1047
+        exampleFile: ../examples/Subnets_Get_1047_Generated.json
+        operationId: Subnets_Get
+      - step: Create_subnets_subnet1
+        resourceName: subnets_subnet1
+        exampleFile: ../examples/Create_subnets_subnet1_Generated_1049.json
+        operationId: Subnets_CreateOrUpdate
+    variables:
+      location: westcentralus
+      virtualNetworkName: vnet1
+      subnetName: subnet1

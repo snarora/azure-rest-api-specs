@@ -1,0 +1,39 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_vnet_ids_query
+    steps:
+      - step: Create_virtualNetworks_vnet1
+        resourceName: virtualNetworks_vnet1
+        exampleFile: ../examples/Create_virtualNetworks_vnet1_Generated_1122.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Create_virtualNetworks_vnet2
+        resourceName: virtualNetworks_vnet2
+        exampleFile: ../examples/Create_virtualNetworks_vnet2_Generated_1124.json
+        operationId: VirtualNetworks_CreateOrUpdate
+        variables:
+          virtualNetworkName: vnet2
+      - step: VirtualNetworks_Get_1125
+        exampleFile: ../examples/VirtualNetworks_Get_1125_Generated.json
+        operationId: VirtualNetworks_Get
+      - step: VirtualNetworks_List_1126
+        exampleFile: ../examples/VirtualNetworks_List_1126_Generated.json
+        operationId: VirtualNetworks_List
+      - step: VirtualNetworks_Get_1127
+        exampleFile: ../examples/VirtualNetworks_Get_1125_Generated.json
+        operationId: VirtualNetworks_Get
+      - step: VirtualNetworks_List_1128
+        exampleFile: ../examples/VirtualNetworks_List_1126_Generated.json
+        operationId: VirtualNetworks_List
+      - step: VirtualNetworks_Get_1129
+        exampleFile: ../examples/VirtualNetworks_Get_1125_Generated.json
+        operationId: VirtualNetworks_Get
+      - step: VirtualNetworks_List_1130
+        exampleFile: ../examples/VirtualNetworks_List_1126_Generated.json
+        operationId: VirtualNetworks_List
+      - step: VirtualNetworks_Get_1131
+        exampleFile: ../examples/VirtualNetworks_Get_1131_Generated.json
+        operationId: VirtualNetworks_Get
+        variables:
+          virtualNetworkName: vnet2
+    variables:
+      virtualNetworkName: vnet1

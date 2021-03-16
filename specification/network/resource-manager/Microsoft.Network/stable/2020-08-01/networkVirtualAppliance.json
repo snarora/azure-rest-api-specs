@@ -83,6 +83,12 @@
         "x-ms-examples": {
           "Delete NetworkVirtualAppliance": {
             "$ref": "./examples/NetworkVirtualApplianceDelete.json"
+          },
+          "NetworkVirtualAppliances_Delete_1065_Generated": {
+            "$ref": "./examples/NetworkVirtualAppliances_Delete_1065_Generated.json"
+          },
+          "NetworkVirtualAppliances_Delete_1063_Generated": {
+            "$ref": "./examples/NetworkVirtualAppliances_Delete_1063_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -262,6 +268,9 @@
         "x-ms-examples": {
           "Create NetworkVirtualAppliance": {
             "$ref": "./examples/NetworkVirtualAppliancePut.json"
+          },
+          "Create_networkVirtualAppliances_cli-virtual-appliance_Generated": {
+            "$ref": "./examples/Create_networkVirtualAppliances_cli-virtual-appliance_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -309,6 +318,12 @@
         "x-ms-examples": {
           "List all Network Virtual Appliance for a given resource group": {
             "$ref": "./examples/NetworkVirtualApplianceListByResourceGroup.json"
+          },
+          "NetworkVirtualAppliances_ListByResourceGroup_1056_Generated": {
+            "$ref": "./examples/NetworkVirtualAppliances_ListByResourceGroup_1056_Generated.json"
+          },
+          "NetworkVirtualAppliances_ListByResourceGroup_1054_Generated": {
+            "$ref": "./examples/NetworkVirtualAppliances_ListByResourceGroup_1054_Generated.json"
           }
         },
         "x-ms-pageable": {
@@ -348,6 +363,12 @@
         "x-ms-examples": {
           "List all Network Virtual Appliances for a given subscription": {
             "$ref": "./examples/NetworkVirtualApplianceListBySubscription.json"
+          },
+          "NetworkVirtualAppliances_List_1057_Generated": {
+            "$ref": "./examples/NetworkVirtualAppliances_List_1057_Generated.json"
+          },
+          "NetworkVirtualAppliances_List_1055_Generated": {
+            "$ref": "./examples/NetworkVirtualAppliances_List_1055_Generated.json"
           }
         },
         "x-ms-pageable": {
@@ -411,6 +432,12 @@
         "x-ms-examples": {
           "Delete Network Virtual Appliance Site": {
             "$ref": "./examples/NetworkVirtualApplianceSiteDelete.json"
+          },
+          "VirtualApplianceSites_Delete_1064_Generated": {
+            "$ref": "./examples/VirtualApplianceSites_Delete_1064_Generated.json"
+          },
+          "VirtualApplianceSites_Delete_1062_Generated": {
+            "$ref": "./examples/VirtualApplianceSites_Delete_1062_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -540,6 +567,9 @@
         "x-ms-examples": {
           "Create Network Virtual Appliance Site": {
             "$ref": "./examples/NetworkVirtualApplianceSitePut.json"
+          },
+          "Create_virtualApplianceSites_cli-site_Generated": {
+            "$ref": "./examples/Create_virtualApplianceSites_cli-site_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -594,6 +624,12 @@
         "x-ms-examples": {
           "List all Network Virtual Appliance sites for a given Network Virtual Appliance": {
             "$ref": "./examples/NetworkVirtualApplianceSiteList.json"
+          },
+          "VirtualApplianceSites_List_1063_Generated": {
+            "$ref": "./examples/VirtualApplianceSites_List_1063_Generated.json"
+          },
+          "VirtualApplianceSites_List_1061_Generated": {
+            "$ref": "./examples/VirtualApplianceSites_List_1061_Generated.json"
           }
         },
         "x-ms-pageable": {
@@ -636,6 +672,12 @@
         "x-ms-examples": {
           "NetworkVirtualApplianceSkuListResult": {
             "$ref": "./examples/NetworkVirtualApplianceSkuList.json"
+          },
+          "VirtualApplianceSkus_List_1058_Generated": {
+            "$ref": "./examples/VirtualApplianceSkus_List_1058_Generated.json"
+          },
+          "VirtualApplianceSkus_List_1056_Generated": {
+            "$ref": "./examples/VirtualApplianceSkus_List_1056_Generated.json"
           }
         }
       }
@@ -679,6 +721,12 @@
         "x-ms-examples": {
           "NetworkVirtualApplianceSkuGet": {
             "$ref": "./examples/NetworkVirtualApplianceSkuGet.json"
+          },
+          "VirtualApplianceSkus_Get_1059_Generated": {
+            "$ref": "./examples/VirtualApplianceSkus_Get_1059_Generated.json"
+          },
+          "VirtualApplianceSkus_Get_1057_Generated": {
+            "$ref": "./examples/VirtualApplianceSkus_Get_1057_Generated.json"
           }
         }
       }

@@ -1,0 +1,42 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_ag_probe
+    steps:
+      - step: Create_publicIPAddresses_gateway_ip
+        resourceName: publicIPAddresses_gateway_ip
+        exampleFile: ../examples/Create_publicIPAddresses_gateway_ip_Generated.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: ApplicationGateways_Get_172
+        exampleFile: ../examples/ApplicationGateways_Get_172_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: Create_applicationGateways_ag1
+        resourceName: applicationGateways_ag1
+        exampleFile: ../examples/Create_applicationGateways_ag1_Generated_174.json
+        operationId: ApplicationGateways_CreateOrUpdate
+      - step: Update_applicationGateways_ag1_176
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/probes/0/properties
+            value:
+              protocol: Https
+              host: ''
+              path: /test2
+              interval: 26
+              timeout: 101
+              unhealthyThreshold: 11
+              pickHostNameFromBackendHttpSettings: true
+              minServers: 3
+              match:
+                statusCodes:
+                  - '201'
+              port: 4096
+              provisioningState: Updating
+      - step: Update_applicationGateways_ag1_178
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - remove: /properties/probes/0
+    variables:
+      publicIpAddressName: gateway_ip
+      applicationGatewayName: ag1

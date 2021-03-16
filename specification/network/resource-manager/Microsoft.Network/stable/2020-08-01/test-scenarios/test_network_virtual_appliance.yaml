@@ -1,0 +1,58 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_virtual_appliance
+    steps:
+      - step: Create_networkVirtualAppliances_cli-virtual-appliance
+        resourceName: networkVirtualAppliances_cli-virtual-appliance
+        exampleFile: >-
+          ../examples/Create_networkVirtualAppliances_cli-virtual-appliance_Generated.json
+        operationId: NetworkVirtualAppliances_CreateOrUpdate
+      - step: Update_networkVirtualAppliances_cli-virtual-appliance_1053
+        resourceName: networkVirtualAppliances_cli-virtual-appliance
+        operationId: NetworkVirtualAppliances_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/virtualApplianceAsn
+            value: 20000
+          - replace: /properties/cloudInitConfiguration
+            value: echo $abcd
+      - step: NetworkVirtualAppliances_ListByResourceGroup_1054
+        exampleFile: >-
+          ../examples/NetworkVirtualAppliances_ListByResourceGroup_1054_Generated.json
+        operationId: NetworkVirtualAppliances_ListByResourceGroup
+      - step: NetworkVirtualAppliances_List_1055
+        exampleFile: ../examples/NetworkVirtualAppliances_List_1055_Generated.json
+        operationId: NetworkVirtualAppliances_List
+      - step: VirtualApplianceSkus_List_1056
+        exampleFile: ../examples/VirtualApplianceSkus_List_1056_Generated.json
+        operationId: VirtualApplianceSkus_List
+      - step: VirtualApplianceSkus_Get_1057
+        exampleFile: ../examples/VirtualApplianceSkus_Get_1057_Generated.json
+        operationId: VirtualApplianceSkus_Get
+      - step: Create_virtualApplianceSites_cli-site
+        resourceName: virtualApplianceSites_cli-site
+        exampleFile: ../examples/Create_virtualApplianceSites_cli-site_Generated.json
+        operationId: VirtualApplianceSites_CreateOrUpdate
+      - step: Update_virtualApplianceSites_cli-site_1060
+        resourceName: virtualApplianceSites_cli-site
+        operationId: VirtualApplianceSites_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/addressPrefix
+            value: 10.0.0.1/24
+          - replace: /properties/o365Policy/breakOutCategories
+            value:
+              allow: false
+              optimize: false
+              default: false
+      - step: VirtualApplianceSites_List_1061
+        exampleFile: ../examples/VirtualApplianceSites_List_1061_Generated.json
+        operationId: VirtualApplianceSites_List
+      - step: VirtualApplianceSites_Delete_1062
+        exampleFile: ../examples/VirtualApplianceSites_Delete_1062_Generated.json
+        operationId: VirtualApplianceSites_Delete
+      - step: NetworkVirtualAppliances_Delete_1063
+        exampleFile: ../examples/NetworkVirtualAppliances_Delete_1063_Generated.json
+        operationId: NetworkVirtualAppliances_Delete
+    variables:
+      networkVirtualApplianceName: cli-virtual-appliance
+      skuName: barracudasdwanrelease
+      siteName: cli-site

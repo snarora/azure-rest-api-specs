@@ -1,0 +1,14 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_nic_convenience_commands
+    steps:
+      - step: NetworkInterfaces_ListEffectiveNetworkSecurityGroups_810
+        exampleFile: >-
+          ../examples/NetworkInterfaces_ListEffectiveNetworkSecurityGroups_810_Generated.json
+        operationId: NetworkInterfaces_ListEffectiveNetworkSecurityGroups
+      - step: NetworkInterfaces_GetEffectiveRouteTable_811
+        exampleFile: >-
+          ../examples/NetworkInterfaces_GetEffectiveRouteTable_811_Generated.json
+        operationId: NetworkInterfaces_GetEffectiveRouteTable
+    variables:
+      networkInterfaceName: conveniencevm1VMNic

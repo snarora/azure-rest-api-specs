@@ -1,0 +1,4 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_private_endpoint_connection_private_link_scope
+    steps: []

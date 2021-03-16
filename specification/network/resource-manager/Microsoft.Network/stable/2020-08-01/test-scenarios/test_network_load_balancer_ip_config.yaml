@@ -1,0 +1,94 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_load_balancer_ip_config
+    steps:
+      - step: Create_publicIPAddresses_publicip1
+        resourceName: publicIPAddresses_publicip1
+        exampleFile: ../examples/Create_publicIPAddresses_publicip1_Generated_696.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: Create_publicIPAddresses_publicip2
+        resourceName: publicIPAddresses_publicip2
+        exampleFile: ../examples/Create_publicIPAddresses_publicip2_Generated_698.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+        variables:
+          publicIpAddressName: publicip2
+      - step: Create_publicIPAddresses_publicip3
+        resourceName: publicIPAddresses_publicip3
+        exampleFile: ../examples/Create_publicIPAddresses_publicip3_Generated_700.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+        variables:
+          publicIpAddressName: publicip3
+      - step: Create_virtualNetworks_vnet1
+        resourceName: virtualNetworks_vnet1
+        exampleFile: ../examples/Create_virtualNetworks_vnet1_Generated_702.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Update_virtualNetworks_vnet1_704
+        resourceName: virtualNetworks_vnet1
+        operationId: VirtualNetworks_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/subnets/1
+            value:
+              name: subnet2
+              properties:
+                addressPrefix: 10.0.1.0/24
+                provisioningState: Succeeded
+                delegations: []
+                privateEndpointNetworkPolicies: Enabled
+                privateLinkServiceNetworkPolicies: Enabled
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_load_balancer_ip_config000001/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet2
+              type: Microsoft.Network/virtualNetworks/subnets
+      - step: LoadBalancers_Get_705
+        exampleFile: ../examples/LoadBalancers_Get_705_Generated.json
+        operationId: LoadBalancers_Get
+      - step: Create_loadBalancers_lb1
+        resourceName: loadBalancers_lb1
+        exampleFile: ../examples/Create_loadBalancers_lb1_Generated_707.json
+        operationId: LoadBalancers_CreateOrUpdate
+      - step: Update_loadBalancers_lb1_709
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - replace: >-
+              /properties/frontendIPConfigurations/1/properties/publicIPAddress/id
+            value: >-
+              /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_load_balancer_ip_config000001/providers/Microsoft.Network/publicIPAddresses/publicip3
+      - step: Update_loadBalancers_lb1_711
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - replace: >-
+              /properties/frontendIPConfigurations/1/properties/publicIPAddress/id
+            value: >-
+              /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_load_balancer_ip_config000001/providers/Microsoft.Network/publicIPAddresses/publicip2
+      - step: Update_loadBalancers_lb1_713
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - remove: /properties/frontendIPConfigurations/1
+      - step: LoadBalancers_Get_714
+        exampleFile: ../examples/LoadBalancers_Get_714_Generated.json
+        operationId: LoadBalancers_Get
+        variables:
+          loadBalancerName: lb2
+      - step: Create_loadBalancers_lb2
+        resourceName: loadBalancers_lb2
+        exampleFile: ../examples/Create_loadBalancers_lb2_Generated_716.json
+        operationId: LoadBalancers_CreateOrUpdate
+        variables:
+          loadBalancerName: lb2
+      - step: Update_loadBalancers_lb2_718
+        resourceName: loadBalancers_lb2
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/frontendIPConfigurations/1/properties/privateIPAddress
+            value: 10.0.1.100
+          - replace: /properties/frontendIPConfigurations/1/properties/subnet/id
+            value: >-
+              /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_load_balancer_ip_config000001/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet2
+        variables:
+          loadBalancerName: lb2
+    variables:
+      publicIpAddressName: publicip1
+      virtualNetworkName: vnet1
+      loadBalancerName: lb1

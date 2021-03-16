@@ -1,0 +1,49 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_private_endpoint_connection_webapp
+    steps:
+      - step: Create_virtualNetworks_webapp-privatelink-vnet000004
+        resourceName: virtualNetworks_webapp-privatelink-vnet000004
+        exampleFile: >-
+          ../examples/Create_virtualNetworks_webapp-privatelink-vnet000004_Generated.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Subnets_Get_1440
+        exampleFile: ../examples/Subnets_Get_2_Generated.json
+        operationId: Subnets_Get
+      - step: Create_subnets_webapp-privatelink-subnet000005
+        resourceName: subnets_webapp-privatelink-subnet000005
+        exampleFile: >-
+          ../examples/Create_subnets_webapp-privatelink-subnet000005_Generated.json
+        operationId: Subnets_CreateOrUpdate
+      - step: Update_subnets_webapp-privatelink-subnet000005_1443
+        resourceName: subnets_webapp-privatelink-subnet000005
+        operationId: Subnets_CreateOrUpdate
+        resourceUpdate:
+          - replace: /
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.Network/virtualNetworks/webapp-privatelink-vnet000004/subnets/webapp-privatelink-subnet000005
+              name: webapp-privatelink-subnet000005
+              properties:
+                addressPrefix: 10.0.0.0/24
+                delegations: []
+                privateEndpointNetworkPolicies: Disabled
+                privateLinkServiceNetworkPolicies: Enabled
+                provisioningState: Succeeded
+              type: Microsoft.Network/virtualNetworks/subnets
+      - step: Create_privateEndpoints_webapp-privatelink-endpoint000006
+        resourceName: privateEndpoints_webapp-privatelink-endpoint000006
+        exampleFile: >-
+          ../examples/Create_privateEndpoints_webapp-privatelink-endpoint000006_Generated.json
+        operationId: PrivateEndpoints_CreateOrUpdate
+      - step: Create_privateEndpoints_webapp-privatelink-endpoint2000008
+        resourceName: privateEndpoints_webapp-privatelink-endpoint2000008
+        exampleFile: >-
+          ../examples/Create_privateEndpoints_webapp-privatelink-endpoint2000008_Generated.json
+        operationId: PrivateEndpoints_CreateOrUpdate
+        variables:
+          privateEndpointName: webapp-privatelink-endpoint2000008
+    variables:
+      virtualNetworkName: webapp-privatelink-vnet000004
+      subnetName: webapp-privatelink-subnet000005
+      privateEndpointName: webapp-privatelink-endpoint000006

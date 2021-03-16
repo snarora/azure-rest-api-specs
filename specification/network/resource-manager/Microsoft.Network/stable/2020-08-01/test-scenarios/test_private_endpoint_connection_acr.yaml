@@ -1,0 +1,30 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_private_endpoint_connection_acr
+    steps:
+      - step: Create_virtualNetworks_testvnet000003
+        resourceName: virtualNetworks_testvnet000003
+        exampleFile: ../examples/Create_virtualNetworks_testvnet000003_Generated.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Subnets_Get_1403
+        exampleFile: ../examples/Subnets_Get_2_Generated.json
+        operationId: Subnets_Get
+      - step: Create_subnets_testsubnet000004
+        resourceName: subnets_testsubnet000004
+        exampleFile: >-
+          ../examples/Create_subnets_appgw_private_endpoint_subnet_Generated.json
+        operationId: Subnets_CreateOrUpdate
+      - step: Create_privateEndpoints_priv_endpoint000005
+        resourceName: privateEndpoints_priv_endpoint000005
+        exampleFile: ../examples/Create_privateEndpoints_priv_endpoint000005_Generated.json
+        operationId: PrivateEndpoints_CreateOrUpdate
+      - step: Create_privateEndpoints_priv_endpoint000007
+        resourceName: privateEndpoints_priv_endpoint000007
+        exampleFile: ../examples/Create_privateEndpoints_priv_endpoint000007_Generated.json
+        operationId: PrivateEndpoints_CreateOrUpdate
+        variables:
+          privateEndpointName: priv_endpoint000007
+    variables:
+      virtualNetworkName: testvnet000003
+      subnetName: testsubnet000004
+      privateEndpointName: priv_endpoint000005

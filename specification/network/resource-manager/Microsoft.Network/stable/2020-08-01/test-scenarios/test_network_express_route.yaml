@@ -1,0 +1,106 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_express_route
+    steps:
+      - step: ExpressRouteServiceProviders_List_512
+        exampleFile: ../examples/ExpressRouteServiceProviders_List_512_Generated.json
+        operationId: ExpressRouteServiceProviders_List
+      - step: Create_expressRouteCircuits_circuit1
+        resourceName: expressRouteCircuits_circuit1
+        exampleFile: ../examples/Create_expressRouteCircuits_circuit1_Generated.json
+        operationId: ExpressRouteCircuits_CreateOrUpdate
+      - step: ExpressRouteCircuits_ListAll_514
+        exampleFile: ../examples/ExpressRouteCircuits_ListAll_514_Generated.json
+        operationId: ExpressRouteCircuits_ListAll
+      - step: ExpressRouteCircuits_List_515
+        exampleFile: ../examples/ExpressRouteCircuits_List_515_Generated.json
+        operationId: ExpressRouteCircuits_List
+      - step: ExpressRouteCircuits_Get_516
+        exampleFile: ../examples/ExpressRouteCircuits_Get_516_Generated.json
+        operationId: ExpressRouteCircuits_Get
+      - step: ExpressRouteCircuits_GetStats_517
+        exampleFile: ../examples/ExpressRouteCircuits_GetStats_517_Generated.json
+        operationId: ExpressRouteCircuits_GetStats
+      - step: ExpressRouteCircuits_Get_518
+        exampleFile: ../examples/ExpressRouteCircuits_Get_516_Generated.json
+        operationId: ExpressRouteCircuits_Get
+      - step: Update_expressRouteCircuits_circuit1_520
+        resourceName: expressRouteCircuits_circuit1
+        operationId: ExpressRouteCircuits_CreateOrUpdate
+        resourceUpdate:
+          - add: /tags/test
+            value: Test
+      - step: Update_expressRouteCircuits_circuit1_522
+        resourceName: expressRouteCircuits_circuit1
+        operationId: ExpressRouteCircuits_CreateOrUpdate
+        resourceUpdate:
+          - replace: /tags
+            value:
+              foo: boo
+      - step: Create_authorizations_auth1
+        resourceName: authorizations_auth1
+        exampleFile: ../examples/Create_authorizations_auth1_Generated.json
+        operationId: ExpressRouteCircuitAuthorizations_CreateOrUpdate
+      - step: ExpressRouteCircuitAuthorizations_List_524
+        exampleFile: ../examples/ExpressRouteCircuitAuthorizations_List_524_Generated.json
+        operationId: ExpressRouteCircuitAuthorizations_List
+      - step: ExpressRouteCircuitAuthorizations_Get_525
+        exampleFile: ../examples/ExpressRouteCircuitAuthorizations_Get_525_Generated.json
+        operationId: ExpressRouteCircuitAuthorizations_Get
+      - step: ExpressRouteCircuitAuthorizations_Delete_526
+        exampleFile: >-
+          ../examples/ExpressRouteCircuitAuthorizations_Delete_526_Generated.json
+        operationId: ExpressRouteCircuitAuthorizations_Delete
+      - step: ExpressRouteCircuitAuthorizations_List_527
+        exampleFile: ../examples/ExpressRouteCircuitAuthorizations_List_527_Generated.json
+        operationId: ExpressRouteCircuitAuthorizations_List
+      - step: Create_peerings_AzurePrivatePeering
+        resourceName: peerings_AzurePrivatePeering
+        exampleFile: ../examples/Create_peerings_AzurePrivatePeering_Generated.json
+        operationId: ExpressRouteCircuitPeerings_CreateOrUpdate
+      - step: Create_peerings_MicrosoftPeering
+        resourceName: peerings_MicrosoftPeering
+        exampleFile: ../examples/Create_peerings_MicrosoftPeering_Generated.json
+        operationId: ExpressRouteCircuitPeerings_CreateOrUpdate
+        variables:
+          peeringName: MicrosoftPeering
+      - step: ExpressRouteCircuitPeerings_Delete_530
+        exampleFile: ../examples/ExpressRouteCircuitPeerings_Delete_530_Generated.json
+        operationId: ExpressRouteCircuitPeerings_Delete
+        variables:
+          peeringName: MicrosoftPeering
+      - step: ExpressRouteCircuitPeerings_List_531
+        exampleFile: ../examples/ExpressRouteCircuitPeerings_List_531_Generated.json
+        operationId: ExpressRouteCircuitPeerings_List
+      - step: ExpressRouteCircuitPeerings_Get_532
+        exampleFile: ../examples/ExpressRouteCircuitPeerings_Get_532_Generated.json
+        operationId: ExpressRouteCircuitPeerings_Get
+      - step: Update_peerings_AzurePrivatePeering_534
+        resourceName: peerings_AzurePrivatePeering
+        operationId: ExpressRouteCircuitPeerings_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/vlanId
+            value: 200
+          - replace: /properties/gatewayManagerEtag
+            value: '12'
+      - step: ExpressRouteCircuits_ListArpTable_535
+        exampleFile: ../examples/ExpressRouteCircuits_ListArpTable_535_Generated.json
+        operationId: ExpressRouteCircuits_ListArpTable
+        variables:
+          peeringName: azureprivatepeering
+      - step: ExpressRouteCircuits_ListRoutesTable_536
+        exampleFile: ../examples/ExpressRouteCircuits_ListRoutesTable_536_Generated.json
+        operationId: ExpressRouteCircuits_ListRoutesTable
+        variables:
+          peeringName: azureprivatepeering
+      - step: ExpressRouteCircuits_Delete_537
+        exampleFile: ../examples/ExpressRouteCircuits_Delete_537_Generated.json
+        operationId: ExpressRouteCircuits_Delete
+      - step: ExpressRouteCircuits_List_538
+        exampleFile: ../examples/ExpressRouteCircuits_List_538_Generated.json
+        operationId: ExpressRouteCircuits_List
+    variables:
+      circuitName: circuit1
+      authorizationName: auth1
+      peeringName: AzurePrivatePeering
+      devicePath: primary

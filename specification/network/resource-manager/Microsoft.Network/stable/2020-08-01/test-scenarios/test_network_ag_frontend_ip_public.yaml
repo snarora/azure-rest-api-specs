@@ -1,0 +1,32 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_ag_frontend_ip_public
+    steps:
+      - step: ApplicationGateways_Get_118
+        exampleFile: ../examples/ApplicationGateways_Get_118_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: Create_publicIPAddresses_myip1
+        resourceName: publicIPAddresses_myip1
+        exampleFile: ../examples/Create_publicIPAddresses_myip1_Generated_120.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: Create_publicIPAddresses_myip2
+        resourceName: publicIPAddresses_myip2
+        exampleFile: ../examples/Create_publicIPAddresses_myip2_Generated.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+        variables:
+          publicIpAddressName: myip2
+      - step: ApplicationGateways_Get_122
+        exampleFile: ../examples/ApplicationGateways_Get_118_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: Create_applicationGateways_ag1
+        resourceName: applicationGateways_ag1
+        exampleFile: ../examples/Create_applicationGateways_ag1_Generated_124.json
+        operationId: ApplicationGateways_CreateOrUpdate
+      - step: Update_applicationGateways_ag1_126
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - remove: /properties/frontendIPConfigurations/1
+    variables:
+      applicationGatewayName: ag1
+      publicIpAddressName: myip1

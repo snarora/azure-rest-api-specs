@@ -1,0 +1,42 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_subnet_set
+    steps:
+      - step: Create_virtualNetworks_vnet1
+        resourceName: virtualNetworks_vnet1
+        exampleFile: ../examples/Create_virtualNetworks_vnet1_Generated_1031.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Create_networkSecurityGroups_test-vnet-nsg
+        resourceName: networkSecurityGroups_test-vnet-nsg
+        exampleFile: ../examples/Create_networkSecurityGroups_test-vnet-nsg_Generated.json
+        operationId: NetworkSecurityGroups_CreateOrUpdate
+      - step: Subnets_Get_1033
+        exampleFile: ../examples/Subnets_Get_1033_Generated.json
+        operationId: Subnets_Get
+      - step: Create_subnets_default
+        resourceName: subnets_default
+        exampleFile: ../examples/Create_subnets_default_Generated.json
+        operationId: Subnets_CreateOrUpdate
+      - step: Update_subnets_default_1036
+        resourceName: subnets_default
+        operationId: Subnets_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/addressPrefix
+            value: 123.0.0.0/24
+      - step: Update_subnets_default_1038
+        resourceName: subnets_default
+        operationId: Subnets_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/addressPrefix
+            value: 123.0.5.0/24
+          - remove: /properties/networkSecurityGroup
+      - step: VirtualNetworks_Delete_1039
+        exampleFile: ../examples/VirtualNetworks_Delete_1039_Generated.json
+        operationId: VirtualNetworks_Delete
+      - step: NetworkSecurityGroups_Delete_1040
+        exampleFile: ../examples/NetworkSecurityGroups_Delete_881_Generated.json
+        operationId: NetworkSecurityGroups_Delete
+    variables:
+      virtualNetworkName: vnet1
+      networkSecurityGroupName: test-vnet-nsg
+      subnetName: default

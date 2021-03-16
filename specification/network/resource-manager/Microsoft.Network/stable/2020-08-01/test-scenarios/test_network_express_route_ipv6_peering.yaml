@@ -1,0 +1,31 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_express_route_ipv6_peering
+    steps:
+      - step: Create_expressRouteCircuits_circuit1
+        resourceName: expressRouteCircuits_circuit1
+        exampleFile: ../examples/Create_expressRouteCircuits_circuit1_Generated_548.json
+        operationId: ExpressRouteCircuits_CreateOrUpdate
+      - step: Create_peerings_MicrosoftPeering
+        resourceName: peerings_MicrosoftPeering
+        exampleFile: ../examples/Create_peerings_MicrosoftPeering_Generated.json
+        operationId: ExpressRouteCircuitPeerings_CreateOrUpdate
+      - step: Update_peerings_MicrosoftPeering_551
+        resourceName: peerings_MicrosoftPeering
+        operationId: ExpressRouteCircuitPeerings_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/ipv6PeeringConfig
+            value:
+              primaryPeerAddressPrefix: 2001:db00::/126
+              secondaryPeerAddressPrefix: 2002:db00::/126
+              microsoftPeeringConfig:
+                advertisedPublicPrefixes:
+                  - 2001:db00::/126
+                customerASN: 100001
+                routingRegistryName: LEVEL3
+                advertisedPublicPrefixesState: ValidationNeeded
+                legacyMode: 0
+              state: Enabled
+    variables:
+      circuitName: circuit1
+      peeringName: MicrosoftPeering

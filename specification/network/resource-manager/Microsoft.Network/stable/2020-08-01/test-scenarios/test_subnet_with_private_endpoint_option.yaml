@@ -1,0 +1,4 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_subnet_with_private_endpoint_option
+    steps: []

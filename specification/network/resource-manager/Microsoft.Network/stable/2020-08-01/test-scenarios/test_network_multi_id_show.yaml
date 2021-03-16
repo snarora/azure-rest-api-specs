@@ -1,0 +1,19 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_multi_id_show
+    steps:
+      - step: Create_publicIPAddresses_pip1
+        resourceName: publicIPAddresses_pip1
+        exampleFile: ../examples/Create_publicIPAddresses_pip1_Generated_740.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: Create_publicIPAddresses_pip2
+        resourceName: publicIPAddresses_pip2
+        exampleFile: ../examples/Create_publicIPAddresses_pip2_Generated_742.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+        variables:
+          publicIpAddressName: pip2
+      - step: PublicIPAddresses_Get_743
+        exampleFile: ../examples/PublicIPAddresses_Get_743_Generated.json
+        operationId: PublicIPAddresses_Get
+    variables:
+      publicIpAddressName: pip1

@@ -1,0 +1,13 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_service_aliases
+    steps:
+      - step: AvailableServiceAliases_List_997
+        exampleFile: ../examples/AvailableServiceAliases_List_997_Generated.json
+        operationId: AvailableServiceAliases_List
+      - step: AvailableServiceAliases_ListByResourceGroup_998
+        exampleFile: >-
+          ../examples/AvailableServiceAliases_ListByResourceGroup_998_Generated.json
+        operationId: AvailableServiceAliases_ListByResourceGroup
+    variables:
+      location: centralus

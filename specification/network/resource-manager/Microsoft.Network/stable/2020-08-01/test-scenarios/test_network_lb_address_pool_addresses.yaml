@@ -1,0 +1,136 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_lb_address_pool_addresses
+    steps:
+      - step: Create_virtualNetworks_clitestvnet
+        resourceName: virtualNetworks_clitestvnet
+        exampleFile: ../examples/Create_virtualNetworks_clitestvnet_Generated.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Create_networkInterfaces_clitestnic
+        resourceName: networkInterfaces_clitestnic
+        exampleFile: ../examples/Create_networkInterfaces_clitestnic_Generated.json
+        operationId: NetworkInterfaces_CreateOrUpdate
+      - step: LoadBalancers_Get_591
+        exampleFile: ../examples/LoadBalancers_Get_591_Generated.json
+        operationId: LoadBalancers_Get
+      - step: Create_backendAddressPools_bap1
+        resourceName: backendAddressPools_bap1
+        exampleFile: ../examples/Create_backendAddressPools_bap1_Generated_593.json
+        operationId: LoadBalancerBackendAddressPools_CreateOrUpdate
+      - step: Update_backendAddressPools_bap1_595
+        resourceName: backendAddressPools_bap1
+        operationId: LoadBalancerBackendAddressPools_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/loadBalancerBackendAddresses/3
+            value:
+              name: addr6
+              properties:
+                virtualNetwork:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_address_pool_addresses000001/providers/Microsoft.Network/virtualNetworks/clitestvnet
+                  properties:
+                    enableDdosProtection: false
+                    enableVmProtection: false
+                ipAddress: 10.0.0.6
+                provisioningState: Succeeded
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_address_pool_addresses000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/bap1/loadBalancerBackendAddresses/addr6
+              type: >-
+                Microsoft.Network/loadBalancers/backendAddressPools/loadBalancerBackendAddresses
+      - step: Update_backendAddressPools_bap1_597
+        resourceName: backendAddressPools_bap1
+        operationId: LoadBalancerBackendAddressPools_CreateOrUpdate
+        resourceUpdate:
+          - remove: /properties/loadBalancerBackendAddresses/1
+      - step: LoadBalancerBackendAddressPools_List_598
+        exampleFile: ../examples/LoadBalancerBackendAddressPools_List_598_Generated.json
+        operationId: LoadBalancerBackendAddressPools_List
+      - step: LoadBalancerBackendAddressPools_Get_599
+        exampleFile: ../examples/LoadBalancerBackendAddressPools_Get_599_Generated.json
+        operationId: LoadBalancerBackendAddressPools_Get
+      - step: LoadBalancers_Get_600
+        exampleFile: ../examples/LoadBalancers_Get_600_Generated.json
+        operationId: LoadBalancers_Get
+      - step: LoadBalancerBackendAddressPools_Delete_601
+        exampleFile: ../examples/LoadBalancerBackendAddressPools_Delete_455_Generated.json
+        operationId: LoadBalancerBackendAddressPools_Delete
+      - step: LoadBalancerBackendAddressPools_List_602
+        exampleFile: ../examples/LoadBalancerBackendAddressPools_List_465_Generated.json
+        operationId: LoadBalancerBackendAddressPools_List
+      - step: LoadBalancers_Get_603
+        exampleFile: ../examples/LoadBalancers_Get_591_Generated.json
+        operationId: LoadBalancers_Get
+      - step: Update_backendAddressPools_bap1_605
+        resourceName: backendAddressPools_bap1
+        operationId: LoadBalancerBackendAddressPools_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/loadBalancerBackendAddresses
+            value:
+              - name: address1
+                properties:
+                  virtualNetwork:
+                    id: >-
+                      /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_address_pool_addresses000001/providers/Microsoft.Network/virtualNetworks/clitestvnet
+                    properties:
+                      enableDdosProtection: false
+                      enableVmProtection: false
+                  ipAddress: 10.0.0.4
+                  provisioningState: Succeeded
+                id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_address_pool_addresses000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/bap1/loadBalancerBackendAddresses/address1
+                type: >-
+                  Microsoft.Network/loadBalancers/backendAddressPools/loadBalancerBackendAddresses
+              - name: address2
+                properties:
+                  virtualNetwork:
+                    id: >-
+                      /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_address_pool_addresses000001/providers/Microsoft.Network/virtualNetworks/clitestvnet
+                    properties:
+                      enableDdosProtection: false
+                      enableVmProtection: false
+                  ipAddress: 10.0.0.5
+                  provisioningState: Succeeded
+                id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_address_pool_addresses000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/bap1/loadBalancerBackendAddresses/address2
+                type: >-
+                  Microsoft.Network/loadBalancers/backendAddressPools/loadBalancerBackendAddresses
+      - step: LoadBalancerBackendAddressPools_Delete_607
+        exampleFile: ../examples/LoadBalancerBackendAddressPools_Delete_455_Generated.json
+        operationId: LoadBalancerBackendAddressPools_Delete
+      - step: LoadBalancerBackendAddressPools_List_608
+        exampleFile: ../examples/LoadBalancerBackendAddressPools_List_465_Generated.json
+        operationId: LoadBalancerBackendAddressPools_List
+      - step: LoadBalancers_Get_609
+        exampleFile: ../examples/LoadBalancers_Get_591_Generated.json
+        operationId: LoadBalancers_Get
+      - step: Update_backendAddressPools_bap1_611
+        resourceName: backendAddressPools_bap1
+        operationId: LoadBalancerBackendAddressPools_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/loadBalancerBackendAddresses
+            value: []
+      - step: Update_backendAddressPools_bap1_613
+        resourceName: backendAddressPools_bap1
+        operationId: LoadBalancerBackendAddressPools_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/loadBalancerBackendAddresses/0
+            value:
+              name: addr6
+              properties:
+                virtualNetwork:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_address_pool_addresses000001/providers/Microsoft.Network/virtualNetworks/clitestvnet
+                  properties:
+                    enableDdosProtection: false
+                    enableVmProtection: false
+                ipAddress: 10.0.0.6
+                provisioningState: Succeeded
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_lb_address_pool_addresses000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/bap1/loadBalancerBackendAddresses/addr6
+              type: >-
+                Microsoft.Network/loadBalancers/backendAddressPools/loadBalancerBackendAddresses
+    variables:
+      virtualNetworkName: clitestvnet
+      networkInterfaceName: clitestnic
+      loadBalancerName: lb1
+      backendAddressPoolName: bap1

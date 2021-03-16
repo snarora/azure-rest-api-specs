@@ -1,0 +1,4 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_interface_endpoints
+    steps: []

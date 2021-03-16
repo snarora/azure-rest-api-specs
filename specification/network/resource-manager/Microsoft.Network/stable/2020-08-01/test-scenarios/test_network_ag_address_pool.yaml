@@ -1,0 +1,23 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_ag_address_pool
+    steps:
+      - step: ApplicationGateways_Get_95
+        exampleFile: ../examples/ApplicationGateways_Get_95_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: Create_applicationGateways_ag1
+        resourceName: applicationGateways_ag1
+        exampleFile: ../examples/Create_applicationGateways_ag1_Generated.json
+        operationId: ApplicationGateways_CreateOrUpdate
+      - step: Update_applicationGateways_ag1_98
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - remove: /properties/backendAddressPools/1/properties/backendAddresses/1
+      - step: Update_applicationGateways_ag1_100
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - remove: /properties/backendAddressPools/1
+    variables:
+      applicationGatewayName: ag1

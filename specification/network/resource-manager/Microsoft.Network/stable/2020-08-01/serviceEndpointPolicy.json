@@ -64,11 +64,11 @@
           }
         ],
         "responses": {
-          "202": {
-            "description": "Accepted and the operation will complete asynchronously."
-          },
           "200": {
             "description": "Delete successful."
+          },
+          "202": {
+            "description": "Accepted and the operation will complete asynchronously."
           },
           "204": {
             "description": "Request successful. Resource does not exist."
@@ -83,6 +83,9 @@
         "x-ms-examples": {
           "Delete service endpoint policy": {
             "$ref": "./examples/ServiceEndpointPolicyDelete.json"
+          },
+          "ServiceEndpointPolicies_Delete_1005_Generated": {
+            "$ref": "./examples/ServiceEndpointPolicies_Delete_1005_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -142,6 +145,9 @@
         "x-ms-examples": {
           "Get service endPoint Policy": {
             "$ref": "./examples/ServiceEndpointPolicyGet.json"
+          },
+          "ServiceEndpointPolicies_Get_1004_Generated": {
+            "$ref": "./examples/ServiceEndpointPolicies_Get_1004_Generated.json"
           }
         }
       },
@@ -183,14 +189,14 @@
           }
         ],
         "responses": {
-          "201": {
-            "description": "Create successful. The operation returns the resulting ServiceEndpointPolicy resource.",
+          "200": {
+            "description": "Update successful. The operation returns the resulting ServiceEndpointPolicy resource.",
             "schema": {
               "$ref": "#/definitions/ServiceEndpointPolicy"
             }
           },
-          "200": {
-            "description": "Update successful. The operation returns the resulting ServiceEndpointPolicy resource.",
+          "201": {
+            "description": "Create successful. The operation returns the resulting ServiceEndpointPolicy resource.",
             "schema": {
               "$ref": "#/definitions/ServiceEndpointPolicy"
             }
@@ -208,6 +214,9 @@
           },
           "Create service endpoint policy with definition": {
             "$ref": "./examples/ServiceEndpointPolicyCreateWithDefinition.json"
+          },
+          "Create_serviceEndpointPolicies_policy1_Generated": {
+            "$ref": "./examples/Create_serviceEndpointPolicies_policy1_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -351,6 +360,12 @@
         "x-ms-examples": {
           "List resource group service endpoint policies": {
             "$ref": "./examples/ServiceEndpointPolicyList.json"
+          },
+          "ServiceEndpointPolicies_ListByResourceGroup_1003_Generated": {
+            "$ref": "./examples/ServiceEndpointPolicies_ListByResourceGroup_1003_Generated.json"
+          },
+          "ServiceEndpointPolicies_ListByResourceGroup_1006_Generated": {
+            "$ref": "./examples/ServiceEndpointPolicies_ListByResourceGroup_1006_Generated.json"
           }
         },
         "x-ms-pageable": {
@@ -395,14 +410,14 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "Request successful. Resource does not exist."
+          "200": {
+            "description": "Delete successful."
           },
           "202": {
             "description": "Accepted and the operation will complete asynchronously."
           },
-          "200": {
-            "description": "Delete successful."
+          "204": {
+            "description": "Request successful. Resource does not exist."
           },
           "default": {
             "description": "Error response describing why the operation failed.",
@@ -414,6 +429,9 @@
         "x-ms-examples": {
           "Delete service endpoint policy definitions from service endpoint policy": {
             "$ref": "./examples/ServiceEndpointPolicyDefinitionDelete.json"
+          },
+          "ServiceEndpointPolicyDefinitions_Delete_1014_Generated": {
+            "$ref": "./examples/ServiceEndpointPolicyDefinitions_Delete_1014_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -473,6 +491,9 @@
         "x-ms-examples": {
           "Get service endpoint definition in service endpoint policy": {
             "$ref": "./examples/ServiceEndpointPolicyDefinitionGet.json"
+          },
+          "ServiceEndpointPolicyDefinitions_Get_1013_Generated": {
+            "$ref": "./examples/ServiceEndpointPolicyDefinitions_Get_1013_Generated.json"
           }
         }
       },
@@ -543,6 +564,9 @@
         "x-ms-examples": {
           "Create service endpoint policy definition": {
             "$ref": "./examples/ServiceEndpointPolicyDefinitionCreate.json"
+          },
+          "Create_serviceEndpointPolicyDefinitions_storage-def_Generated": {
+            "$ref": "./examples/Create_serviceEndpointPolicyDefinitions_storage-def_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -597,6 +621,12 @@
         "x-ms-examples": {
           "List service endpoint definitions in service end point policy": {
             "$ref": "./examples/ServiceEndpointPolicyDefinitionList.json"
+          },
+          "ServiceEndpointPolicyDefinitions_ListByResourceGroup_1012_Generated": {
+            "$ref": "./examples/ServiceEndpointPolicyDefinitions_ListByResourceGroup_1012_Generated.json"
+          },
+          "ServiceEndpointPolicyDefinitions_ListByResourceGroup_1015_Generated": {
+            "$ref": "./examples/ServiceEndpointPolicyDefinitions_ListByResourceGroup_1015_Generated.json"
           }
         },
         "x-ms-pageable": {

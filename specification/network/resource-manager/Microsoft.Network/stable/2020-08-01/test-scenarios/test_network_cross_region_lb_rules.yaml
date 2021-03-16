@@ -1,0 +1,143 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_cross_region_lb_rules
+    steps:
+      - step: LoadBalancers_Get_482
+        exampleFile: ../examples/LoadBalancers_Get_482_Generated.json
+        operationId: LoadBalancers_Get
+      - step: Create_loadBalancers_lb1
+        resourceName: loadBalancers_lb1
+        exampleFile: ../examples/Create_loadBalancers_lb1_Generated_484.json
+        operationId: LoadBalancers_CreateOrUpdate
+      - step: Create_backendAddressPools_bap1
+        resourceName: backendAddressPools_bap1
+        exampleFile: ../examples/Create_backendAddressPools_bap1_Generated.json
+        operationId: LoadBalancerBackendAddressPools_CreateOrUpdate
+      - step: Create_backendAddressPools_bap2
+        resourceName: backendAddressPools_bap2
+        exampleFile: ../examples/Create_backendAddressPools_bap1_Generated.json
+        operationId: LoadBalancerBackendAddressPools_CreateOrUpdate
+        variables:
+          backendAddressPoolName: bap2
+      - step: LoadBalancers_Get_487
+        exampleFile: ../examples/LoadBalancers_Get_487_Generated.json
+        operationId: LoadBalancers_Get
+      - step: Update_loadBalancers_lb1_489
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - add: >-
+              /properties/frontendIPConfigurations/0/properties/loadBalancingRules/1
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_cross_region_lb_rules000001/providers/Microsoft.Network/loadBalancers/lb1/loadBalancingRules/rule1
+          - add: /properties/backendAddressPools/1
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_cross_region_lb_rules000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/bap1
+              name: bap1
+              properties:
+                loadBalancerBackendAddresses: []
+                provisioningState: Succeeded
+                loadBalancingRules:
+                  - id: >-
+                      /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_cross_region_lb_rules000001/providers/Microsoft.Network/loadBalancers/lb1/loadBalancingRules/rule1
+              type: Microsoft.Network/loadBalancers/backendAddressPools
+          - add: /properties/backendAddressPools/2
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_cross_region_lb_rules000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/bap2
+              name: bap2
+              properties:
+                loadBalancerBackendAddresses: []
+                provisioningState: Succeeded
+              type: Microsoft.Network/loadBalancers/backendAddressPools
+          - add: /properties/loadBalancingRules/1
+            value:
+              name: rule1
+              properties:
+                frontendIPConfiguration:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_cross_region_lb_rules000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd
+                  name: LoadBalancerFrontEnd
+                  properties:
+                    privateIPAllocationMethod: Dynamic
+                    privateIPAddressVersion: IPv4
+                    publicIPAddress:
+                      id: >-
+                        /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_cross_region_lb_rules000001/providers/Microsoft.Network/publicIPAddresses/PublicIPlb1
+                backendAddressPool:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_cross_region_lb_rules000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/bap1
+                  name: bap1
+                  properties:
+                    loadBalancerBackendAddresses: []
+                protocol: Tcp
+                loadDistribution: Default
+                frontendPort: 40
+                backendPort: 40
+                provisioningState: Succeeded
+                enableFloatingIP: false
+                idleTimeoutInMinutes: 4
+                enableDestinationServiceEndpoint: false
+                enableTcpReset: false
+                allowBackendPortConflict: false
+                disableOutboundSnat: false
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_cross_region_lb_rules000001/providers/Microsoft.Network/loadBalancers/lb1/loadBalancingRules/rule1
+              type: Microsoft.Network/loadBalancers/loadBalancingRules
+      - step: Update_loadBalancers_lb1_491
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/loadBalancingRules/1/properties/enableFloatingIP
+            value: true
+          - replace: /properties/loadBalancingRules/1/properties/idleTimeoutInMinutes
+            value: 20
+          - replace: /properties/loadBalancingRules/1/properties/protocol
+            value: Udp
+          - replace: /properties/loadBalancingRules/1/properties/loadDistribution
+            value: SourceIP
+      - step: Update_loadBalancers_lb1_493
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - remove: /properties/backendAddressPools/0/properties/loadBalancingRules
+          - add: /properties/backendAddressPools/2/properties/loadBalancingRules
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_cross_region_lb_rules000001/providers/Microsoft.Network/loadBalancers/lb1/loadBalancingRules/rule2
+          - replace: /properties/loadBalancingRules/0/properties/loadDistribution
+            value: SourceIPProtocol
+          - replace: /properties/loadBalancingRules/0/properties/backendAddressPool
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_cross_region_lb_rules000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/bap2
+              name: bap2
+              properties:
+                loadBalancerBackendAddresses: []
+      - step: Update_loadBalancers_lb1_495
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/loadBalancingRules/1/properties/idleTimeoutInMinutes
+            value: 5
+      - step: Update_loadBalancers_lb1_497
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - remove: >-
+              /properties/frontendIPConfigurations/0/properties/loadBalancingRules/1
+          - remove: /properties/backendAddressPools/1/properties/loadBalancingRules
+          - remove: /properties/loadBalancingRules/1
+      - step: Update_loadBalancers_lb1_499
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - remove: >-
+              /properties/frontendIPConfigurations/0/properties/loadBalancingRules
+          - remove: /properties/backendAddressPools/2/properties/loadBalancingRules
+          - remove: /properties/loadBalancingRules/0
+    variables:
+      loadBalancerName: lb1
+      backendAddressPoolName: bap1

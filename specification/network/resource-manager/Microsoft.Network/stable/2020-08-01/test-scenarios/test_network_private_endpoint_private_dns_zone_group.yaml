@@ -1,0 +1,62 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_private_endpoint_private_dns_zone_group
+    steps:
+      - step: Create_virtualNetworks_cli-vnet-000003
+        resourceName: virtualNetworks_cli-vnet-000003
+        exampleFile: ../examples/Create_virtualNetworks_cli-vnet-000003_Generated_884.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Subnets_Get_885
+        exampleFile: ../examples/Subnets_Get_2_Generated.json
+        operationId: Subnets_Get
+      - step: Create_subnets_cli-subnet-000004
+        resourceName: subnets_cli-subnet-000004
+        exampleFile: >-
+          ../examples/Create_subnets_appgw_private_endpoint_subnet_Generated.json
+        operationId: Subnets_CreateOrUpdate
+      - step: Create_privateEndpoints_cli-pe-000005
+        resourceName: privateEndpoints_cli-pe-000005
+        exampleFile: ../examples/Create_privateEndpoints_cli-pe-000005_Generated_888.json
+        operationId: PrivateEndpoints_CreateOrUpdate
+      - step: PrivateEndpoints_Get_889
+        exampleFile: ../examples/PrivateEndpoints_Get_889_Generated.json
+        operationId: PrivateEndpoints_Get
+      - step: Create_privateDnsZoneGroups_clidnsgroup
+        resourceName: privateDnsZoneGroups_clidnsgroup
+        exampleFile: ../examples/Create_privateDnsZoneGroups_clidnsgroup_Generated.json
+        operationId: PrivateDnsZoneGroups_CreateOrUpdate
+      - step: Update_privateDnsZoneGroups_clidnsgroup_892
+        resourceName: privateDnsZoneGroups_clidnsgroup
+        operationId: PrivateDnsZoneGroups_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/privateDnsZoneConfigs/1
+            value:
+              name: clizone2
+              properties:
+                privateDnsZoneId: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/fanqiu_cli_test_network_private_endpoints000001/providers/Microsoft.Network/privateDnsZones/www.clizone2.com
+                provisioningState: Succeeded
+                recordSets: []
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/fanqiu_cli_test_network_private_endpoints000001/providers/Microsoft.Network/privateEndpoints/cli-pe-000005/privateDnsZoneGroups/clidnsgroup/privateDnsZoneConfigs/clizone2
+              type: >-
+                Microsoft.Network/privateEndpoints/privateDnsZoneGroups/privateDnsZoneConfigs
+      - step: PrivateDnsZoneGroups_List_893
+        exampleFile: ../examples/PrivateDnsZoneGroups_List_893_Generated.json
+        operationId: PrivateDnsZoneGroups_List
+      - step: PrivateDnsZoneGroups_Get_894
+        exampleFile: ../examples/PrivateDnsZoneGroups_Get_894_Generated.json
+        operationId: PrivateDnsZoneGroups_Get
+      - step: Update_privateDnsZoneGroups_clidnsgroup_896
+        resourceName: privateDnsZoneGroups_clidnsgroup
+        operationId: PrivateDnsZoneGroups_CreateOrUpdate
+        resourceUpdate:
+          - remove: /properties/privateDnsZoneConfigs/1
+      - step: PrivateDnsZoneGroups_Delete_897
+        exampleFile: ../examples/PrivateDnsZoneGroups_Delete_897_Generated.json
+        operationId: PrivateDnsZoneGroups_Delete
+    variables:
+      virtualNetworkName: cli-vnet-000003
+      subnetName: cli-subnet-000004
+      privateEndpointName: cli-pe-000005
+      privateDnsZoneGroupName: clidnsgroup

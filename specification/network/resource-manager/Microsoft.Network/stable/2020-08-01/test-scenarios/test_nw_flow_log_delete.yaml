@@ -1,0 +1,34 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_nw_flow_log_delete
+    steps:
+      - step: Create_networkSecurityGroups_nsg1
+        resourceName: networkSecurityGroups_nsg1
+        exampleFile: ../examples/Create_networkSecurityGroups_nsg1_Generated_1364.json
+        operationId: NetworkSecurityGroups_CreateOrUpdate
+      - step: NetworkWatchers_ListAll_1365
+        exampleFile: ../examples/NetworkWatchers_ListAll_1308_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: Create_flowLogs_flow_log_test2
+        resourceName: flowLogs_flow_log_test2
+        exampleFile: ../examples/Create_flowLogs_flow_log_test2_Generated.json
+        operationId: FlowLogs_CreateOrUpdate
+      - step: NetworkWatchers_ListAll_1367
+        exampleFile: ../examples/NetworkWatchers_ListAll_1308_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: FlowLogs_Get_1368
+        exampleFile: ../examples/FlowLogs_Get_1368_Generated.json
+        operationId: FlowLogs_Get
+      - step: NetworkWatchers_ListAll_1369
+        exampleFile: ../examples/NetworkWatchers_ListAll_1308_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: FlowLogs_Delete_1370
+        exampleFile: ../examples/FlowLogs_Delete_1370_Generated.json
+        operationId: FlowLogs_Delete
+      - step: NetworkWatchers_ListAll_1371
+        exampleFile: ../examples/NetworkWatchers_ListAll_1308_Generated.json
+        operationId: NetworkWatchers_ListAll
+    variables:
+      networkSecurityGroupName: nsg1
+      networkWatcherName: NetworkWatcher_westus
+      flowLogName: flow_log_test2

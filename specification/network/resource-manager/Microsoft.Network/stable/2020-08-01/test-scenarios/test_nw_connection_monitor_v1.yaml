@@ -1,0 +1,43 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_nw_connection_monitor_v1
+    steps:
+      - step: NetworkWatchers_ListAll_1308
+        exampleFile: ../examples/NetworkWatchers_ListAll_1308_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: ConnectionMonitors_List_1310
+        exampleFile: ../examples/ConnectionMonitors_List_1310_Generated.json
+        operationId: ConnectionMonitors_List
+      - step: NetworkWatchers_ListAll_1311
+        exampleFile: ../examples/NetworkWatchers_ListAll_1308_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: ConnectionMonitors_Get_1312
+        exampleFile: ../examples/ConnectionMonitors_Get_1312_Generated.json
+        operationId: ConnectionMonitors_Get
+      - step: NetworkWatchers_ListAll_1313
+        exampleFile: ../examples/NetworkWatchers_ListAll_1308_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: ConnectionMonitors_Stop_1314
+        exampleFile: ../examples/ConnectionMonitors_Stop_1314_Generated.json
+        operationId: ConnectionMonitors_Stop
+      - step: NetworkWatchers_ListAll_1315
+        exampleFile: ../examples/NetworkWatchers_ListAll_1308_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: ConnectionMonitors_Start_1316
+        exampleFile: ../examples/ConnectionMonitors_Start_1316_Generated.json
+        operationId: ConnectionMonitors_Start
+      - step: NetworkWatchers_ListAll_1317
+        exampleFile: ../examples/NetworkWatchers_ListAll_1308_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: ConnectionMonitors_Query_1318
+        exampleFile: ../examples/ConnectionMonitors_Query_1318_Generated.json
+        operationId: ConnectionMonitors_Query
+      - step: NetworkWatchers_ListAll_1319
+        exampleFile: ../examples/NetworkWatchers_ListAll_1308_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: ConnectionMonitors_Delete_1320
+        exampleFile: ../examples/ConnectionMonitors_Delete_1320_Generated.json
+        operationId: ConnectionMonitors_Delete
+    variables:
+      networkWatcherName: NetworkWatcher_westcentralus
+      connectionMonitorName: cm1

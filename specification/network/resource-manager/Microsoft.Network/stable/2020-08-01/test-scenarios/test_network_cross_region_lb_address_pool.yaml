@@ -1,0 +1,38 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_cross_region_lb_address_pool
+    steps:
+      - step: Create_backendAddressPools_bap1
+        resourceName: backendAddressPools_bap1
+        exampleFile: ../examples/Create_backendAddressPools_bap1_Generated.json
+        operationId: LoadBalancerBackendAddressPools_CreateOrUpdate
+      - step: Create_backendAddressPools_bap2
+        resourceName: backendAddressPools_bap2
+        exampleFile: ../examples/Create_backendAddressPools_bap1_Generated.json
+        operationId: LoadBalancerBackendAddressPools_CreateOrUpdate
+        variables:
+          backendAddressPoolName: bap2
+      - step: Create_backendAddressPools_bap3
+        resourceName: backendAddressPools_bap3
+        exampleFile: ../examples/Create_backendAddressPools_bap1_Generated.json
+        operationId: LoadBalancerBackendAddressPools_CreateOrUpdate
+        variables:
+          backendAddressPoolName: bap3
+      - step: LoadBalancerBackendAddressPools_List_452
+        exampleFile: ../examples/LoadBalancerBackendAddressPools_List_452_Generated.json
+        operationId: LoadBalancerBackendAddressPools_List
+      - step: LoadBalancerBackendAddressPools_Get_453
+        exampleFile: ../examples/LoadBalancerBackendAddressPools_Get_453_Generated.json
+        operationId: LoadBalancerBackendAddressPools_Get
+      - step: LoadBalancers_Get_454
+        exampleFile: ../examples/LoadBalancers_Get_454_Generated.json
+        operationId: LoadBalancers_Get
+      - step: LoadBalancerBackendAddressPools_Delete_455
+        exampleFile: ../examples/LoadBalancerBackendAddressPools_Delete_455_Generated.json
+        operationId: LoadBalancerBackendAddressPools_Delete
+      - step: LoadBalancerBackendAddressPools_List_456
+        exampleFile: ../examples/LoadBalancerBackendAddressPools_List_456_Generated.json
+        operationId: LoadBalancerBackendAddressPools_List
+    variables:
+      loadBalancerName: cross_region_lb000002
+      backendAddressPoolName: bap1

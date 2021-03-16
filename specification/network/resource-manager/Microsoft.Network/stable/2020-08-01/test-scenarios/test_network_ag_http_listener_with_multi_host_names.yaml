@@ -1,0 +1,83 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_ag_http_listener_with_multi_host_names
+    steps:
+      - step: Create_publicIPAddresses_ip1
+        resourceName: publicIPAddresses_ip1
+        exampleFile: ../examples/Create_publicIPAddresses_ip1_Generated.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: ApplicationGateways_Get_142
+        exampleFile: ../examples/ApplicationGateways_Get_142_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: Create_applicationGateways_ag1
+        resourceName: applicationGateways_ag1
+        exampleFile: ../examples/Create_applicationGateways_ag1_Generated_144.json
+        operationId: ApplicationGateways_CreateOrUpdate
+      - step: Update_applicationGateways_ag1_146
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/frontendIPConfigurations/0/properties/httpListeners/1
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_http_listener000001/providers/Microsoft.Network/applicationGateways/ag1/httpListeners/mylistener
+          - add: /properties/frontendPorts/1/properties/httpListeners
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_http_listener000001/providers/Microsoft.Network/applicationGateways/ag1/httpListeners/mylistener
+          - add: /properties/httpListeners/1
+            value:
+              name: mylistener
+              properties:
+                frontendIPConfiguration:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_http_listener000001/providers/Microsoft.Network/applicationGateways/ag1/frontendIPConfigurations/appGatewayFrontendIP
+                frontendPort:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_http_listener000001/providers/Microsoft.Network/applicationGateways/ag1/frontendPorts/cliport
+                protocol: Http
+                hostNames:
+                  - '*.contoso.com'
+                  - www.microsoft.com
+                provisioningState: Succeeded
+                requireServerNameIndication: false
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_http_listener000001/providers/Microsoft.Network/applicationGateways/ag1/httpListeners/mylistener
+              type: Microsoft.Network/applicationGateways/httpListeners
+      - step: Update_applicationGateways_ag1_148
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/httpListeners/1/properties/hostNames/1
+            value: www.bing.com
+      - step: Update_applicationGateways_ag1_150
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/provisioningState
+            value: Updating
+          - replace: /properties/gatewayIPConfigurations/0/properties/provisioningState
+            value: Updating
+          - replace: >-
+              /properties/frontendIPConfigurations/0/properties/provisioningState
+            value: Updating
+          - remove: /properties/frontendIPConfigurations/0/properties/httpListeners/1
+          - replace: /properties/frontendPorts/0/properties/provisioningState
+            value: Updating
+          - replace: /properties/frontendPorts/1/properties
+            value:
+              port: 18080
+              provisioningState: Updating
+          - replace: /properties/backendAddressPools/0/properties/provisioningState
+            value: Updating
+          - replace: >-
+              /properties/backendHttpSettingsCollection/0/properties/provisioningState
+            value: Updating
+          - remove: /properties/httpListeners/1
+          - replace: /properties/httpListeners/0/properties/provisioningState
+            value: Updating
+          - replace: /properties/requestRoutingRules/0/properties/provisioningState
+            value: Updating
+    variables:
+      publicIpAddressName: ip1
+      applicationGatewayName: ag1

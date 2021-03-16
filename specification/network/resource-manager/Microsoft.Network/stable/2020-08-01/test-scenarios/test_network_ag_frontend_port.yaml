@@ -1,0 +1,24 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_ag_frontend_port
+    steps:
+      - step: ApplicationGateways_Get_127
+        exampleFile: ../examples/ApplicationGateways_Get_127_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: Create_applicationGateways_ag1
+        resourceName: applicationGateways_ag1
+        exampleFile: ../examples/Create_applicationGateways_ag1_Generated_129.json
+        operationId: ApplicationGateways_CreateOrUpdate
+      - step: Update_applicationGateways_ag1_131
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/frontendPorts/1/properties/port
+            value: 112
+      - step: Update_applicationGateways_ag1_133
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - remove: /properties/frontendPorts/1
+    variables:
+      applicationGatewayName: ag1

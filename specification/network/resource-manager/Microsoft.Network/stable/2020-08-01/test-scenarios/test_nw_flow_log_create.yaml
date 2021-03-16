@@ -1,0 +1,31 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_nw_flow_log_create
+    steps:
+      - step: Create_networkSecurityGroups_nsg1
+        resourceName: networkSecurityGroups_nsg1
+        exampleFile: ../examples/Create_networkSecurityGroups_nsg1_Generated_1356.json
+        operationId: NetworkSecurityGroups_CreateOrUpdate
+      - step: NetworkWatchers_ListAll_1357
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: Create_flowLogs_flow_log_test
+        resourceName: flowLogs_flow_log_test
+        exampleFile: ../examples/Create_flowLogs_flow_log_test_Generated.json
+        operationId: FlowLogs_CreateOrUpdate
+      - step: NetworkWatchers_ListAll_1359
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: FlowLogs_List_1360
+        exampleFile: ../examples/FlowLogs_List_1360_Generated.json
+        operationId: FlowLogs_List
+      - step: NetworkWatchers_ListAll_1361
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: FlowLogs_Get_1362
+        exampleFile: ../examples/FlowLogs_Get_1362_Generated.json
+        operationId: FlowLogs_Get
+    variables:
+      networkSecurityGroupName: nsg1
+      networkWatcherName: NetworkWatcher_eastus
+      flowLogName: flow_log_test

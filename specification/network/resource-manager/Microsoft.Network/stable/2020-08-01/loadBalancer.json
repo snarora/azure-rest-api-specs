@@ -64,14 +64,14 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "Request successful. Resource does not exist."
+          "200": {
+            "description": "Delete successful."
           },
           "202": {
             "description": "Accepted and the operation will complete asynchronously."
           },
-          "200": {
-            "description": "Delete successful."
+          "204": {
+            "description": "Request successful. Resource does not exist."
           },
           "default": {
             "description": "Error response describing why the operation failed.",
@@ -83,6 +83,9 @@
         "x-ms-examples": {
           "Delete load balancer": {
             "$ref": "./examples/LoadBalancerDelete.json"
+          },
+          "LoadBalancers_Delete_447_Generated": {
+            "$ref": "./examples/LoadBalancers_Delete_447_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -142,6 +145,90 @@
         "x-ms-examples": {
           "Get load balancer": {
             "$ref": "./examples/LoadBalancerGet.json"
+          },
+          "LoadBalancers_Get_446_Generated": {
+            "$ref": "./examples/LoadBalancers_Get_446_Generated.json"
+          },
+          "LoadBalancers_Get_454_Generated": {
+            "$ref": "./examples/LoadBalancers_Get_454_Generated.json"
+          },
+          "LoadBalancers_Get_466_Generated": {
+            "$ref": "./examples/LoadBalancers_Get_466_Generated.json"
+          },
+          "LoadBalancers_Get_480_Generated": {
+            "$ref": "./examples/LoadBalancers_Get_480_Generated.json"
+          },
+          "LoadBalancers_Get_482_Generated": {
+            "$ref": "./examples/LoadBalancers_Get_482_Generated.json"
+          },
+          "LoadBalancers_Get_487_Generated": {
+            "$ref": "./examples/LoadBalancers_Get_487_Generated.json"
+          },
+          "LoadBalancers_Get_503_Generated": {
+            "$ref": "./examples/LoadBalancers_Get_503_Generated.json"
+          },
+          "LoadBalancers_Get_573_Generated": {
+            "$ref": "./examples/LoadBalancers_Get_573_Generated.json"
+          },
+          "LoadBalancers_Get_576_Generated": {
+            "$ref": "./examples/LoadBalancers_Get_576_Generated.json"
+          },
+          "LoadBalancers_Get_585_Generated": {
+            "$ref": "./examples/LoadBalancers_Get_585_Generated.json"
+          },
+          "LoadBalancers_Get_591_Generated": {
+            "$ref": "./examples/LoadBalancers_Get_591_Generated.json"
+          },
+          "LoadBalancers_Get_600_Generated": {
+            "$ref": "./examples/LoadBalancers_Get_600_Generated.json"
+          },
+          "LoadBalancers_Get_614_Generated": {
+            "$ref": "./examples/LoadBalancers_Get_614_Generated.json"
+          },
+          "LoadBalancers_Get_631_Generated": {
+            "$ref": "./examples/LoadBalancers_Get_631_Generated.json"
+          },
+          "LoadBalancers_Get_648_Generated": {
+            "$ref": "./examples/LoadBalancers_Get_648_Generated.json"
+          },
+          "LoadBalancers_Get_663_Generated": {
+            "$ref": "./examples/LoadBalancers_Get_663_Generated.json"
+          },
+          "LoadBalancers_Get_666_Generated": {
+            "$ref": "./examples/LoadBalancers_Get_666_Generated.json"
+          },
+          "LoadBalancers_Get_685_Generated": {
+            "$ref": "./examples/LoadBalancers_Get_685_Generated.json"
+          },
+          "LoadBalancers_Get_687_Generated": {
+            "$ref": "./examples/LoadBalancers_Get_687_Generated.json"
+          },
+          "LoadBalancers_Get_689_Generated": {
+            "$ref": "./examples/LoadBalancers_Get_689_Generated.json"
+          },
+          "LoadBalancers_Get_693_Generated": {
+            "$ref": "./examples/LoadBalancers_Get_693_Generated.json"
+          },
+          "LoadBalancers_Get_705_Generated": {
+            "$ref": "./examples/LoadBalancers_Get_705_Generated.json"
+          },
+          "LoadBalancers_Get_714_Generated": {
+            "$ref": "./examples/LoadBalancers_Get_714_Generated.json"
+          },
+          "LoadBalancers_Get_720_Generated": {
+            "$ref": "./examples/LoadBalancers_Get_720_Generated.json"
+          },
+          "LoadBalancers_Get_751_Generated": {
+            "$ref": "./examples/LoadBalancers_Get_751_Generated.json"
+          },
+          "LoadBalancers_Get_799_Generated": {
+            "$ref": "./examples/LoadBalancers_Get_799_Generated.json"
+          },
+          "LoadBalancers_Get_816_Generated": {
+            "$ref": "./examples/LoadBalancers_Get_816_Generated.json"
+          },
+          "LoadBalancers_Get_843_Generated": {
+            "$ref": "./examples/LoadBalancers_Get_843_Generated.json"
           }
         }
       },
@@ -183,14 +270,14 @@
           }
         ],
         "responses": {
-          "201": {
-            "description": "Create successful. The operation returns the resulting LoadBalancer resource.",
+          "200": {
+            "description": "Update successful. The operation returns the resulting LoadBalancer resource.",
             "schema": {
               "$ref": "#/definitions/LoadBalancer"
             }
           },
-          "200": {
-            "description": "Update successful. The operation returns the resulting LoadBalancer resource.",
+          "201": {
+            "description": "Create successful. The operation returns the resulting LoadBalancer resource.",
             "schema": {
               "$ref": "#/definitions/LoadBalancer"
             }
@@ -220,6 +307,63 @@
           },
           "Create load balancer with outbound rules": {
             "$ref": "./examples/LoadBalancerCreateWithOutboundRules.json"
+          },
+          "Create_loadBalancers_lb1_Generated": {
+            "$ref": "./examples/Create_loadBalancers_lb1_Generated.json"
+          },
+          "Create_loadBalancers_lb2_Generated": {
+            "$ref": "./examples/Create_loadBalancers_lb2_Generated.json"
+          },
+          "Create_loadBalancers_lb1_Generated_484": {
+            "$ref": "./examples/Create_loadBalancers_lb1_Generated_484.json"
+          },
+          "Create_loadBalancers_lb1_Generated_505": {
+            "$ref": "./examples/Create_loadBalancers_lb1_Generated_505.json"
+          },
+          "Create_loadBalancers_lb1_Generated_578": {
+            "$ref": "./examples/Create_loadBalancers_lb1_Generated_578.json"
+          },
+          "Create_loadBalancers_lb1_Generated_616": {
+            "$ref": "./examples/Create_loadBalancers_lb1_Generated_616.json"
+          },
+          "Create_loadBalancers_lb1_Generated_633": {
+            "$ref": "./examples/Create_loadBalancers_lb1_Generated_633.json"
+          },
+          "Create_loadBalancers_lb1_Generated_650": {
+            "$ref": "./examples/Create_loadBalancers_lb1_Generated_650.json"
+          },
+          "Create_loadBalancers_lb2_Generated_665": {
+            "$ref": "./examples/Create_loadBalancers_lb2_Generated_665.json"
+          },
+          "Create_loadBalancers_lb1_Generated_668": {
+            "$ref": "./examples/Create_loadBalancers_lb1_Generated_668.json"
+          },
+          "Create_loadBalancers_lb2_Generated_691": {
+            "$ref": "./examples/Create_loadBalancers_lb2_Generated_691.json"
+          },
+          "Create_loadBalancers_lb4_Generated": {
+            "$ref": "./examples/Create_loadBalancers_lb4_Generated.json"
+          },
+          "Create_loadBalancers_lb1_Generated_707": {
+            "$ref": "./examples/Create_loadBalancers_lb1_Generated_707.json"
+          },
+          "Create_loadBalancers_lb2_Generated_716": {
+            "$ref": "./examples/Create_loadBalancers_lb2_Generated_716.json"
+          },
+          "Create_loadBalancers_lb1_Generated_722": {
+            "$ref": "./examples/Create_loadBalancers_lb1_Generated_722.json"
+          },
+          "Create_loadBalancers_mylb_Generated": {
+            "$ref": "./examples/Create_loadBalancers_mylb_Generated.json"
+          },
+          "Create_loadBalancers_lb1_Generated_801": {
+            "$ref": "./examples/Create_loadBalancers_lb1_Generated_801.json"
+          },
+          "Create_loadBalancers_lb1_Generated_818": {
+            "$ref": "./examples/Create_loadBalancers_lb1_Generated_818.json"
+          },
+          "Create_loadBalancers_lb1_Generated_845": {
+            "$ref": "./examples/Create_loadBalancers_lb1_Generated_845.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -317,6 +461,12 @@
         "x-ms-examples": {
           "List all load balancers": {
             "$ref": "./examples/LoadBalancerListAll.json"
+          },
+          "LoadBalancers_ListAll_444_Generated": {
+            "$ref": "./examples/LoadBalancers_ListAll_444_Generated.json"
+          },
+          "LoadBalancers_ListAll_571_Generated": {
+            "$ref": "./examples/LoadBalancers_ListAll_571_Generated.json"
           }
         },
         "x-ms-pageable": {
@@ -363,6 +513,18 @@
         "x-ms-examples": {
           "List load balancers in resource group": {
             "$ref": "./examples/LoadBalancerList.json"
+          },
+          "LoadBalancers_List_445_Generated": {
+            "$ref": "./examples/LoadBalancers_List_445_Generated.json"
+          },
+          "LoadBalancers_List_448_Generated": {
+            "$ref": "./examples/LoadBalancers_List_448_Generated.json"
+          },
+          "LoadBalancers_List_572_Generated": {
+            "$ref": "./examples/LoadBalancers_List_572_Generated.json"
+          },
+          "LoadBalancers_List_575_Generated": {
+            "$ref": "./examples/LoadBalancers_List_575_Generated.json"
           }
         },
         "x-ms-pageable": {
@@ -419,6 +581,30 @@
           },
           "Load balancer with BackendAddressPool containing BackendAddresses": {
             "$ref": "./examples/LBBackendAddressPoolListWithBackendAddressesPoolType.json"
+          },
+          "LoadBalancerBackendAddressPools_List_452_Generated": {
+            "$ref": "./examples/LoadBalancerBackendAddressPools_List_452_Generated.json"
+          },
+          "LoadBalancerBackendAddressPools_List_456_Generated": {
+            "$ref": "./examples/LoadBalancerBackendAddressPools_List_456_Generated.json"
+          },
+          "LoadBalancerBackendAddressPools_List_462_Generated": {
+            "$ref": "./examples/LoadBalancerBackendAddressPools_List_462_Generated.json"
+          },
+          "LoadBalancerBackendAddressPools_List_465_Generated": {
+            "$ref": "./examples/LoadBalancerBackendAddressPools_List_465_Generated.json"
+          },
+          "LoadBalancerBackendAddressPools_List_583_Generated": {
+            "$ref": "./examples/LoadBalancerBackendAddressPools_List_583_Generated.json"
+          },
+          "LoadBalancerBackendAddressPools_List_588_Generated": {
+            "$ref": "./examples/LoadBalancerBackendAddressPools_List_588_Generated.json"
+          },
+          "LoadBalancerBackendAddressPools_List_598_Generated": {
+            "$ref": "./examples/LoadBalancerBackendAddressPools_List_598_Generated.json"
+          },
+          "LoadBalancerBackendAddressPools_List_759_Generated": {
+            "$ref": "./examples/LoadBalancerBackendAddressPools_List_759_Generated.json"
           }
         },
         "x-ms-pageable": {
@@ -482,6 +668,18 @@
           },
           "LoadBalancer with BackendAddressPool with BackendAddresses": {
             "$ref": "./examples/LBBackendAddressPoolWithBackendAddressesGet.json"
+          },
+          "LoadBalancerBackendAddressPools_Get_453_Generated": {
+            "$ref": "./examples/LoadBalancerBackendAddressPools_Get_453_Generated.json"
+          },
+          "LoadBalancerBackendAddressPools_Get_463_Generated": {
+            "$ref": "./examples/LoadBalancerBackendAddressPools_Get_463_Generated.json"
+          },
+          "LoadBalancerBackendAddressPools_Get_584_Generated": {
+            "$ref": "./examples/LoadBalancerBackendAddressPools_Get_584_Generated.json"
+          },
+          "LoadBalancerBackendAddressPools_Get_599_Generated": {
+            "$ref": "./examples/LoadBalancerBackendAddressPools_Get_599_Generated.json"
           }
         }
       },
@@ -530,14 +728,14 @@
           }
         ],
         "responses": {
-          "201": {
-            "description": "Create successful. The operation returns the resulting BackendAddressPool resource.",
+          "200": {
+            "description": "Update successful. The operation returns the resulting BackendAddressPool resource.",
             "schema": {
               "$ref": "#/definitions/BackendAddressPool"
             }
           },
-          "200": {
-            "description": "Update successful. The operation returns the resulting BackendAddressPool resource.",
+          "201": {
+            "description": "Create successful. The operation returns the resulting BackendAddressPool resource.",
             "schema": {
               "$ref": "#/definitions/BackendAddressPool"
             }
@@ -552,6 +750,15 @@
         "x-ms-examples": {
           "Update load balancer backend pool with backend addresses containing virtual network and  IP address.": {
             "$ref": "./examples/LBBackendAddressPoolWithBackendAddressesPut.json"
+          },
+          "Create_backendAddressPools_bap1_Generated": {
+            "$ref": "./examples/Create_backendAddressPools_bap1_Generated.json"
+          },
+          "Create_backendAddressPools_address_pool000005_Generated": {
+            "$ref": "./examples/Create_backendAddressPools_address_pool000005_Generated.json"
+          },
+          "Create_backendAddressPools_bap1_Generated_593": {
+            "$ref": "./examples/Create_backendAddressPools_bap1_Generated_593.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -595,14 +802,14 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "Request successful. Resource does not exist."
+          "200": {
+            "description": "Delete successful."
           },
           "202": {
             "description": "Accepted and the operation will complete asynchronously."
           },
-          "200": {
-            "description": "Delete successful."
+          "204": {
+            "description": "Request successful. Resource does not exist."
           },
           "default": {
             "description": "Error response describing why the operation failed.",
@@ -614,6 +821,9 @@
         "x-ms-examples": {
           "BackendAddressPoolDelete": {
             "$ref": "./examples/LoadBalancerBackendAddressPoolDelete.json"
+          },
+          "LoadBalancerBackendAddressPools_Delete_455_Generated": {
+            "$ref": "./examples/LoadBalancerBackendAddressPools_Delete_455_Generated.json"
           }
         },
         "x-ms-long-running-operation": true,
@@ -822,14 +1032,14 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "Request successful. Resource does not exist."
+          "200": {
+            "description": "Delete successful."
           },
           "202": {
             "description": "Accepted and the operation will complete asynchronously."
           },
-          "200": {
-            "description": "Delete successful."
+          "204": {
+            "description": "Request successful. Resource does not exist."
           },
           "default": {
             "description": "Error response describing why the operation failed.",
@@ -955,14 +1165,14 @@
           }
         ],
         "responses": {
-          "201": {
-            "description": "Create successful. The operation returns the resulting InboundNatRule resource.",
+          "200": {
+            "description": "Update successful. The operation returns the resulting InboundNatRule resource.",
             "schema": {
               "$ref": "#/definitions/InboundNatRule"
             }
           },
-          "200": {
-            "description": "Update successful. The operation returns the resulting InboundNatRule resource.",
+          "201": {
+            "description": "Create successful. The operation returns the resulting InboundNatRule resource.",
             "schema": {
               "$ref": "#/definitions/InboundNatRule"
             }

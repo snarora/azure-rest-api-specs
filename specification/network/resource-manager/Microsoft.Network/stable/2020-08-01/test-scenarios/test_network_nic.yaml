@@ -1,0 +1,213 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_nic
+    steps:
+      - step: Create_virtualNetworks_myvnet
+        resourceName: virtualNetworks_myvnet
+        exampleFile: ../examples/Create_virtualNetworks_myvnet_Generated.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Create_networkSecurityGroups_mynsg
+        resourceName: networkSecurityGroups_mynsg
+        exampleFile: ../examples/Create_networkSecurityGroups_mynsg_Generated.json
+        operationId: NetworkSecurityGroups_CreateOrUpdate
+      - step: Create_networkSecurityGroups_myothernsg
+        resourceName: networkSecurityGroups_myothernsg
+        exampleFile: ../examples/Create_networkSecurityGroups_myothernsg_Generated.json
+        operationId: NetworkSecurityGroups_CreateOrUpdate
+        variables:
+          networkSecurityGroupName: myothernsg
+      - step: Create_publicIPAddresses_publicip1
+        resourceName: publicIPAddresses_publicip1
+        exampleFile: ../examples/Create_publicIPAddresses_publicip1_Generated_750.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: LoadBalancers_Get_751
+        exampleFile: ../examples/LoadBalancers_Get_751_Generated.json
+        operationId: LoadBalancers_Get
+      - step: Create_loadBalancers_mylb
+        resourceName: loadBalancers_mylb
+        exampleFile: ../examples/Create_loadBalancers_mylb_Generated.json
+        operationId: LoadBalancers_CreateOrUpdate
+      - step: Update_loadBalancers_mylb_754
+        resourceName: loadBalancers_mylb
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - add: >-
+              /properties/frontendIPConfigurations/0/properties/inboundNatRules/1
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_scenario000001/providers/Microsoft.Network/loadBalancers/mylb/inboundNatRules/rule2
+          - add: /properties/inboundNatRules/1
+            value:
+              name: rule2
+              properties:
+                frontendIPConfiguration:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_scenario000001/providers/Microsoft.Network/loadBalancers/mylb/frontendIPConfigurations/LoadBalancerFrontEnd
+                  name: LoadBalancerFrontEnd
+                  properties:
+                    privateIPAllocationMethod: Dynamic
+                    privateIPAddressVersion: IPv4
+                    publicIPAddress:
+                      id: >-
+                        /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_scenario000001/providers/Microsoft.Network/publicIPAddresses/PublicIPmylb
+                protocol: Tcp
+                frontendPort: 200
+                backendPort: 200
+                provisioningState: Succeeded
+                enableFloatingIP: false
+                idleTimeoutInMinutes: 4
+                enableDestinationServiceEndpoint: false
+                enableTcpReset: false
+                allowBackendPortConflict: false
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_scenario000001/providers/Microsoft.Network/loadBalancers/mylb/inboundNatRules/rule2
+              type: Microsoft.Network/loadBalancers/inboundNatRules
+      - step: Update_loadBalancers_mylb_756
+        resourceName: loadBalancers_mylb
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/backendAddressPools/1
+            value:
+              name: bap1
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_scenario000001/providers/Microsoft.Network/loadBalancers/mylb/backendAddressPools/bap1
+              properties:
+                provisioningState: Succeeded
+              type: Microsoft.Network/loadBalancers/backendAddressPools
+      - step: Update_loadBalancers_mylb_758
+        resourceName: loadBalancers_mylb
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/backendAddressPools/2
+            value:
+              name: bap2
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_scenario000001/providers/Microsoft.Network/loadBalancers/mylb/backendAddressPools/bap2
+              properties:
+                provisioningState: Succeeded
+              type: Microsoft.Network/loadBalancers/backendAddressPools
+      - step: LoadBalancerBackendAddressPools_List_759
+        exampleFile: ../examples/LoadBalancerBackendAddressPools_List_759_Generated.json
+        operationId: LoadBalancerBackendAddressPools_List
+      - step: Create_networkInterfaces_cli-test-nic
+        resourceName: networkInterfaces_cli-test-nic
+        exampleFile: ../examples/Create_networkInterfaces_cli-test-nic_Generated.json
+        operationId: NetworkInterfaces_CreateOrUpdate
+      - step: Update_networkInterfaces_cli-test-nic_762
+        resourceName: networkInterfaces_cli-test-nic
+        operationId: NetworkInterfaces_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/ipConfigurations/0/properties/privateIPAddress
+            value: 10.0.0.15
+          - replace: >-
+              /properties/ipConfigurations/0/properties/privateIPAllocationMethod
+            value: Static
+          - add: >-
+              /properties/ipConfigurations/0/properties/loadBalancerBackendAddressPools
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_scenario000001/providers/Microsoft.Network/loadBalancers/mylb/backendAddressPools/mylbbepool
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_scenario000001/providers/Microsoft.Network/loadBalancers/mylb/backendAddressPools/bap1
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_scenario000001/providers/Microsoft.Network/loadBalancers/mylb/backendAddressPools/bap2
+          - add: >-
+              /properties/ipConfigurations/0/properties/loadBalancerInboundNatRules
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_scenario000001/providers/Microsoft.Network/loadBalancers/mylb/inboundNatRules/rule1
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_scenario000001/providers/Microsoft.Network/loadBalancers/mylb/inboundNatRules/rule2
+          - add: /properties/ipConfigurations/0/properties/publicIPAddress
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_scenario000001/providers/Microsoft.Network/publicIPAddresses/publicip1
+          - add: /properties/dnsSettings/dnsServers/0
+            value: 100.1.2.3
+          - add: /properties/dnsSettings/internalDnsNameLabel
+            value: test
+          - add: /properties/dnsSettings/internalFqdn
+            value: test.iwl1jcosckgudiybppuv1zb4nc.dx.internal.cloudapp.net
+          - replace: /properties/enableAcceleratedNetworking
+            value: true
+          - replace: /properties/enableIPForwarding
+            value: true
+          - add: /tags
+            value:
+              foo: doo
+      - step: Update_networkInterfaces_cli-test-nic_764
+        resourceName: networkInterfaces_cli-test-nic
+        operationId: NetworkInterfaces_CreateOrUpdate
+        resourceUpdate:
+          - remove: /tags
+          - replace: >-
+              /properties/ipConfigurations/0/properties/privateIPAllocationMethod
+            value: Dynamic
+          - remove: /properties/ipConfigurations/0/properties/publicIPAddress
+          - remove: >-
+              /properties/ipConfigurations/0/properties/loadBalancerBackendAddressPools
+          - remove: >-
+              /properties/ipConfigurations/0/properties/loadBalancerInboundNatRules
+          - remove: /properties/dnsSettings/dnsServers/0
+          - remove: /properties/dnsSettings/internalDnsNameLabel
+          - remove: /properties/dnsSettings/internalFqdn
+          - replace: /properties/enableAcceleratedNetworking
+            value: false
+          - replace: /properties/enableIPForwarding
+            value: false
+          - add: /properties/networkSecurityGroup
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_scenario000001/providers/Microsoft.Network/networkSecurityGroups/mynsg
+      - step: Update_networkInterfaces_cli-test-nic_766
+        resourceName: networkInterfaces_cli-test-nic
+        operationId: NetworkInterfaces_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/ipConfigurations/0/properties/publicIPAddress
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_scenario000001/providers/Microsoft.Network/publicIPAddresses/publicip1
+      - step: NetworkInterfaces_ListAll_767
+        exampleFile: ../examples/NetworkInterfaces_ListAll_767_Generated.json
+        operationId: NetworkInterfaces_ListAll
+      - step: NetworkInterfaces_List_768
+        exampleFile: ../examples/NetworkInterfaces_List_768_Generated.json
+        operationId: NetworkInterfaces_List
+      - step: NetworkInterfaces_Get_769
+        exampleFile: ../examples/NetworkInterfaces_Get_769_Generated.json
+        operationId: NetworkInterfaces_Get
+      - step: Update_networkInterfaces_cli-test-nic_771
+        resourceName: networkInterfaces_cli-test-nic
+        operationId: NetworkInterfaces_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/dnsSettings/internalDnsNameLabel
+            value: noodle
+          - add: /properties/dnsSettings/internalFqdn
+            value: noodle.iwl1jcosckgudiybppuv1zb4nc.dx.internal.cloudapp.net
+          - replace: /properties/enableIPForwarding
+            value: true
+          - replace: /properties/networkSecurityGroup/id
+            value: >-
+              /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_scenario000001/providers/Microsoft.Network/networkSecurityGroups/myothernsg
+      - step: Update_networkInterfaces_cli-test-nic_773
+        resourceName: networkInterfaces_cli-test-nic
+        operationId: NetworkInterfaces_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/dnsSettings/internalDnsNameLabel
+            value: doodle
+          - replace: /properties/dnsSettings/internalFqdn
+            value: doodle.iwl1jcosckgudiybppuv1zb4nc.dx.internal.cloudapp.net
+          - replace: /properties/enableIPForwarding
+            value: false
+      - step: NetworkInterfaces_Delete_774
+        exampleFile: ../examples/NetworkInterfaces_Delete_774_Generated.json
+        operationId: NetworkInterfaces_Delete
+      - step: NetworkInterfaces_List_775
+        exampleFile: ../examples/NetworkInterfaces_List_775_Generated.json
+        operationId: NetworkInterfaces_List
+    variables:
+      virtualNetworkName: myvnet
+      networkSecurityGroupName: mynsg
+      publicIpAddressName: publicip1
+      loadBalancerName: mylb
+      networkInterfaceName: cli-test-nic

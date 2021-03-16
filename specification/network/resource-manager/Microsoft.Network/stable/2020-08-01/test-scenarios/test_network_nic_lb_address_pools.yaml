@@ -1,0 +1,60 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_nic_lb_address_pools
+    steps:
+      - step: Create_virtualNetworks_vnet1
+        resourceName: virtualNetworks_vnet1
+        exampleFile: ../examples/Create_virtualNetworks_vnet1_Generated_813.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Create_networkInterfaces_nic1
+        resourceName: networkInterfaces_nic1
+        exampleFile: ../examples/Create_networkInterfaces_nic1_Generated_815.json
+        operationId: NetworkInterfaces_CreateOrUpdate
+      - step: LoadBalancers_Get_816
+        exampleFile: ../examples/LoadBalancers_Get_816_Generated.json
+        operationId: LoadBalancers_Get
+      - step: Create_loadBalancers_lb1
+        resourceName: loadBalancers_lb1
+        exampleFile: ../examples/Create_loadBalancers_lb1_Generated_818.json
+        operationId: LoadBalancers_CreateOrUpdate
+      - step: LoadBalancerBackendAddressPools_Get_819
+        exampleFile: ../examples/LoadBalancerBackendAddressPools_Get_584_Generated.json
+        operationId: LoadBalancerBackendAddressPools_Get
+      - step: NetworkInterfaces_Get_820
+        exampleFile: ../examples/NetworkInterfaces_Get_820_Generated.json
+        operationId: NetworkInterfaces_Get
+      - step: Update_networkInterfaces_nic1_822
+        resourceName: networkInterfaces_nic1
+        operationId: NetworkInterfaces_CreateOrUpdate
+        resourceUpdate:
+          - add: >-
+              /properties/ipConfigurations/0/properties/loadBalancerBackendAddressPools
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_lb_address_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/pool1
+      - step: Update_networkInterfaces_nic1_824
+        resourceName: networkInterfaces_nic1
+        operationId: NetworkInterfaces_CreateOrUpdate
+        resourceUpdate:
+          - remove: >-
+              /properties/ipConfigurations/0/properties/loadBalancerBackendAddressPools/0
+      - step: Update_networkInterfaces_nic1_826
+        resourceName: networkInterfaces_nic1
+        operationId: NetworkInterfaces_CreateOrUpdate
+        resourceUpdate:
+          - add: >-
+              /properties/ipConfigurations/0/properties/loadBalancerBackendAddressPools
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_lb_address_pools000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/pool1
+      - step: Update_networkInterfaces_nic1_828
+        resourceName: networkInterfaces_nic1
+        operationId: NetworkInterfaces_CreateOrUpdate
+        resourceUpdate:
+          - remove: >-
+              /properties/ipConfigurations/0/properties/loadBalancerBackendAddressPools/0
+    variables:
+      virtualNetworkName: vnet1
+      networkInterfaceName: nic1
+      loadBalancerName: lb1
+      backendAddressPoolName: pool1

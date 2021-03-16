@@ -1,0 +1,43 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_appgw_private_endpoint_with_default
+    steps:
+      - step: Create_publicIPAddresses_appgw_ip
+        resourceName: publicIPAddresses_appgw_ip
+        exampleFile: ../examples/Create_publicIPAddresses_appgw_ip_Generated.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: Create_virtualNetworks_appgw_private_endpoint_vnet
+        resourceName: virtualNetworks_appgw_private_endpoint_vnet
+        exampleFile: >-
+          ../examples/Create_virtualNetworks_appgw_private_endpoint_vnet_Generated.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Subnets_Get_2
+        exampleFile: ../examples/Subnets_Get_2_Generated.json
+        operationId: Subnets_Get
+      - step: Create_subnets_appgw_private_endpoint_subnet
+        resourceName: subnets_appgw_private_endpoint_subnet
+        exampleFile: >-
+          ../examples/Create_subnets_appgw_private_endpoint_subnet_Generated.json
+        operationId: Subnets_CreateOrUpdate
+      - step: ApplicationGateways_Get_4
+        exampleFile: ../examples/ApplicationGateways_Get_4_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: VirtualNetworks_Get_5
+        exampleFile: ../examples/VirtualNetworks_Get_5_Generated.json
+        operationId: VirtualNetworks_Get
+        variables:
+          virtualNetworkName: appgwVnet
+      - step: Create_privateEndpoints_appgw_private_endpoint
+        resourceName: privateEndpoints_appgw_private_endpoint
+        exampleFile: >-
+          ../examples/Create_privateEndpoints_appgw_private_endpoint_Generated.json
+        operationId: PrivateEndpoints_CreateOrUpdate
+      - step: PrivateEndpoints_Delete_7
+        exampleFile: ../examples/PrivateEndpoints_Delete_7_Generated.json
+        operationId: PrivateEndpoints_Delete
+    variables:
+      publicIpAddressName: appgw_ip
+      virtualNetworkName: appgw_private_endpoint_vnet
+      subnetName: appgw_private_endpoint_subnet
+      applicationGatewayName: appgw
+      privateEndpointName: appgw_private_endpoint

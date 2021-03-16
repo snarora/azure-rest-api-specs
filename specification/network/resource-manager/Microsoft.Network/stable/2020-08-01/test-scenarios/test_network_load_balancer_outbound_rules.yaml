@@ -1,0 +1,91 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_load_balancer_outbound_rules
+    steps:
+      - step: Create_publicIPPrefixes_prefix1
+        resourceName: publicIPPrefixes_prefix1
+        exampleFile: ../examples/Create_publicIPPrefixes_prefix1_Generated.json
+        operationId: PublicIPPrefixes_CreateOrUpdate
+      - step: LoadBalancers_Get_720
+        exampleFile: ../examples/LoadBalancers_Get_720_Generated.json
+        operationId: LoadBalancers_Get
+      - step: Create_loadBalancers_lb1
+        resourceName: loadBalancers_lb1
+        exampleFile: ../examples/Create_loadBalancers_lb1_Generated_722.json
+        operationId: LoadBalancers_CreateOrUpdate
+      - step: Update_loadBalancers_lb1_724
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/frontendIPConfigurations/0/properties/outboundRules
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_network_lb_outbound_rules000001/providers/Microsoft.Network/loadBalancers/lb1/outboundRules/rule1
+          - add: /properties/backendAddressPools/0/properties/outboundRules
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_network_lb_outbound_rules000001/providers/Microsoft.Network/loadBalancers/lb1/outboundRules/rule1
+          - add: /properties/outboundRules/0
+            value:
+              name: rule1
+              properties:
+                allocatedOutboundPorts: 512
+                frontendIPConfigurations:
+                  - id: >-
+                      /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_network_lb_outbound_rules000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd
+                backendAddressPool:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_network_lb_outbound_rules000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool
+                protocol: Tcp
+                enableTcpReset: true
+                provisioningState: Succeeded
+                idleTimeoutInMinutes: 4
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_network_lb_outbound_rules000001/providers/Microsoft.Network/loadBalancers/lb1/outboundRules/rule1
+              type: Microsoft.Network/loadBalancers/outboundRules
+      - step: Update_loadBalancers_lb1_726
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/frontendIPConfigurations/1/properties/outboundRules
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_network_lb_outbound_rules000001/providers/Microsoft.Network/loadBalancers/lb1/outboundRules/rule2
+          - add: /properties/backendAddressPools/0/properties/outboundRules/1
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_network_lb_outbound_rules000001/providers/Microsoft.Network/loadBalancers/lb1/outboundRules/rule2
+          - add: /properties/outboundRules/1
+            value:
+              name: rule2
+              properties:
+                frontendIPConfigurations:
+                  - id: >-
+                      /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_network_lb_outbound_rules000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/prefixFrontEnd
+                backendAddressPool:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_network_lb_outbound_rules000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/lb1bepool
+                protocol: All
+                idleTimeoutInMinutes: 20
+                provisioningState: Succeeded
+                allocatedOutboundPorts: 1024
+                enableTcpReset: false
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test_network_lb_outbound_rules000001/providers/Microsoft.Network/loadBalancers/lb1/outboundRules/rule2
+              type: Microsoft.Network/loadBalancers/outboundRules
+      - step: Update_loadBalancers_lb1_728
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/outboundRules/1/properties/idleTimeoutInMinutes
+            value: 25
+      - step: Update_loadBalancers_lb1_730
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - remove: /properties/frontendIPConfigurations/0/properties/outboundRules
+          - remove: /properties/backendAddressPools/0/properties/outboundRules/0
+          - remove: /properties/outboundRules/0
+    variables:
+      publicIpPrefixName: prefix1
+      loadBalancerName: lb1

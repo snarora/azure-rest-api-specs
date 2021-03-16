@@ -1,0 +1,28 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_ag_frontend_ip_private
+    steps:
+      - step: Create_publicIPAddresses_myip1
+        resourceName: publicIPAddresses_myip1
+        exampleFile: ../examples/Create_publicIPAddresses_myip1_Generated.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: Create_virtualNetworks_vnet1
+        resourceName: virtualNetworks_vnet1
+        exampleFile: ../examples/Create_virtualNetworks_vnet1_Generated_112.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: ApplicationGateways_Get_113
+        exampleFile: ../examples/ApplicationGateways_Get_113_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: Create_applicationGateways_ag1
+        resourceName: applicationGateways_ag1
+        exampleFile: ../examples/Create_applicationGateways_ag1_Generated_115.json
+        operationId: ApplicationGateways_CreateOrUpdate
+      - step: Update_applicationGateways_ag1_117
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - remove: /properties/frontendIPConfigurations/1
+    variables:
+      publicIpAddressName: myip1
+      virtualNetworkName: vnet1
+      applicationGatewayName: ag1

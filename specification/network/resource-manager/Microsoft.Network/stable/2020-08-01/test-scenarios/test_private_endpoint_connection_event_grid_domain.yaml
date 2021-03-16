@@ -1,0 +1,49 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_private_endpoint_connection_event_grid_domain
+    steps:
+      - step: Create_virtualNetworks_cli000003
+        resourceName: virtualNetworks_cli000003
+        exampleFile: ../examples/Create_virtualNetworks_cli000003_Generated.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Update_virtualNetworks_cli000003_1415
+        resourceName: virtualNetworks_cli000003
+        operationId: VirtualNetworks_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/subnets/0
+            value:
+              name: cli000004
+              properties:
+                addressPrefix: 10.0.0.0/24
+                provisioningState: Succeeded
+                delegations: []
+                privateEndpointNetworkPolicies: Enabled
+                privateLinkServiceNetworkPolicies: Enabled
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_event_grid_pec000002/providers/Microsoft.Network/virtualNetworks/cli000003/subnets/cli000004
+              type: Microsoft.Network/virtualNetworks/subnets
+      - step: Subnets_Get_1416
+        exampleFile: ../examples/Subnets_Get_2_Generated.json
+        operationId: Subnets_Get
+      - step: Create_subnets_cli000004
+        resourceName: subnets_cli000004
+        exampleFile: >-
+          ../examples/Create_subnets_appgw_private_endpoint_subnet_Generated.json
+        operationId: Subnets_CreateOrUpdate
+      - step: Create_privateEndpoints_cli000005
+        resourceName: privateEndpoints_cli000005
+        exampleFile: ../examples/Create_privateEndpoints_cli000005_Generated.json
+        operationId: PrivateEndpoints_CreateOrUpdate
+      - step: PrivateEndpoints_Delete_1419
+        exampleFile: ../examples/PrivateEndpoints_Delete_7_Generated.json
+        operationId: PrivateEndpoints_Delete
+      - step: Subnets_Delete_1420
+        exampleFile: ../examples/Subnets_Delete_1102_Generated.json
+        operationId: Subnets_Delete
+      - step: VirtualNetworks_Delete_1421
+        exampleFile: ../examples/VirtualNetworks_Delete_1039_Generated.json
+        operationId: VirtualNetworks_Delete
+    variables:
+      virtualNetworkName: cli000003
+      subnetName: cli000004
+      privateEndpointName: cli000005

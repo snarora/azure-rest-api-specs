@@ -1,0 +1,38 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_vnet_list_available_ips
+    steps:
+      - step: Create_virtualNetworks_vnet1
+        resourceName: virtualNetworks_vnet1
+        exampleFile: ../examples/Create_virtualNetworks_vnet1_Generated_1133.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Update_virtualNetworks_vnet1_1135
+        resourceName: virtualNetworks_vnet1
+        operationId: VirtualNetworks_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/addressSpace/addressPrefixes/0
+            value: 20.0.0.0/16
+          - add: /properties/dhcpOptions/dnsServers/0
+            value: 1.2.3.4
+      - step: Update_virtualNetworks_vnet1_1137
+        resourceName: virtualNetworks_vnet1
+        operationId: VirtualNetworks_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/subnets/1
+            value:
+              name: subnet1
+              properties:
+                addressPrefix: 20.0.0.0/24
+                provisioningState: Succeeded
+                delegations: []
+                privateEndpointNetworkPolicies: Enabled
+                privateLinkServiceNetworkPolicies: Enabled
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_vnet_test000001/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1
+              type: Microsoft.Network/virtualNetworks/subnets
+      - step: VirtualNetworks_CheckIPAddressAvailability_1138
+        exampleFile: >-
+          ../examples/VirtualNetworks_CheckIPAddressAvailability_1138_Generated.json
+        operationId: VirtualNetworks_CheckIPAddressAvailability
+    variables:
+      virtualNetworkName: vnet1

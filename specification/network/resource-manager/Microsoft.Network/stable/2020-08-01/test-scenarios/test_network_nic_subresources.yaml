@@ -1,0 +1,227 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_nic_subresources
+    steps:
+      - step: Create_virtualNetworks_vnet1
+        resourceName: virtualNetworks_vnet1
+        exampleFile: ../examples/Create_virtualNetworks_vnet1_Generated_830.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Create_networkInterfaces_nic1
+        resourceName: networkInterfaces_nic1
+        exampleFile: ../examples/Create_networkInterfaces_nic1_Generated_832.json
+        operationId: NetworkInterfaces_CreateOrUpdate
+      - step: Update_networkInterfaces_nic1_834
+        resourceName: networkInterfaces_nic1
+        operationId: NetworkInterfaces_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/ipConfigurations/0
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_subresource000001/providers/Microsoft.Network/networkInterfaces/nic1/ipConfigurations/ipconfig2
+              name: ipconfig2
+              properties:
+                privateIPAddress: 10.0.0.5
+                privateIPAllocationMethod: Dynamic
+                privateIPAddressVersion: IPv4
+                subnet:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_subresource000001/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1
+                primary: true
+                provisioningState: Succeeded
+              type: Microsoft.Network/networkInterfaces/ipConfigurations
+          - replace: /properties/ipConfigurations/1/properties/primary
+            value: false
+      - step: Update_networkInterfaces_nic1_836
+        resourceName: networkInterfaces_nic1
+        operationId: NetworkInterfaces_CreateOrUpdate
+        resourceUpdate:
+          - remove: /properties/ipConfigurations/1
+          - add: /properties/ipConfigurations/0
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_subresource000001/providers/Microsoft.Network/networkInterfaces/nic1/ipConfigurations/ipconfig1
+              name: ipconfig1
+              properties:
+                privateIPAddress: 10.0.0.4
+                privateIPAllocationMethod: Dynamic
+                privateIPAddressVersion: IPv4
+                subnet:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_subresource000001/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1
+                primary: true
+                provisioningState: Succeeded
+              type: Microsoft.Network/networkInterfaces/ipConfigurations
+          - replace: /properties/ipConfigurations/1/properties/primary
+            value: false
+      - step: Update_networkInterfaces_nic1_838
+        resourceName: networkInterfaces_nic1
+        operationId: NetworkInterfaces_CreateOrUpdate
+        resourceUpdate:
+          - remove: /properties/ipConfigurations/1
+      - step: Create_virtualNetworks_vnet2
+        resourceName: virtualNetworks_vnet2
+        exampleFile: ../examples/Create_virtualNetworks_vnet2_Generated_840.json
+        operationId: VirtualNetworks_CreateOrUpdate
+        variables:
+          virtualNetworkName: vnet2
+      - step: Create_publicIPAddresses_publicip2
+        resourceName: publicIPAddresses_publicip2
+        exampleFile: ../examples/Create_publicIPAddresses_publicip2_Generated_842.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: LoadBalancers_Get_843
+        exampleFile: ../examples/LoadBalancers_Get_843_Generated.json
+        operationId: LoadBalancers_Get
+      - step: Create_loadBalancers_lb1
+        resourceName: loadBalancers_lb1
+        exampleFile: ../examples/Create_loadBalancers_lb1_Generated_845.json
+        operationId: LoadBalancers_CreateOrUpdate
+      - step: Update_loadBalancers_lb1_847
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - add: >-
+              /properties/frontendIPConfigurations/0/properties/inboundNatRules/1
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_subresource000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatRules/rule2
+          - add: /properties/inboundNatRules/1
+            value:
+              name: rule2
+              properties:
+                frontendIPConfiguration:
+                  id: >-
+                    /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_subresource000001/providers/Microsoft.Network/loadBalancers/lb1/frontendIPConfigurations/LoadBalancerFrontEnd
+                  name: LoadBalancerFrontEnd
+                  properties:
+                    privateIPAllocationMethod: Dynamic
+                    privateIPAddressVersion: IPv4
+                    publicIPAddress:
+                      id: >-
+                        /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_subresource000001/providers/Microsoft.Network/publicIPAddresses/PublicIPlb1
+                protocol: Tcp
+                frontendPort: 200
+                backendPort: 200
+                provisioningState: Succeeded
+                enableFloatingIP: false
+                idleTimeoutInMinutes: 4
+                enableDestinationServiceEndpoint: false
+                enableTcpReset: false
+                allowBackendPortConflict: false
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_subresource000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatRules/rule2
+              type: Microsoft.Network/loadBalancers/inboundNatRules
+      - step: Update_loadBalancers_lb1_849
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/backendAddressPools/1
+            value:
+              name: bap1
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_subresource000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/bap1
+              properties:
+                provisioningState: Succeeded
+              type: Microsoft.Network/loadBalancers/backendAddressPools
+      - step: Update_loadBalancers_lb1_851
+        resourceName: loadBalancers_lb1
+        operationId: LoadBalancers_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/backendAddressPools/2
+            value:
+              name: bap2
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_subresource000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/bap2
+              properties:
+                provisioningState: Succeeded
+              type: Microsoft.Network/loadBalancers/backendAddressPools
+      - step: LoadBalancerBackendAddressPools_Get_852
+        exampleFile: ../examples/LoadBalancerBackendAddressPools_Get_584_Generated.json
+        operationId: LoadBalancerBackendAddressPools_Get
+      - step: NetworkInterfaces_Get_853
+        exampleFile: ../examples/NetworkInterfaces_Get_853_Generated.json
+        operationId: NetworkInterfaces_Get
+      - step: Update_networkInterfaces_nic1_855
+        resourceName: networkInterfaces_nic1
+        operationId: NetworkInterfaces_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/ipConfigurations/0/properties/privateIPAddress
+            value: 10.0.0.15
+          - replace: >-
+              /properties/ipConfigurations/0/properties/privateIPAllocationMethod
+            value: Static
+          - add: >-
+              /properties/ipConfigurations/0/properties/loadBalancerBackendAddressPools
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_subresource000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/bap1
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_subresource000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/bap2
+          - add: >-
+              /properties/ipConfigurations/0/properties/loadBalancerInboundNatRules
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_subresource000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatRules/rule1
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_subresource000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatRules/rule2
+      - step: Update_networkInterfaces_nic1_857
+        resourceName: networkInterfaces_nic1
+        operationId: NetworkInterfaces_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/ipConfigurations/0/properties/privateIPAddress
+            value: 10.0.0.50
+      - step: Update_networkInterfaces_nic1_859
+        resourceName: networkInterfaces_nic1
+        operationId: NetworkInterfaces_CreateOrUpdate
+        resourceUpdate:
+          - remove: >-
+              /properties/ipConfigurations/0/properties/loadBalancerInboundNatRules/0
+      - step: Update_networkInterfaces_nic1_861
+        resourceName: networkInterfaces_nic1
+        operationId: NetworkInterfaces_CreateOrUpdate
+        resourceUpdate:
+          - add: >-
+              /properties/ipConfigurations/0/properties/loadBalancerInboundNatRules/1
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_subresource000001/providers/Microsoft.Network/loadBalancers/lb1/inboundNatRules/rule1
+      - step: Update_networkInterfaces_nic1_863
+        resourceName: networkInterfaces_nic1
+        operationId: NetworkInterfaces_CreateOrUpdate
+        resourceUpdate:
+          - remove: >-
+              /properties/ipConfigurations/0/properties/loadBalancerBackendAddressPools/0
+      - step: Update_networkInterfaces_nic1_865
+        resourceName: networkInterfaces_nic1
+        operationId: NetworkInterfaces_CreateOrUpdate
+        resourceUpdate:
+          - add: >-
+              /properties/ipConfigurations/0/properties/loadBalancerBackendAddressPools/1
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_subresource000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/bap1
+      - step: Update_networkInterfaces_nic1_867
+        resourceName: networkInterfaces_nic1
+        operationId: NetworkInterfaces_CreateOrUpdate
+        resourceUpdate:
+          - replace: >-
+              /properties/ipConfigurations/0/properties/privateIPAllocationMethod
+            value: Dynamic
+          - add: /properties/ipConfigurations/0/properties/publicIPAddress
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_subresource000001/providers/Microsoft.Network/publicIPAddresses/publicip2
+      - step: Update_networkInterfaces_nic1_869
+        resourceName: networkInterfaces_nic1
+        operationId: NetworkInterfaces_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/ipConfigurations/0/properties/privateIPAddress
+            value: 10.0.0.4
+          - replace: /properties/ipConfigurations/0/properties/subnet/id
+            value: >-
+              /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_subresource000001/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/subnet2
+    variables:
+      virtualNetworkName: vnet1
+      networkInterfaceName: nic1
+      publicIpAddressName: publicip2
+      loadBalancerName: lb1
+      backendAddressPoolName: bap1

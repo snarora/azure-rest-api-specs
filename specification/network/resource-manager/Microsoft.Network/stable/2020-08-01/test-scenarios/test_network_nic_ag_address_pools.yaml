@@ -1,0 +1,53 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_nic_ag_address_pools
+    steps:
+      - step: Create_virtualNetworks_vnet1
+        resourceName: virtualNetworks_vnet1
+        exampleFile: ../examples/Create_virtualNetworks_vnet1_Generated_777.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: ApplicationGateways_Get_778
+        exampleFile: ../examples/ApplicationGateways_Get_778_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: Create_applicationGateways_ag1
+        resourceName: applicationGateways_ag1
+        exampleFile: ../examples/Create_applicationGateways_ag1_Generated_780.json
+        operationId: ApplicationGateways_CreateOrUpdate
+      - step: Create_networkInterfaces_nic1
+        resourceName: networkInterfaces_nic1
+        exampleFile: ../examples/Create_networkInterfaces_nic1_Generated.json
+        operationId: NetworkInterfaces_CreateOrUpdate
+      - step: Update_networkInterfaces_nic1_783
+        resourceName: networkInterfaces_nic1
+        operationId: NetworkInterfaces_CreateOrUpdate
+        resourceUpdate:
+          - add: >-
+              /properties/ipConfigurations/0/properties/applicationGatewayBackendAddressPools
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_ag_address_pools000001/providers/Microsoft.Network/applicationGateways/ag1/backendAddressPools/pool1
+      - step: Update_networkInterfaces_nic1_785
+        resourceName: networkInterfaces_nic1
+        operationId: NetworkInterfaces_CreateOrUpdate
+        resourceUpdate:
+          - remove: >-
+              /properties/ipConfigurations/0/properties/applicationGatewayBackendAddressPools/0
+      - step: Update_networkInterfaces_nic1_787
+        resourceName: networkInterfaces_nic1
+        operationId: NetworkInterfaces_CreateOrUpdate
+        resourceUpdate:
+          - add: >-
+              /properties/ipConfigurations/0/properties/applicationGatewayBackendAddressPools
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_ag_address_pools000001/providers/Microsoft.Network/applicationGateways/ag1/backendAddressPools/pool1
+      - step: Update_networkInterfaces_nic1_789
+        resourceName: networkInterfaces_nic1
+        operationId: NetworkInterfaces_CreateOrUpdate
+        resourceUpdate:
+          - remove: >-
+              /properties/ipConfigurations/0/properties/applicationGatewayBackendAddressPools/0
+    variables:
+      virtualNetworkName: vnet1
+      applicationGatewayName: ag1
+      networkInterfaceName: nic1

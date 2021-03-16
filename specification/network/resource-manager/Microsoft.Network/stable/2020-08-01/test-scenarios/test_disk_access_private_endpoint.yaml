@@ -1,0 +1,26 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_disk_access_private_endpoint
+    steps:
+      - step: Create_virtualNetworks_private_endpoint_vnet
+        resourceName: virtualNetworks_private_endpoint_vnet
+        exampleFile: >-
+          ../examples/Create_virtualNetworks_private_endpoint_vnet_Generated.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Subnets_Get_20
+        exampleFile: ../examples/Subnets_Get_2_Generated.json
+        operationId: Subnets_Get
+      - step: Create_subnets_private_endpoint_subnet
+        resourceName: subnets_private_endpoint_subnet
+        exampleFile: >-
+          ../examples/Create_subnets_appgw_private_endpoint_subnet_Generated.json
+        operationId: Subnets_CreateOrUpdate
+      - step: Create_privateEndpoints_private_endpoint_name
+        resourceName: privateEndpoints_private_endpoint_name
+        exampleFile: >-
+          ../examples/Create_privateEndpoints_private_endpoint_name_Generated.json
+        operationId: PrivateEndpoints_CreateOrUpdate
+    variables:
+      virtualNetworkName: private_endpoint_vnet
+      subnetName: private_endpoint_subnet
+      privateEndpointName: private_endpoint_name

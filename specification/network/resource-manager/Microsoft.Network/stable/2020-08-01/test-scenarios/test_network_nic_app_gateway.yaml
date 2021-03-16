@@ -1,0 +1,90 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_nic_app_gateway
+    steps:
+      - step: Create_virtualNetworks_vnet1
+        resourceName: virtualNetworks_vnet1
+        exampleFile: ../examples/Create_virtualNetworks_vnet1_Generated_791.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: ApplicationGateways_Get_792
+        exampleFile: ../examples/ApplicationGateways_Get_792_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: Create_applicationGateways_ag1
+        resourceName: applicationGateways_ag1
+        exampleFile: ../examples/Create_applicationGateways_ag1_Generated_794.json
+        operationId: ApplicationGateways_CreateOrUpdate
+      - step: Update_applicationGateways_ag1_796
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/backendAddressPools/0/properties/backendAddresses/1
+            value:
+              ipAddress: 10.20.0.70
+      - step: Update_applicationGateways_ag1_798
+        resourceName: applicationGateways_ag1
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - replace: /properties/provisioningState
+            value: Updating
+          - replace: /properties/gatewayIPConfigurations/0/properties/provisioningState
+            value: Updating
+          - replace: >-
+              /properties/frontendIPConfigurations/0/properties/provisioningState
+            value: Updating
+          - replace: /properties/frontendPorts/0/properties/provisioningState
+            value: Updating
+          - replace: /properties/backendAddressPools/0/properties/provisioningState
+            value: Updating
+          - add: /properties/backendAddressPools/1
+            value:
+              name: bepool2
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_app_gateway000001/providers/Microsoft.Network/applicationGateways/ag1/backendAddressPools/bepool2
+              properties:
+                provisioningState: Updating
+                backendAddresses: []
+              type: Microsoft.Network/applicationGateways/backendAddressPools
+          - replace: >-
+              /properties/backendHttpSettingsCollection/0/properties/provisioningState
+            value: Updating
+          - replace: /properties/httpListeners/0/properties/provisioningState
+            value: Updating
+          - replace: /properties/requestRoutingRules/0/properties/provisioningState
+            value: Updating
+      - step: LoadBalancers_Get_799
+        exampleFile: ../examples/LoadBalancers_Get_799_Generated.json
+        operationId: LoadBalancers_Get
+      - step: Create_loadBalancers_lb1
+        resourceName: loadBalancers_lb1
+        exampleFile: ../examples/Create_loadBalancers_lb1_Generated_801.json
+        operationId: LoadBalancers_CreateOrUpdate
+      - step: Create_networkInterfaces_nic1
+        resourceName: networkInterfaces_nic1
+        exampleFile: ../examples/Create_networkInterfaces_nic1_Generated_803.json
+        operationId: NetworkInterfaces_CreateOrUpdate
+      - step: Update_networkInterfaces_nic1_805
+        resourceName: networkInterfaces_nic1
+        operationId: NetworkInterfaces_CreateOrUpdate
+      - step: Update_networkInterfaces_nic1_807
+        resourceName: networkInterfaces_nic1
+        operationId: NetworkInterfaces_CreateOrUpdate
+        resourceUpdate:
+          - add: >-
+              /properties/ipConfigurations/0/properties/applicationGatewayBackendAddressPools/1
+            value:
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_app_gateway000001/providers/Microsoft.Network/applicationGateways/ag1/backendAddressPools/bepool2
+      - step: Update_networkInterfaces_nic1_809
+        resourceName: networkInterfaces_nic1
+        operationId: NetworkInterfaces_CreateOrUpdate
+        resourceUpdate:
+          - add: >-
+              /properties/ipConfigurations/0/properties/loadBalancerBackendAddressPools
+            value:
+              - id: >-
+                  /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_nic_app_gateway000001/providers/Microsoft.Network/loadBalancers/lb1/backendAddressPools/bap1
+    variables:
+      virtualNetworkName: vnet1
+      applicationGatewayName: ag1
+      loadBalancerName: lb1
+      networkInterfaceName: nic1

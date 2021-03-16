@@ -1,0 +1,18 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_app_gateway_waf_v2_config
+    steps:
+      - step: Create_publicIPAddresses_pip1
+        resourceName: publicIPAddresses_pip1
+        exampleFile: ../examples/Create_publicIPAddresses_pip1_Generated_368.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: ApplicationGateways_Get_369
+        exampleFile: ../examples/ApplicationGateways_Get_369_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: Create_applicationGateways_ag1
+        resourceName: applicationGateways_ag1
+        exampleFile: ../examples/Create_applicationGateways_ag1_Generated_371.json
+        operationId: ApplicationGateways_CreateOrUpdate
+    variables:
+      publicIpAddressName: pip1
+      applicationGatewayName: ag1

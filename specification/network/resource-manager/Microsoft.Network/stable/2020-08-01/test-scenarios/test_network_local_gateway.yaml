@@ -1,0 +1,31 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_local_gateway
+    steps:
+      - step: Create_localNetworkGateways_lgw1
+        resourceName: localNetworkGateways_lgw1
+        exampleFile: ../examples/Create_localNetworkGateways_lgw1_Generated.json
+        operationId: LocalNetworkGateways_CreateOrUpdate
+      - step: Update_localNetworkGateways_lgw1_733
+        resourceName: localNetworkGateways_lgw1
+        operationId: LocalNetworkGateways_CreateOrUpdate
+        resourceUpdate:
+          - replace: /tags/foo
+            value: boo
+      - step: Create_localNetworkGateways_lgw2
+        resourceName: localNetworkGateways_lgw2
+        exampleFile: ../examples/Create_localNetworkGateways_lgw2_Generated_735.json
+        operationId: LocalNetworkGateways_CreateOrUpdate
+        variables:
+          localNetworkGatewayName: lgw2
+      - step: LocalNetworkGateways_List_736
+        exampleFile: ../examples/LocalNetworkGateways_List_736_Generated.json
+        operationId: LocalNetworkGateways_List
+      - step: LocalNetworkGateways_Delete_737
+        exampleFile: ../examples/LocalNetworkGateways_Delete_737_Generated.json
+        operationId: LocalNetworkGateways_Delete
+      - step: LocalNetworkGateways_List_738
+        exampleFile: ../examples/LocalNetworkGateways_List_738_Generated.json
+        operationId: LocalNetworkGateways_List
+    variables:
+      localNetworkGatewayName: lgw1

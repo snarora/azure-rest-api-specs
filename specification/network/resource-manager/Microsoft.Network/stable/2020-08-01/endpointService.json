@@ -73,6 +73,15 @@
         "x-ms-examples": {
           "EndpointServicesList": {
             "$ref": "./examples/EndpointServicesList.json"
+          },
+          "AvailableEndpointServices_List_999_Generated": {
+            "$ref": "./examples/AvailableEndpointServices_List_999_Generated.json"
+          },
+          "AvailableEndpointServices_List_1031_Generated": {
+            "$ref": "./examples/AvailableEndpointServices_List_1031_Generated.json"
+          },
+          "AvailableEndpointServices_List_1022_Generated": {
+            "$ref": "./examples/AvailableEndpointServices_List_1022_Generated.json"
           }
         }
       }

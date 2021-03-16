@@ -1,0 +1,36 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_mariadb_private_link_scenario
+    steps:
+      - step: Create_virtualNetworks_cli-vnet-000003
+        resourceName: virtualNetworks_cli-vnet-000003
+        exampleFile: ../examples/Create_virtualNetworks_cli-vnet-000003_Generated.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Subnets_Get_59
+        exampleFile: ../examples/Subnets_Get_2_Generated.json
+        operationId: Subnets_Get
+      - step: Create_subnets_cli-subnet-000004
+        resourceName: subnets_cli-subnet-000004
+        exampleFile: >-
+          ../examples/Create_subnets_appgw_private_endpoint_subnet_Generated.json
+        operationId: Subnets_CreateOrUpdate
+      - step: Create_privateEndpoints_cli-pe-000005
+        resourceName: privateEndpoints_cli-pe-000005
+        exampleFile: ../examples/Create_privateEndpoints_cli-pe-000005_Generated.json
+        operationId: PrivateEndpoints_CreateOrUpdate
+      - step: Create_privateEndpoints_cli-pe-000006
+        resourceName: privateEndpoints_cli-pe-000006
+        exampleFile: ../examples/Create_privateEndpoints_cli-pe-000006_Generated.json
+        operationId: PrivateEndpoints_CreateOrUpdate
+        variables:
+          privateEndpointName: cli-pe-000006
+      - step: Create_privateEndpoints_cli-pe-000007
+        resourceName: privateEndpoints_cli-pe-000007
+        exampleFile: ../examples/Create_privateEndpoints_cli-pe-000007_Generated.json
+        operationId: PrivateEndpoints_CreateOrUpdate
+        variables:
+          privateEndpointName: cli-pe-000007
+    variables:
+      virtualNetworkName: cli-vnet-000003
+      subnetName: cli-subnet-000004
+      privateEndpointName: cli-pe-000005

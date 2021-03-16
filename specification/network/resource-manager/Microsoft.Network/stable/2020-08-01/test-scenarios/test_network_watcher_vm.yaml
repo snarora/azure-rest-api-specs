@@ -1,0 +1,49 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_watcher_vm
+    steps:
+      - step: NetworkWatchers_ListAll_1289
+        exampleFile: ../examples/NetworkWatchers_ListAll_1289_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: NetworkWatchers_CheckConnectivity_1290
+        exampleFile: ../examples/NetworkWatchers_CheckConnectivity_1290_Generated.json
+        operationId: NetworkWatchers_CheckConnectivity
+      - step: NetworkWatchers_ListAll_1291
+        exampleFile: ../examples/NetworkWatchers_ListAll_1289_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: NetworkWatchers_GetNetworkConfigurationDiagnostic_1292
+        exampleFile: >-
+          ../examples/NetworkWatchers_GetNetworkConfigurationDiagnostic_1292_Generated.json
+        operationId: NetworkWatchers_GetNetworkConfigurationDiagnostic
+      - step: NetworkWatchers_ListAll_1293
+        exampleFile: ../examples/NetworkWatchers_ListAll_1289_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: NetworkWatchers_GetTopology_1294
+        exampleFile: ../examples/NetworkWatchers_GetTopology_1294_Generated.json
+        operationId: NetworkWatchers_GetTopology
+      - step: NetworkWatchers_ListAll_1295
+        exampleFile: ../examples/NetworkWatchers_ListAll_1289_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: NetworkWatchers_VerifyIPFlow_1296
+        exampleFile: ../examples/NetworkWatchers_VerifyIPFlow_1296_Generated.json
+        operationId: NetworkWatchers_VerifyIPFlow
+      - step: NetworkWatchers_ListAll_1297
+        exampleFile: ../examples/NetworkWatchers_ListAll_1289_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: NetworkWatchers_VerifyIPFlow_1298
+        exampleFile: ../examples/NetworkWatchers_VerifyIPFlow_1298_Generated.json
+        operationId: NetworkWatchers_VerifyIPFlow
+      - step: NetworkWatchers_ListAll_1299
+        exampleFile: ../examples/NetworkWatchers_ListAll_1289_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: NetworkWatchers_GetVMSecurityRules_1300
+        exampleFile: ../examples/NetworkWatchers_GetVMSecurityRules_1300_Generated.json
+        operationId: NetworkWatchers_GetVMSecurityRules
+      - step: NetworkWatchers_ListAll_1301
+        exampleFile: ../examples/NetworkWatchers_ListAll_1289_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: NetworkWatchers_GetNextHop_1302
+        exampleFile: ../examples/NetworkWatchers_GetNextHop_1302_Generated.json
+        operationId: NetworkWatchers_GetNextHop
+    variables:
+      networkWatcherName: NetworkWatcher_westus

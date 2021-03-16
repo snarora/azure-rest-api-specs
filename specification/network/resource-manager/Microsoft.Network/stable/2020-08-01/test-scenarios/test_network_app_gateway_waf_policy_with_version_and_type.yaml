@@ -1,0 +1,27 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_app_gateway_waf_policy_with_version_and_type
+    steps:
+      - step: Create_ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        exampleFile: >-
+          ../examples/Create_ApplicationGatewayWebApplicationFirewallPolicies_agp1_Generated.json
+        statusCode: 201
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+      - step: Update_ApplicationGatewayWebApplicationFirewallPolicies_agp1_358
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+      - step: Update_ApplicationGatewayWebApplicationFirewallPolicies_agp1_360
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+      - step: Update_ApplicationGatewayWebApplicationFirewallPolicies_agp1_362
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+      - step: Update_ApplicationGatewayWebApplicationFirewallPolicies_agp1_364
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+      - step: Update_ApplicationGatewayWebApplicationFirewallPolicies_agp1_366
+        resourceName: ApplicationGatewayWebApplicationFirewallPolicies_agp1
+        operationId: WebApplicationFirewallPolicies_CreateOrUpdate
+    variables:
+      policyName: agp1

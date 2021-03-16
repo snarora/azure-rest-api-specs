@@ -1,0 +1,70 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_active_active_cross_premise_connection
+    steps:
+      - step: Create_virtualNetworks_vnet1
+        resourceName: virtualNetworks_vnet1
+        exampleFile: ../examples/Create_virtualNetworks_vnet1_Generated.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Create_publicIPAddresses_gwip1
+        resourceName: publicIPAddresses_gwip1
+        exampleFile: ../examples/Create_publicIPAddresses_gwip1_Generated.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: Create_publicIPAddresses_gwip2
+        resourceName: publicIPAddresses_gwip2
+        exampleFile: ../examples/Create_publicIPAddresses_gwip2_Generated.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+        variables:
+          publicIpAddressName: gwip2
+      - step: Create_virtualNetworkGateways_gw1
+        resourceName: virtualNetworkGateways_gw1
+        exampleFile: ../examples/Create_virtualNetworkGateways_gw1_Generated.json
+        operationId: VirtualNetworkGateways_CreateOrUpdate
+      - step: Update_virtualNetworkGateways_gw1_79
+        resourceName: virtualNetworkGateways_gw1
+        operationId: VirtualNetworkGateways_CreateOrUpdate
+        resourceUpdate:
+          - replace: /tags/foo
+            value: boo
+          - replace: /properties/provisioningState
+            value: Updating
+          - remove: /properties/ipConfigurations/1
+          - replace: /properties/ipConfigurations/0/properties/provisioningState
+            value: Updating
+          - replace: /properties/activeActive
+            value: false
+          - remove: /properties/bgpSettings/bgpPeeringAddresses/1
+          - add: /properties/vpnClientConfiguration
+            value:
+              vpnClientProtocols:
+                - OpenVPN
+                - IkeV2
+              vpnAuthenticationTypes: []
+              vpnClientRootCertificates: []
+              vpnClientRevokedCertificates: []
+              radiusServers: []
+              vpnClientIpsecPolicies: []
+      - step: Create_localNetworkGateways_lgw2
+        resourceName: localNetworkGateways_lgw2
+        exampleFile: ../examples/Create_localNetworkGateways_lgw2_Generated.json
+        operationId: LocalNetworkGateways_CreateOrUpdate
+      - step: VirtualNetworkGatewayConnections_ResetSharedKey_81
+        exampleFile: >-
+          ../examples/VirtualNetworkGatewayConnections_ResetSharedKey_81_Generated.json
+        operationId: VirtualNetworkGatewayConnections_ResetSharedKey
+      - step: Create_sharedkey_Vnet1toSite5_1
+        resourceName: sharedkey_Vnet1toSite5_1
+        exampleFile: ../examples/Create_sharedkey_Vnet1toSite5_1_Generated.json
+        operationId: VirtualNetworkGatewayConnections_SetSharedKey
+      - step: Create_localNetworkGateways_lgw3
+        resourceName: localNetworkGateways_lgw3
+        exampleFile: ../examples/Create_localNetworkGateways_lgw3_Generated.json
+        operationId: LocalNetworkGateways_CreateOrUpdate
+        variables:
+          localNetworkGatewayName: lgw3
+    variables:
+      virtualNetworkName: vnet1
+      publicIpAddressName: gwip1
+      virtualNetworkGatewayName: gw1
+      localNetworkGatewayName: lgw2
+      virtualNetworkGatewayConnectionName: Vnet1toSite5_1

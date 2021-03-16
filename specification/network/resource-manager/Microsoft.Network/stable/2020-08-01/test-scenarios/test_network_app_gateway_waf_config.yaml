@@ -1,0 +1,17 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_app_gateway_waf_config
+    steps:
+      - step: ApplicationGateways_Get_289
+        exampleFile: ../examples/ApplicationGateways_Get_289_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: ApplicationGateways_ListAvailableWafRuleSets_290
+        exampleFile: >-
+          ../examples/ApplicationGateways_ListAvailableWafRuleSets_290_Generated.json
+        operationId: ApplicationGateways_ListAvailableWafRuleSets
+      - step: Create_applicationGateways_ag1
+        resourceName: applicationGateways_ag1
+        exampleFile: ../examples/Create_applicationGateways_ag1_Generated_292.json
+        operationId: ApplicationGateways_CreateOrUpdate
+    variables:
+      applicationGatewayName: ag1

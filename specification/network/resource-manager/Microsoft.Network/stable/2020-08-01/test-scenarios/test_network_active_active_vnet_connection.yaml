@@ -1,0 +1,53 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_active_active_vnet_connection
+    steps:
+      - step: Create_virtualNetworks_vnet1
+        resourceName: virtualNetworks_vnet1
+        exampleFile: ../examples/Create_virtualNetworks_vnet1_Generated_85.json
+        operationId: VirtualNetworks_CreateOrUpdate
+      - step: Create_publicIPAddresses_gw1ip1
+        resourceName: publicIPAddresses_gw1ip1
+        exampleFile: ../examples/Create_publicIPAddresses_gw1ip1_Generated.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: Create_publicIPAddresses_gw1ip2
+        resourceName: publicIPAddresses_gw1ip2
+        exampleFile: ../examples/Create_publicIPAddresses_gw1ip2_Generated.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+        variables:
+          publicIpAddressName: gw1ip2
+      - step: Create_virtualNetworks_vnet2
+        resourceName: virtualNetworks_vnet2
+        exampleFile: ../examples/Create_virtualNetworks_vnet2_Generated.json
+        operationId: VirtualNetworks_CreateOrUpdate
+        variables:
+          virtualNetworkName: vnet2
+      - step: Create_publicIPAddresses_gw2ip1
+        resourceName: publicIPAddresses_gw2ip1
+        exampleFile: ../examples/Create_publicIPAddresses_gw2ip1_Generated.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+        variables:
+          publicIpAddressName: gw2ip1
+      - step: Create_publicIPAddresses_gw2ip2
+        resourceName: publicIPAddresses_gw2ip2
+        exampleFile: ../examples/Create_publicIPAddresses_gw2ip2_Generated.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+        variables:
+          publicIpAddressName: gw2ip2
+      - step: Create_virtualNetworkGateways_vgw1
+        resourceName: virtualNetworkGateways_vgw1
+        exampleFile: ../examples/Create_virtualNetworkGateways_vgw1_Generated.json
+        operationId: VirtualNetworkGateways_CreateOrUpdate
+      - step: Create_virtualNetworkGateways_vgw2
+        resourceName: virtualNetworkGateways_vgw2
+        exampleFile: ../examples/Create_virtualNetworkGateways_vgw2_Generated.json
+        operationId: VirtualNetworkGateways_CreateOrUpdate
+        variables:
+          virtualNetworkGatewayName: vgw2
+      - step: VirtualNetworkGateways_Get_93
+        exampleFile: ../examples/VirtualNetworkGateways_Get_93_Generated.json
+        operationId: VirtualNetworkGateways_Get
+    variables:
+      virtualNetworkName: vnet1
+      publicIpAddressName: gw1ip1
+      virtualNetworkGatewayName: vgw1

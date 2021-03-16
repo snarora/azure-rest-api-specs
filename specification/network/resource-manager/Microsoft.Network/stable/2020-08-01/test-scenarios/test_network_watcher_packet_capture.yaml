@@ -1,0 +1,50 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_watcher_packet_capture
+    steps:
+      - step: NetworkWatchers_ListAll_1266
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: Create_packetCaptures_capture1
+        resourceName: packetCaptures_capture1
+        exampleFile: ../examples/Create_packetCaptures_capture1_Generated.json
+        operationId: PacketCaptures_Create
+      - step: NetworkWatchers_ListAll_1268
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: PacketCaptures_Get_1269
+        exampleFile: ../examples/PacketCaptures_Get_1269_Generated.json
+        operationId: PacketCaptures_Get
+      - step: NetworkWatchers_ListAll_1270
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: PacketCaptures_Stop_1271
+        exampleFile: ../examples/PacketCaptures_Stop_1271_Generated.json
+        operationId: PacketCaptures_Stop
+      - step: NetworkWatchers_ListAll_1272
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: PacketCaptures_GetStatus_1273
+        exampleFile: ../examples/PacketCaptures_GetStatus_1273_Generated.json
+        operationId: PacketCaptures_GetStatus
+      - step: NetworkWatchers_ListAll_1274
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: PacketCaptures_List_1275
+        exampleFile: ../examples/PacketCaptures_List_1275_Generated.json
+        operationId: PacketCaptures_List
+      - step: NetworkWatchers_ListAll_1276
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: PacketCaptures_Delete_1277
+        exampleFile: ../examples/PacketCaptures_Delete_1277_Generated.json
+        operationId: PacketCaptures_Delete
+      - step: NetworkWatchers_ListAll_1278
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: PacketCaptures_List_1279
+        exampleFile: ../examples/PacketCaptures_List_1279_Generated.json
+        operationId: PacketCaptures_List
+    variables:
+      networkWatcherName: NetworkWatcher_westus
+      packetCaptureName: capture1

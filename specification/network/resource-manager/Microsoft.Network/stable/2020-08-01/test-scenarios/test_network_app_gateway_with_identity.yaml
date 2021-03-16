@@ -1,0 +1,58 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_app_gateway_with_identity
+    steps:
+      - step: Create_publicIPAddresses_ip1
+        resourceName: publicIPAddresses_ip1
+        exampleFile: ../examples/Create_publicIPAddresses_ip1_Generated_387.json
+        operationId: PublicIPAddresses_CreateOrUpdate
+      - step: ApplicationGateways_Get_388
+        exampleFile: ../examples/ApplicationGateways_Get_388_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: Create_applicationGateways_gateway
+        resourceName: applicationGateways_gateway
+        exampleFile: ../examples/Create_applicationGateways_gateway_Generated.json
+        operationId: ApplicationGateways_CreateOrUpdate
+      - step: Update_applicationGateways_gateway_391
+        resourceName: applicationGateways_gateway
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - add: /identity
+            value:
+              type: userAssigned
+              userAssignedIdentities:
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_identity000001/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id2: {}
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/cli_test_ag_identity000001/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id2:
+                  principalId: 404d62b2-2c29-42c8-aca5-d730abdd9a06
+                  clientId: 7f0841b0-c225-415f-b3b3-d4c24109332e
+      - step: Update_applicationGateways_gateway_393
+        resourceName: applicationGateways_gateway
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/sslCertificates/0
+            value:
+              name: MySSLCert
+              properties:
+                keyVaultSecretId: >-
+                  https://cli-test-keyvault-000002.vault.azure.net/secrets/MyCertificate/dcf040d149ee4b6e9d638b7091d0f558
+                provisioningState: Succeeded
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_identity000001/providers/Microsoft.Network/applicationGateways/gateway/sslCertificates/MySSLCert
+              type: Microsoft.Network/applicationGateways/sslCertificates
+      - step: Update_applicationGateways_gateway_395
+        resourceName: applicationGateways_gateway
+        operationId: ApplicationGateways_CreateOrUpdate
+        resourceUpdate:
+          - add: /properties/trustedRootCertificates/0
+            value:
+              name: cert1
+              properties:
+                keyVaultSecretId: >-
+                  https://cli-test-keyvault-000002.vault.azure.net/secrets/MyCertificate/dcf040d149ee4b6e9d638b7091d0f558
+                provisioningState: Succeeded
+              id: >-
+                /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_test_ag_identity000001/providers/Microsoft.Network/applicationGateways/gateway/trustedRootCertificates/cert1
+              type: Microsoft.Network/applicationGateways/trustedRootCertificates
+    variables:
+      publicIpAddressName: ip1
+      applicationGatewayName: gateway

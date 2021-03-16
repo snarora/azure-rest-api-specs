@@ -1,0 +1,14 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_app_gateway_no_wait
+    steps:
+      - step: ApplicationGateways_Get_248
+        exampleFile: ../examples/ApplicationGateways_Get_248_Generated.json
+        operationId: ApplicationGateways_Get
+      - step: ApplicationGateways_Delete_252
+        exampleFile: ../examples/ApplicationGateways_Delete_252_Generated.json
+        operationId: ApplicationGateways_Delete
+        variables:
+          applicationGatewayName: ag2
+    variables:
+      applicationGatewayName: ag1

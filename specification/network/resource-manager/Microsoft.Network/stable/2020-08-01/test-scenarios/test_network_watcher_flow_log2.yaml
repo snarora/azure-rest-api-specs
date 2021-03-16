@@ -1,0 +1,60 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_network_watcher_flow_log2
+    steps:
+      - step: NetworkWatchers_ListAll_1254
+        exampleFile: ../examples/NetworkWatchers_ListAll_1226_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: Create_networkWatchers_canadaeast-watcher
+        resourceName: networkWatchers_canadaeast-watcher
+        exampleFile: ../examples/Create_networkWatchers_canadaeast-watcher_Generated.json
+        statusCode: 201
+        operationId: NetworkWatchers_CreateOrUpdate
+      - step: Create_networkWatchers_westus2-watcher
+        resourceName: networkWatchers_westus2-watcher
+        exampleFile: ../examples/Create_networkWatchers_westus2-watcher_Generated.json
+        statusCode: 201
+        operationId: NetworkWatchers_CreateOrUpdate
+        variables:
+          networkWatcherName: westus2-watcher
+      - step: Create_networkWatchers_NetworkWatcher_westus
+        resourceName: networkWatchers_NetworkWatcher_westus
+        exampleFile: >-
+          ../examples/Create_networkWatchers_NetworkWatcher_westus_Generated.json
+        operationId: NetworkWatchers_CreateOrUpdate
+        variables:
+          networkWatcherName: NetworkWatcher_westus
+      - step: Create_networkWatchers_NetworkWatcher_eastus
+        resourceName: networkWatchers_NetworkWatcher_eastus
+        exampleFile: >-
+          ../examples/Create_networkWatchers_NetworkWatcher_eastus_Generated.json
+        operationId: NetworkWatchers_CreateOrUpdate
+        variables:
+          networkWatcherName: NetworkWatcher_eastus
+      - step: Create_networkWatchers_NetworkWatcher_westcentralus
+        resourceName: networkWatchers_NetworkWatcher_westcentralus
+        exampleFile: >-
+          ../examples/Create_networkWatchers_NetworkWatcher_westcentralus_Generated.json
+        operationId: NetworkWatchers_CreateOrUpdate
+        variables:
+          networkWatcherName: NetworkWatcher_westcentralus
+      - step: NetworkWatchers_ListAll_1260
+        exampleFile: ../examples/NetworkWatchers_ListAll_1260_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: Create_networkSecurityGroups_nsg1
+        resourceName: networkSecurityGroups_nsg1
+        exampleFile: ../examples/Create_networkSecurityGroups_nsg1_Generated_1262.json
+        operationId: NetworkSecurityGroups_CreateOrUpdate
+      - step: NetworkWatchers_ListAll_1263
+        exampleFile: ../examples/NetworkWatchers_ListAll_1260_Generated.json
+        operationId: NetworkWatchers_ListAll
+      - step: NetworkWatchers_GetFlowLogStatus_1264
+        exampleFile: ../examples/NetworkWatchers_GetFlowLogStatus_1264_Generated.json
+        operationId: NetworkWatchers_GetFlowLogStatus
+      - step: NetworkWatchers_SetFlowLogConfiguration_1265
+        exampleFile: >-
+          ../examples/NetworkWatchers_SetFlowLogConfiguration_1265_Generated.json
+        operationId: NetworkWatchers_SetFlowLogConfiguration
+    variables:
+      networkWatcherName: canadaeast-watcher
+      networkSecurityGroupName: nsg1

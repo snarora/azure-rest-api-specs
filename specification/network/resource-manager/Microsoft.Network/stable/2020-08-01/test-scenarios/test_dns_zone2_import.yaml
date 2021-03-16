@@ -1,0 +1,4 @@
+scope: ResourceGroup
+testScenarios:
+  - description: test_dns_zone2_import
+    steps: []
